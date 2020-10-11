@@ -1,6 +1,6 @@
 # nailstudio
 
-Website for the NailStudio shop
+Web site for the NailStudio shop
 
 #### This application is running with symfony :
 
