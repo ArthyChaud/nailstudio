@@ -140,6 +140,7 @@ class RdvController extends AbstractController
             $rdv->setTypeService($typeService);
             $this->getDoctrine()->getManager()->persist($rdv);
             $this->getDoctrine()->getManager()->flush();
+
             return $this->redirectToRoute('depense_list');
         }
     }
