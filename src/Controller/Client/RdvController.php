@@ -112,15 +112,15 @@ class RdvController extends AbstractController
             $literalTime = \DateTime::createFromFormat("Y-m-d",$request->request->get('date_autre'));
         }else{
             $literalTime = new\DateTime('now');
-
         }
+
         $expire_date =  $literalTime->format("Y-m-d");
         $date = new \DateTime($expire_date);
         $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['dateRdv' => $date]);
         foreach($rdvs as $rdv){
             $heures[$rdv->getHeure()]["select"]=True;
         }
-        return $this->render('client/RdvAddForm.html.twig',['date'=>$expire_date,'heures'=>$heures,'typeServices'=>$typeServices]);
+        return $this->render('client/Rdv/RdvAddForm.html.twig',['date'=>$expire_date,'heures'=>$heures,'typeServices'=>$typeServices]);
     }
     /**
      * @Route("/client/PrendreRendezVous/validation", name="client_rdv_date_valide")
@@ -140,7 +140,17 @@ class RdvController extends AbstractController
             $rdv->setTypeService($typeService);
             $this->getDoctrine()->getManager()->persist($rdv);
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('depense_list');
+
+            return $this->redirectToRoute('client_rdv_show');
         }
+    }
+    /**
+     * @Route("/client/VosRendezVous", name="client_rdv_show")
+     */
+    public function rdvShow(Request $request)
+    {
+        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findAll();
+        return $this->render('client/Rdv/RdvShow.html.twig',['rdvs'=>$rdvs]);
+
     }
 }

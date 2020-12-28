@@ -1,0 +1,6 @@
+{% for rdv in rdvs %}
+    {{rdv.dateRdv|date('d/m/Y')}}
+    {{ rdv.heure }}
+    {{ rdv.typeService.libelle }}
+<br>
+{% endfor %}

@@ -39,12 +39,12 @@ class RDV
 
     public function getDateRdv(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->dateRdv;
     }
 
-    public function setDateRdv(\DateTimeInterface $date): self
+    public function setDateRdv(\DateTimeInterface $dateRdv): self
     {
-        $this->date = $date;
+        $this->dateRdv = $dateRdv;
 
         return $this;
     }
