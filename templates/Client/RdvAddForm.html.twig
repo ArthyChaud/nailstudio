@@ -1,0 +1,38 @@
+{% block body %}
+    <div class="container">
+        <form method="post" action="{{ path('client_rdv_date') }}">
+            <legend>Prendre rendez-vous</legend>
+            <label>Choisir la date</label>
+            <div class="form-group">
+                <input type="date" name="date_autre" value="{{ date }}">
+            </div>
+            <button name="dateValide" type="submit" class="btn btn-primary">{{ button|default('Valider le jour') }}</button>
+        </form>
+    </div>
+    <div class="container">
+        <form method="post" action="{{ path('client_rdv_date_valide') }}">
+            <input name="date" type="hidden" value="{{ date }}">
+
+            <label>Choisir l'heure</label>
+            <select name="heure">
+                {% for heure in heures %}
+                    {% if heure.select == false %}
+                    <option value="{{ heure.libelle }}">
+                        {{ heure.libelle }}
+                    </option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <label>Choisir la préstation</label>
+
+            <select name="typeService">
+                {% for typeService in typeServices %}
+                    <option value="{{ typeService.id }}">
+                        {{ typeService.libelle }}
+                    </option>
+                {% endfor %}
+            </select>
+            <button name="heureValide" type="submit" class="btn btn-primary">{{ button|default('Valider le rendez-vous') }}</button>
+        </form>
+    </div>
+{% endblock %}
