@@ -100,12 +100,7 @@ class RdvController extends AbstractController
                 "select"=>False,
             ),
         );
-        /*
-        $literalTime = \DateTime::createFromFormat("d/m/Y","29/12/2020");
-        $expire_date =  $literalTime->format("Y-m-d");
-        $date = new \DateTime($expire_date);
-        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['dateRdv' => $date]);
-*/
+
         $typeServices=$this->getDoctrine()->getRepository(TypeService::class)->findBy([],['libelle'=>'ASC']);
 
         if($request->request->get('date_autre')!=null){
@@ -149,8 +144,24 @@ class RdvController extends AbstractController
      */
     public function rdvShow(Request $request)
     {
-        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findAll();
+        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy([],['dateRdv'=>'ASC','heure'=>'ASC']);
         return $this->render('client/Rdv/RdvShow.html.twig',['rdvs'=>$rdvs]);
+
+    }
+    /**
+     * @Route("/client/annulationRendezVous", name="client_rdv_delete")
+     */
+    public function rdvDelete(Request $request)
+    {
+        if(!$this->isCsrfTokenValid('client_rdv_delete', $request->get('token'))) {
+            throw new  InvalidCsrfTokenException('Invalid CSRF token formulaire depense');
+        }
+        $id= $request->request->get('id');
+        $entityManager = $this->getDoctrine()->getManager();
+        $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
+        $entityManager->remove($rdv);
+        $entityManager->flush();
+        return $this->redirectToRoute('client_rdv_show');
 
     }
 }

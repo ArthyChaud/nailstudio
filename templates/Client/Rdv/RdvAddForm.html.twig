@@ -9,6 +9,7 @@
             <button name="dateValide" type="submit" class="btn btn-primary">{{ button|default('Valider le jour') }}</button>
         </form>
     </div>
+    <hr>
     <div class="container">
         <form method="post" action="{{ path('client_rdv_date_valide') }}">
             <input name="date" type="hidden" value="{{ date }}">
@@ -35,4 +36,6 @@
             <button name="heureValide" type="submit" class="btn btn-primary">{{ button|default('Valider le rendez-vous') }}</button>
         </form>
     </div>
+    <a href="{{ path('client_rdv_show') }}">Voir mes rendez-vous</a>
+
 {% endblock %}
