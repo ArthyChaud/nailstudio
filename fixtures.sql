@@ -11,3 +11,6 @@ INSERT INTO RDV(date_rdv,heure,type_service_id) VALUES
 	('2020-12-29','10:00',2),
 	('2020-12-29','13:00',1),
 	('2020-12-29','14:30',2);
+
+insert into USER (username,roles, password) values('client','{"ROLE_ADMIN"}', "passwordClient");
+INSERT INTO `user`(`username`, `roles`, `password`) VALUES ('client','{"roles":"ROLE_ADMIN"}', "passwordClient")

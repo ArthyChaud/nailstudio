@@ -1,13 +1,17 @@
-{% for rdv in rdvs %}
-    {{rdv.dateRdv|date('d/m/Y')}}
-    {{ rdv.heure }}
-    {{ rdv.typeService.libelle }}
-    <form action=" {{ path('client_rdv_delete') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
-        <input type="hidden" name="token" value="{{ csrf_token('client_rdv_delete') }}">
-        <input type="hidden" name="id" value="{{ rdv.id }}">
-        <input type="hidden" name="_method" value="DELETE">
-        <button type="submit">Annulée</button>
-    </form>
-<br>
-{% endfor %}
-<a href="{{ path('client_rdv_date') }}">Prendre rendez-vous</a>
+{% include('client/layout_client.html.twig') %}
+
+{% block body %}
+    {% for rdv in rdvs %}
+        {{rdv.dateRdv|date('d/m/Y')}}
+        {{ rdv.heure }}
+        {{ rdv.typeService.libelle }}
+        <form action=" {{ path('client_rdv_delete') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
+            <input type="hidden" name="token" value="{{ csrf_token('client_rdv_delete') }}">
+            <input type="hidden" name="id" value="{{ rdv.id }}">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit">Annulée</button>
+        </form>
+    <br>
+    {% endfor %}
+    <a href="{{ path('client_rdv_date') }}">Prendre rendez-vous</a>
+{% endblock %}

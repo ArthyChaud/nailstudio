@@ -10,11 +10,30 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Validator\Constraints\Date;
 use Twig\Environment;
-
+/**
+ * @Route(path="/client", name="client_")
+ */
 class RdvController extends AbstractController
 {
     /**
-     * @Route("/client/PrendreRendezVous", name="client_rdv_date")
+     * @Route("/", name="index")
+     */
+    public function index(Request $request)
+    {
+        return $this->redirectToRoute('client_rdv_show');
+    }
+    /**
+     * @Route("/VosRendezVous", name="rdv_show")
+     */
+    public function rdvShow(Request $request)
+    {
+        $user=$this->getUser();
+        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy([],['dateRdv'=>'ASC','heure'=>'ASC']);
+        return $this->render('client/Rdv/RdvShow.html.twig',['rdvs'=>$rdvs]);
+
+    }
+    /**
+     * @Route("/PrendreRendezVous", name="rdv_date")
      */
     public function rdvAdd(Request $request)
     {
@@ -118,7 +137,7 @@ class RdvController extends AbstractController
         return $this->render('client/Rdv/RdvAddForm.html.twig',['date'=>$expire_date,'heures'=>$heures,'typeServices'=>$typeServices]);
     }
     /**
-     * @Route("/client/PrendreRendezVous/validation", name="client_rdv_date_valide")
+     * @Route("/PrendreRendezVous/validation", name="rdv_date_valide")
      */
     public function rdvAddValide(Request $request)
     {
@@ -139,17 +158,9 @@ class RdvController extends AbstractController
             return $this->redirectToRoute('client_rdv_show');
         }
     }
-    /**
-     * @Route("/client/VosRendezVous", name="client_rdv_show")
-     */
-    public function rdvShow(Request $request)
-    {
-        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy([],['dateRdv'=>'ASC','heure'=>'ASC']);
-        return $this->render('client/Rdv/RdvShow.html.twig',['rdvs'=>$rdvs]);
 
-    }
     /**
-     * @Route("/client/annulationRendezVous", name="client_rdv_delete")
+     * @Route("/annulationRendezVous", name="rdv_delete")
      */
     public function rdvDelete(Request $request)
     {
