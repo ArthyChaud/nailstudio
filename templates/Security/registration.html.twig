@@ -1,0 +1,35 @@
+{% extends 'layout_home.html.twig' %}
+    {% block body %}
+        <div class="container">
+            <form method="post" action="{{ path('user_registration') }}">
+                <legend>Créer un nouveau compte</legend>
+                <div class="form-group">
+                    <label>username :</label>
+                    <input name="username"  type="text"  size="18" value="{{donnees.username|default('')}}" class="form-control">
+                    {% if erreurs.username is defined %}
+                        <div style="color: red">{{ erreurs.username }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label>password :</label>
+                    <input name="password"  type="password"  size="18"  value="" class="form-control">
+                    {% if erreurs.password is defined %}
+                        <div style="color: red">{{erreurs.password}}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label>email :</label>
+                    <input name="email"  type="text"  size="18"  value="{{donnees.email|default('')}}" class="form-control">
+                    {% if erreurs.email is defined %}
+                        <div style="color: red">{{erreurs.email}}</div>
+                    {% endif %}
+                </div>
+
+                <input type="hidden" name="token" value="{{ csrf_token('form_client') }}">
+
+                <button type="submit" class="btn btn-primary">{{ button|default('Valider') }}</button>
+            </form>
+        </div>
+    {% endblock %}

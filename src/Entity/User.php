@@ -48,31 +48,15 @@ class User implements UserInterface
      */
     private $isActive;
 
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $nom = '';
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $ville = '';
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $codePostal = '';
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $adresse = '';
-
     /**
      * @ORM\Column(type="string", nullable=true)
      */
     private $tokenMail = '';
+
+    /**
+     * @ORM\OneToMany(targetEntity=RDV::class, mappedBy="user")
+     */
+    private $rDVs;
 
     public function __toString()
     {
@@ -83,9 +67,7 @@ class User implements UserInterface
     public function __construct()
     {
         $this->isActive = true;
-        $this->panier = new ArrayCollection();
-        $this->commandes = new ArrayCollection();
-        $this->commentaires = new ArrayCollection();
+        $this->rDVs = new ArrayCollection();
     }
 
     // ********************************
@@ -189,54 +171,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getNom(): ?string
-    {
-        return $this->nom;
-    }
-
-    public function setNom(?string $nom): self
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(?string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getCodePostal(): ?string
-    {
-        return $this->codePostal;
-    }
-
-    public function setCodePostal(?string $codePostal): self
-    {
-        $this->codePostal = $codePostal;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(?string $adresse): self
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
-
     public function getTokenMail(): ?string
     {
         return $this->tokenMail;
@@ -245,6 +179,36 @@ class User implements UserInterface
     public function setTokenMail(?string $tokenMail): self
     {
         $this->tokenMail = $tokenMail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RDV[]
+     */
+    public function getRDVs(): Collection
+    {
+        return $this->rDVs;
+    }
+
+    public function addRDV(RDV $rDV): self
+    {
+        if (!$this->rDVs->contains($rDV)) {
+            $this->rDVs[] = $rDV;
+            $rDV->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRDV(RDV $rDV): self
+    {
+        if ($this->rDVs->removeElement($rDV)) {
+            // set the owning side to null (unless already changed)
+            if ($rDV->getUser() === $this) {
+                $rDV->setUser(null);
+            }
+        }
 
         return $this;
     }
