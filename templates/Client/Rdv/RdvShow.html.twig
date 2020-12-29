@@ -1,6 +1,7 @@
+{% include('client/layout_client.html.twig') %}
+
 {% block body %}
-    <span
-    title="lien connexion">
+    <span title="lien connexion">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <span class="navbar-text">
                     Bonjour {{ app.user.username }}
@@ -32,9 +33,10 @@
                 <input type="hidden" name="_method" value="DELETE">
                 <button type="submit">Annulée</button>
             </form>
-        <br>
+            <br>
         {% endfor %}
     {% endif %}
     <br>
     <a href="{{ path('client_rdv_date') }}">Prendre rendez-vous</a>
 {% endblock %}
+
