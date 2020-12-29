@@ -1,6 +1,24 @@
-{% include('client/layout_client.html.twig') %}
-
 {% block body %}
+    <span
+    title="lien connexion">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <span class="navbar-text">
+                    Bonjour {{ app.user.username }}
+                {% if is_granted('ROLE_ADMIN') %} (role : Admin )
+                {% elseif is_granted('ROLE_CLIENT') %} (role : Client ) {% endif %}
+            </span>
+            <a class="btn btn-outline-success" type="button" href="{{path('app_logout') }}">
+                Se déconnecter
+            </a>
+
+        {% else %}
+            <a class="btn btn-outline-success" type="button" href="{{path('app_login') }}">
+                Se connecter
+            </a>
+        {% endif %}
+    </span>
+    <hr>
+    <h1>affichage des rendez-vous</h1>
     {% for rdv in rdvs %}
         {{rdv.dateRdv|date('d/m/Y')}}
         {{ rdv.heure }}

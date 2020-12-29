@@ -27,8 +27,7 @@ class RdvController extends AbstractController
      */
     public function rdvShow(Request $request)
     {
-        $user=$this->getUser();
-        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy([],['dateRdv'=>'ASC','heure'=>'ASC']);
+        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['user'=>$this->getUser()],['dateRdv'=>'ASC','heure'=>'ASC']);
         return $this->render('client/Rdv/RdvShow.html.twig',['rdvs'=>$rdvs]);
 
     }
@@ -152,6 +151,7 @@ class RdvController extends AbstractController
             $rdv->setHeure($donnees['heure']);
             $typeService=$this->getDoctrine()->getRepository(TypeService::class)->find($donnees['typeService']);
             $rdv->setTypeService($typeService);
+            $rdv->setUser($this->getUser());
             $this->getDoctrine()->getManager()->persist($rdv);
             $this->getDoctrine()->getManager()->flush();
 
