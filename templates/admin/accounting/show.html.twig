@@ -44,10 +44,10 @@
     </div>
     <div class="row">
         <div class="col-6">
-            <h4>Charges d'exploitation</h4>
+            <h4>I.Charges d'exploitation</h4>
         </div>
         <div class="col-6">
-            <h4>Produits d'exploitation</h4>
+            <h4>I.Produits d'exploitation</h4>
         </div>
     </div>
     <div class="row">
@@ -73,7 +73,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
-                        {{ accounting.prix }} €
+                        {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -100,7 +100,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
-                        {{ accounting.prix }} €
+                        {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -119,7 +119,7 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            {{ total }} €
+            {{ total|number_format(2) }} €
         </div>
         <div class="col-4">
             Sous total I
@@ -133,15 +133,15 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            {{ total }} €
+            {{ total|number_format(2) }} €
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <h4>Charges financières</h4>
+            <h4>II.Charges financières</h4>
         </div>
         <div class="col-6">
-            <h4>Produits financiers</h4>
+            <h4>II.Produits financiers</h4>
         </div>
     </div>
     <div class="row">
@@ -167,7 +167,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges financières" %}
-                        {{ accounting.prix }} €
+                        {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -194,7 +194,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits financiers" %}
-                        {{ accounting.prix }} €
+                        {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -213,7 +213,7 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            {{ total }} €
+            {{ total|number_format(2) }} €
         </div>
         <div class="col-4">
             Sous total II
@@ -227,15 +227,15 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            {{ total }} €
+            {{ total|number_format(2) }} €
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <h4>Charges exceptionnelles</h4>
+            <h4>III.Charges exceptionnelles</h4>
         </div>
         <div class="col-6">
-            <h4>Produits exceptionnels</h4>
+            <h4>III.Produits exceptionnels</h4>
         </div>
     </div>
     <div class="row">
@@ -261,7 +261,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges exceptionnelles" %}
-                        {{ accounting.prix }} €
+                        {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -288,7 +288,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits exceptionnels" %}
-                        {{ accounting.prix }} €
+                        {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -307,7 +307,7 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            {{ total }} €
+            {{ total|number_format(2) }} €
         </div>
         <div class="col-4">
             Sous total III
@@ -321,7 +321,7 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            {{ total }} €
+            {{ total|number_format(2) }} €
         </div>
     </div>
     <div class="row">
@@ -337,7 +337,7 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            {{ total }} €
+            {{ total|number_format(2) }} €
         </div>
         <div class="col-4">
             <h4>Total des produits (I + II + III)</h4>
@@ -351,7 +351,7 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            {{ total }} €
+            {{ total|number_format(2) }} €
         </div>
     </div>
     {% set produits = 0 %}
@@ -377,7 +377,7 @@
         </div>
         <div class="col-2">
             {% if isPositif > 0 %}
-                {{ isPositif }} €
+                {{ isPositif|number_format(2) }} €
             {% else %}
                 {% set isPositif = 0 %}
                 {{ isPositif }} €
@@ -389,7 +389,7 @@
         <div class="col-2">
             {% if isPositif < 0 %} {
                 {% set isNegatif = isPositif*(-1) %}
-                {{ isNegatif }} €
+                {{ isNegatif|number_format(2) }} €
             {% else %}
                 {% set isNegatif = 0 %}
                 {{ isNegatif }} €
@@ -402,14 +402,14 @@
         </div>
         <div class="col-2">
             {% set resCharges = charges+isPositif %}
-            {{ resCharges }} €
+            {{ resCharges|number_format(2) }} €
         </div>
         <div class="col-4">
             <h5>Résultat de l'exercice</h5>
         </div>
         <div class="col-2">
             {% set resProduits = produits+isNegatif %}
-            {{ resProduits }} €
+            {{ resProduits|number_format(2) }} €
         </div>
     </div>
 </div>
