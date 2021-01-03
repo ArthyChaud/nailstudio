@@ -1,4 +1,7 @@
-{% include "base/includes.html.twig" %}
+{% extends "base/base.html.twig" %}
+
+{% block body %}
+<div class="container-fluid">
 <table class="table dataTable my-0" id="dataTable">
     <thead id="blueBar">
     <tr>
@@ -54,7 +57,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
                         {{ accounting.date|date("d/m/Y") }}
                     {% endif %}
                 {% endfor %}
@@ -63,7 +66,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
                         {{ accounting.libelle }}
                     {% endif %}
                 {% endfor %}
@@ -72,7 +75,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
                         {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
@@ -81,7 +84,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
                         {{ accounting.date|date("d/m/Y") }}
                     {% endif %}
                 {% endfor %}
@@ -90,7 +93,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
                         {{ accounting.libelle }}
                     {% endif %}
                 {% endfor %}
@@ -99,7 +102,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
                         {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
@@ -114,7 +117,7 @@
             {% set total = 0 %}
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
                         {% set total = total + accounting.prix %}
                     {% endif %}
                 {% endfor %}
@@ -128,7 +131,7 @@
             {% set total = 0 %}
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
                         {% set total = total + accounting.prix %}
                     {% endif %}
                 {% endfor %}
@@ -413,3 +416,5 @@
         </div>
     </div>
 </div>
+</div>
+{% endblock body %}

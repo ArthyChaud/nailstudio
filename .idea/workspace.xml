@@ -19,13 +19,29 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="">
+    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="Comptabilité &amp; stats">
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/CarouselLikeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/MediaController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/CarouselLike.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/CarouselLikeFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/MediaFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/CarouselLikeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MediaRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/FileUploader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/AccountingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/AccountingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/RDV.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RDV.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ProduitStockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/ProduitStockController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Client/Rdv/RdvAddForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Client/Rdv/RdvAddForm.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Client/Rdv/RdvShow.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Client/Rdv/RdvShow.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Security/registration.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Security/registration.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/accounting/accounting.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/accounting/accounting.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/accounting/handle.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/accounting/handle.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/accounting/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/accounting/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base/includes.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/includes.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/showStock.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/stocks/showStock.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reservations/reservations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservations/reservations.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/services/services.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/services/services.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +171,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/accounting" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller/Admin" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -168,13 +184,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\public\assets" />
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Controller" />
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\services" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\Security" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\reservations" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\realisations" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\mentionLegales" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\admin\accounting" />
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Controller\Admin" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Form" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Service" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Entity" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Repository" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -210,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609702741370</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Comptabilité &amp; stats">
+      <created>1609712421572</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609712421572</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +259,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Import front end with back end" />
     <MESSAGE value="Comptabilité &amp; compte de résultat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comptabilité &amp; compte de résultat" />
+    <MESSAGE value="Comptabilité &amp; stats" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comptabilité &amp; stats" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
@@ -246,15 +275,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1609712289139" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609702745040">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609712424589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609702745040" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609705096691">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609712424589" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609713482936">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="521" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1609695548181" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1609705096691" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1609713482936" />
     <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1609707878219">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

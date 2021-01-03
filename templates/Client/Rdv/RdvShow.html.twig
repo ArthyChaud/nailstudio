@@ -1,6 +1,7 @@
-{% include('client/layout_client.html.twig') %}
+{% extends 'base/base.html.twig'%}
 
 {% block body %}
+    <div class="container-fluid">
     <span title="lien connexion">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <span class="navbar-text">
@@ -24,19 +25,21 @@
         vous n'avez pas de rendez-vous
     {% else %}
         {% for rdv in rdvs %}
-            {{rdv.dateRdv|date('d/m/Y')}}
+            {{ rdv.dateRdv|date('d/m/Y')}}
             {{ rdv.heure }}
             {{ rdv.typeService.libelle }}
-            <form action=" {{ path('rdv_delete') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
-                <input type="hidden" name="token" value="{{ csrf_token('rdv_delete') }}">
+            <form action=" {{ path('client_rdv_delete') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
+                <input type="hidden" name="token" value="{{ csrf_token('client_rdv_delete') }}">
                 <input type="hidden" name="id" value="{{ rdv.id }}">
                 <input type="hidden" name="_method" value="DELETE">
-                <button type="submit">Annulée</button>
+                <button type="submit" class="btn btn-primary">Annulée</button>
+                <br>
             </form>
             <br>
         {% endfor %}
     {% endif %}
     <br>
-    <a href="{{ path('rdv_date') }}">Prendre rendez-vous</a>
+    <a href="{{ path('client_rdv_date') }}">Prendre rendez-vous</a>
+    </div>
 {% endblock %}
 

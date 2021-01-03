@@ -1,6 +1,8 @@
+{% extends 'base/base.html.twig'%}
 {% block body %}
+    <div class="container-fluid">
     <div class="container">
-        <form method="post" action="{{ path('rdv_date') }}">
+        <form method="post" action="{{ path('client_rdv_date') }}">
             <legend>Prendre rendez-vous</legend>
             <label>Choisir la date</label>
             <div class="form-group">
@@ -11,7 +13,7 @@
     </div>
     <hr>
     <div class="container">
-        <form method="post" action="{{ path('rdv_date_valide') }}">
+        <form method="post" action="{{ path('client_rdv_date_valide') }}">
             <input name="date" type="hidden" value="{{ date }}">
 
             <label>Choisir l'heure</label>
@@ -36,6 +38,6 @@
             <button name="heureValide" type="submit" class="btn btn-primary">{{ button|default('Valider le rendez-vous') }}</button>
         </form>
     </div>
-    <a href="{{ path('rdv_show') }}">Voir mes rendez-vous</a>
-
+    <a href="{{ path('client_rdv_show') }}">Voir mes rendez-vous</a>
+    </div>
 {% endblock %}

@@ -1,3 +1,5 @@
+{% extends 'base/base.html.twig'%}
+{% block title %}Se créer un compte{% endblock %}
 {% block body %}
     <div class="container">
         <form method="post" action="{{ path('user_registration') }}">
@@ -29,6 +31,7 @@
             <input type="hidden" name="token" value="{{ csrf_token('form_client') }}">
 
             <button type="submit" class="btn btn-primary">{{ button|default('Valider') }}</button>
+            <a href="/login" class="btn btn-primary ">Retour</a>
         </form>
     </div>
 {% endblock %}

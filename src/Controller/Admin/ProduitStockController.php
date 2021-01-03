@@ -12,7 +12,7 @@ class ProduitStockController extends AbstractController
      * @Route("/admin/show/stockProduit", name="admin_show_stock")
      */
     public function showStock(){
-        return $this->render('admin/showStock.html.twig');
+        return $this->render('admin/stocks/showStock.html.twig');
     }
 
 

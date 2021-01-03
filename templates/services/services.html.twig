@@ -16,10 +16,93 @@
             <div class="row">
                 <div class="col-md-4" id="blockLeft">
                     <div class="container-fluid">
-                        <p>blockLeft carousel</p>
-                    </div>
-                    <div class="container-fluid">
-                        <p>block vidéo</p>
+                        {% if carousels is empty or carousels|length == 0 %}
+                            <h1 class="heading-stylized text-center">Rien pour l'instant</h1>
+                            <div class="text-center mt mb">
+                                <a class="btn btn-primary" href="{{ path('admin_carousel_add', {cat:'onglerie'}) }}">
+                                    Ajouter le carousel</a>
+                            </div>
+                        {% else %}
+                            {% for carousel in carousels %}
+                                {% if "onglerie" in carousel.type %}
+                                    <h1 class="heading-stylized text-center">{{ carousel.name }}</h1>
+                                    <div class="text-center mt-2 mb-2">
+                                        <a class="btn btn-primary" href="{{ path('admin_carousel_edit', {'id' : carousel.id, page:'accueil'}) }}">
+                                            Éditer le carousel</a>
+                                        <a class="btn btn-primary" href="{{ path('admin_carousel_delete', {'id' : carousel.id, page:'accueil'}) }}">
+                                            Supprimer le carousel</a>
+                                        <a class="btn btn-primary" href="{{ path('medias_add', {'id' : carousel.id, page:'accueil'}) }}">Ajouter un
+                                            média</a>
+                                    </div>
+                                    {% if carousel.medias | length > 1 %}
+                                        <div id="carousel-{{ carousel.id }}" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                {% set i = 0 %}
+                                                {% for media in carousel.medias %}
+                                                    <li data-target="#carousel-{{ carousel.id }}" data-slide-to="{{ i }}"
+                                                        {% if i == 0 %}class="active"{% endif %}></li>
+                                                    {% set i = i + 1 %}
+                                                {% endfor %}
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                {% set i = 0 %}
+                                                {% for media in carousel.medias %}
+                                                    <div class="carousel-item {% if i == 0 %}active{% endif %}">
+                                                        {% if media.type == "png" or media.type == "gif" or media.type == "jpeg" %}
+                                                            <img class="d-block w-100"
+                                                                 src="{{ asset('uploads/accueil/' ~ media.path) }}"
+                                                                 alt="{{ media.path }}">
+                                                        {% else %}
+                                                            <video controls>
+                                                                <source src="{{ asset('uploads/accueil/' ~ media.path) }}">
+                                                            </video>
+                                                        {% endif %}
+                                                        {% if is_granted('ROLE_ADMIN') %}
+                                                            <div class="carousel-caption d-none d-md-block text-center">
+                                                                <div class="mt-2 mb-2">
+                                                                    <a class="btn btn-primary"
+                                                                       href="{{ path('medias_delete', {'id': media.id, page:'accueil'}) }}">Supprimer
+                                                                        ce média</a>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        <br>
+                                                    </div>
+                                                    {% set i = i + 1 %}
+                                                {% endfor %}
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carousel-{{ carousel.id }}" role="button"
+                                               data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carousel-{{ carousel.id }}" role="button"
+                                               data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    {% elseif carousel.medias | length == 1 %}
+                                        {% set media = carousel.medias.first %}
+                                        {% if media.type == "png" or media.type == "gif" or media.type == "jpeg" %}
+                                            <img class="img-fluid mx-auto d-block rounded"
+                                                 src="{{ asset('uploads/accueil/' ~ media.path) }}"
+                                                 alt="{{ media.path }}">
+                                        {% else %}
+                                            <video controls>
+                                                <source src="{{ asset('uploads/accueil/' ~ media.path) }}">
+                                            </video>
+                                        {% endif %}
+                                        <div class="text-center mt-2 mb-2">
+                                            <a class="btn btn-primary"
+                                               href="{{ path('medias_delete', {'id': media.id, page:'accueil'}) }}">Supprimer ce média</a>
+                                        </div>
+                                    {% endif %}
+                                    <pre class="w-50 mx-auto text-justify bigger"
+                                         style="font-size: 17px">{{ carousel.description }}</pre>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-6" id="blockRight">
@@ -47,10 +130,93 @@
             <div class="row">
                 <div class="col-md-4" id="blockLeft">
                     <div class="container-fluid">
-                        <p>blockLeft carousel</p>
-                    </div>
-                    <div class="container-fluid">
-                        <p>block vidéo</p>
+                        {% if carousels is empty or carousels|length == 0 %}
+                            <h1 class="heading-stylized text-center">Rien pour l'instant</h1>
+                            <div class="text-center mt mb">
+                                <a class="btn btn-primary" href="{{ path('admin_carousel_add', {cat:'onglerie'}) }}">
+                                    Ajouter le carousel</a>
+                            </div>
+                        {% else %}
+                            {% for carousel in carousels %}
+                                {% if "onglerie" in carousel %}
+                                    <h1 class="heading-stylized text-center">{{ carousel.name }}</h1>
+                                    <div class="text-center mt-2 mb-2">
+                                        <a class="btn btn-primary" href="{{ path('admin_carousel_edit', {'id' : carousel.id, page:'accueil'}) }}">
+                                            Éditer le carousel</a>
+                                        <a class="btn btn-primary" href="{{ path('admin_carousel_delete', {'id' : carousel.id, page:'accueil'}) }}">
+                                            Supprimer le carousel</a>
+                                        <a class="btn btn-primary" href="{{ path('medias_add', {'id' : carousel.id, page:'accueil'}) }}">Ajouter un
+                                            média</a>
+                                    </div>
+                                    {% if carousel.medias | length > 1 %}
+                                        <div id="carousel-{{ carousel.id }}" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                {% set i = 0 %}
+                                                {% for media in carousel.medias %}
+                                                    <li data-target="#carousel-{{ carousel.id }}" data-slide-to="{{ i }}"
+                                                        {% if i == 0 %}class="active"{% endif %}></li>
+                                                    {% set i = i + 1 %}
+                                                {% endfor %}
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                {% set i = 0 %}
+                                                {% for media in carousel.medias %}
+                                                    <div class="carousel-item {% if i == 0 %}active{% endif %}">
+                                                        {% if media.type == "png" or media.type == "gif" or media.type == "jpeg" %}
+                                                            <img class="d-block w-100"
+                                                                 src="{{ asset('uploads/accueil/' ~ media.path) }}"
+                                                                 alt="{{ media.path }}">
+                                                        {% else %}
+                                                            <video controls>
+                                                                <source src="{{ asset('uploads/accueil/' ~ media.path) }}">
+                                                            </video>
+                                                        {% endif %}
+                                                        {% if is_granted('ROLE_ADMIN') %}
+                                                            <div class="carousel-caption d-none d-md-block text-center">
+                                                                <div class="mt-2 mb-2">
+                                                                    <a class="btn btn-primary"
+                                                                       href="{{ path('medias_delete', {'id': media.id, page:'accueil'}) }}">Supprimer
+                                                                        ce média</a>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        <br>
+                                                    </div>
+                                                    {% set i = i + 1 %}
+                                                {% endfor %}
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carousel-{{ carousel.id }}" role="button"
+                                               data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carousel-{{ carousel.id }}" role="button"
+                                               data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    {% elseif carousel.medias | length == 1 %}
+                                        {% set media = carousel.medias.first %}
+                                        {% if media.type == "png" or media.type == "gif" or media.type == "jpeg" %}
+                                            <img class="img-fluid mx-auto d-block rounded"
+                                                 src="{{ asset('uploads/accueil/' ~ media.path) }}"
+                                                 alt="{{ media.path }}">
+                                        {% else %}
+                                            <video controls>
+                                                <source src="{{ asset('uploads/accueil/' ~ media.path) }}">
+                                            </video>
+                                        {% endif %}
+                                        <div class="text-center mt-2 mb-2">
+                                            <a class="btn btn-primary"
+                                               href="{{ path('medias_delete', {'id': media.id, page:'accueil'}) }}">Supprimer ce média</a>
+                                        </div>
+                                    {% endif %}
+                                    <pre class="w-50 mx-auto text-justify bigger"
+                                         style="font-size: 17px">{{ carousel.description }}</pre>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-6" id="blockRight">
@@ -79,10 +245,93 @@
             <div class="row">
                 <div class="col-md-4" id="blockLeft">
                     <div class="container-fluid">
-                        <p>blockLeft carousel</p>
-                    </div>
-                    <div class="container-fluid">
-                        <p>block vidéo</p>
+                        {% if carousels is empty or carousels|length == 0 %}
+                            <h1 class="heading-stylized text-center">Rien pour l'instant</h1>
+                            <div class="text-center mt mb">
+                                <a class="btn btn-primary" href="{{ path('admin_carousel_add', {cat:'onglerie'}) }}">
+                                    Ajouter le carousel</a>
+                            </div>
+                        {% else %}
+                            {% for carousel in carousels %}
+                                {% if "onglerie" in carousel %}
+                                    <h1 class="heading-stylized text-center">{{ carousel.name }}</h1>
+                                    <div class="text-center mt-2 mb-2">
+                                        <a class="btn btn-primary" href="{{ path('admin_carousel_edit', {'id' : carousel.id, page:'accueil'}) }}">
+                                            Éditer le carousel</a>
+                                        <a class="btn btn-primary" href="{{ path('admin_carousel_delete', {'id' : carousel.id, page:'accueil'}) }}">
+                                            Supprimer le carousel</a>
+                                        <a class="btn btn-primary" href="{{ path('medias_add', {'id' : carousel.id, page:'accueil'}) }}">Ajouter un
+                                            média</a>
+                                    </div>
+                                    {% if carousel.medias | length > 1 %}
+                                        <div id="carousel-{{ carousel.id }}" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                {% set i = 0 %}
+                                                {% for media in carousel.medias %}
+                                                    <li data-target="#carousel-{{ carousel.id }}" data-slide-to="{{ i }}"
+                                                        {% if i == 0 %}class="active"{% endif %}></li>
+                                                    {% set i = i + 1 %}
+                                                {% endfor %}
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                {% set i = 0 %}
+                                                {% for media in carousel.medias %}
+                                                    <div class="carousel-item {% if i == 0 %}active{% endif %}">
+                                                        {% if media.type == "png" or media.type == "gif" or media.type == "jpeg" %}
+                                                            <img class="d-block w-100"
+                                                                 src="{{ asset('uploads/accueil/' ~ media.path) }}"
+                                                                 alt="{{ media.path }}">
+                                                        {% else %}
+                                                            <video controls>
+                                                                <source src="{{ asset('uploads/accueil/' ~ media.path) }}">
+                                                            </video>
+                                                        {% endif %}
+                                                        {% if is_granted('ROLE_ADMIN') %}
+                                                            <div class="carousel-caption d-none d-md-block text-center">
+                                                                <div class="mt-2 mb-2">
+                                                                    <a class="btn btn-primary"
+                                                                       href="{{ path('medias_delete', {'id': media.id, page:'accueil'}) }}">Supprimer
+                                                                        ce média</a>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        <br>
+                                                    </div>
+                                                    {% set i = i + 1 %}
+                                                {% endfor %}
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carousel-{{ carousel.id }}" role="button"
+                                               data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carousel-{{ carousel.id }}" role="button"
+                                               data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    {% elseif carousel.medias | length == 1 %}
+                                        {% set media = carousel.medias.first %}
+                                        {% if media.type == "png" or media.type == "gif" or media.type == "jpeg" %}
+                                            <img class="img-fluid mx-auto d-block rounded"
+                                                 src="{{ asset('uploads/accueil/' ~ media.path) }}"
+                                                 alt="{{ media.path }}">
+                                        {% else %}
+                                            <video controls>
+                                                <source src="{{ asset('uploads/accueil/' ~ media.path) }}">
+                                            </video>
+                                        {% endif %}
+                                        <div class="text-center mt-2 mb-2">
+                                            <a class="btn btn-primary"
+                                               href="{{ path('medias_delete', {'id': media.id, page:'accueil'}) }}">Supprimer ce média</a>
+                                        </div>
+                                    {% endif %}
+                                    <pre class="w-50 mx-auto text-justify bigger"
+                                         style="font-size: 17px">{{ carousel.description }}</pre>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-6" id="blockRight">
@@ -112,10 +361,93 @@
             <div class="row">
                 <div class="col-md-4" id="blockLeft">
                     <div class="container-fluid">
-                        <p>blockLeft carousel</p>
-                    </div>
-                    <div class="container-fluid">
-                        <p>block vidéo</p>
+                        {% if carousels is empty or carousels|length == 0 %}
+                            <h1 class="heading-stylized text-center">Rien pour l'instant</h1>
+                            <div class="text-center mt mb">
+                                <a class="btn btn-primary" href="{{ path('admin_carousel_add', {cat:'onglerie'}) }}">
+                                    Ajouter le carousel</a>
+                            </div>
+                        {% else %}
+                            {% for carousel in carousels %}
+                                {% if "onglerie" in carousel %}
+                                    <h1 class="heading-stylized text-center">{{ carousel.name }}</h1>
+                                    <div class="text-center mt-2 mb-2">
+                                        <a class="btn btn-primary" href="{{ path('admin_carousel_edit', {'id' : carousel.id, page:'accueil'}) }}">
+                                            Éditer le carousel</a>
+                                        <a class="btn btn-primary" href="{{ path('admin_carousel_delete', {'id' : carousel.id, page:'accueil'}) }}">
+                                            Supprimer le carousel</a>
+                                        <a class="btn btn-primary" href="{{ path('medias_add', {'id' : carousel.id, page:'accueil'}) }}">Ajouter un
+                                            média</a>
+                                    </div>
+                                    {% if carousel.medias | length > 1 %}
+                                        <div id="carousel-{{ carousel.id }}" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                {% set i = 0 %}
+                                                {% for media in carousel.medias %}
+                                                    <li data-target="#carousel-{{ carousel.id }}" data-slide-to="{{ i }}"
+                                                        {% if i == 0 %}class="active"{% endif %}></li>
+                                                    {% set i = i + 1 %}
+                                                {% endfor %}
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                {% set i = 0 %}
+                                                {% for media in carousel.medias %}
+                                                    <div class="carousel-item {% if i == 0 %}active{% endif %}">
+                                                        {% if media.type == "png" or media.type == "gif" or media.type == "jpeg" %}
+                                                            <img class="d-block w-100"
+                                                                 src="{{ asset('uploads/accueil/' ~ media.path) }}"
+                                                                 alt="{{ media.path }}">
+                                                        {% else %}
+                                                            <video controls>
+                                                                <source src="{{ asset('uploads/accueil/' ~ media.path) }}">
+                                                            </video>
+                                                        {% endif %}
+                                                        {% if is_granted('ROLE_ADMIN') %}
+                                                            <div class="carousel-caption d-none d-md-block text-center">
+                                                                <div class="mt-2 mb-2">
+                                                                    <a class="btn btn-primary"
+                                                                       href="{{ path('medias_delete', {'id': media.id, page:'accueil'}) }}">Supprimer
+                                                                        ce média</a>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        <br>
+                                                    </div>
+                                                    {% set i = i + 1 %}
+                                                {% endfor %}
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carousel-{{ carousel.id }}" role="button"
+                                               data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carousel-{{ carousel.id }}" role="button"
+                                               data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    {% elseif carousel.medias | length == 1 %}
+                                        {% set media = carousel.medias.first %}
+                                        {% if media.type == "png" or media.type == "gif" or media.type == "jpeg" %}
+                                            <img class="img-fluid mx-auto d-block rounded"
+                                                 src="{{ asset('uploads/accueil/' ~ media.path) }}"
+                                                 alt="{{ media.path }}">
+                                        {% else %}
+                                            <video controls>
+                                                <source src="{{ asset('uploads/accueil/' ~ media.path) }}">
+                                            </video>
+                                        {% endif %}
+                                        <div class="text-center mt-2 mb-2">
+                                            <a class="btn btn-primary"
+                                               href="{{ path('medias_delete', {'id': media.id, page:'accueil'}) }}">Supprimer ce média</a>
+                                        </div>
+                                    {% endif %}
+                                    <pre class="w-50 mx-auto text-justify bigger"
+                                         style="font-size: 17px">{{ carousel.description }}</pre>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-6" id="blockRight">

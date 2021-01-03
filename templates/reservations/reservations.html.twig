@@ -3,7 +3,39 @@
 {% block title %} NailStudio | réservation {% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
-        <p>page réservation</p>
-    </div>
+    {% if app.user is defined and is_granted('ROLE_CLIENT') %}
+        <div class="container-fluid">
+            <div class="text-center">
+                <p><a href="/PrendreRendezVous" class="btn btn-primary">Prendre un rendez vous</a></p>
+                <p><a href="/VosRendezVous" class="btn btn-primary">Consulter votre rendez-vous</a></p>
+                <div class="container-fluid">
+                    <p><a href="{{ path('app_logout') }}" class="btn btn-primary">Se déconnecter</a></p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if app.user is defined and is_granted('ROLE_ADMIN') %}
+        <div class="container-fluid">
+            <div class="text-center">
+                <p>liste des rendez vous</p>
+                {% if rdv is not defined %}
+                    <p>aucun rendez vous</p>
+                {% endif %}
+                {% if rdv is defined %}
+                    {% for rdv in rdvs %}
+                        <p>utilisateur : {{ rdv.user_id }}, date rendez-vous : {{ rdv.date_rdv }} à {{ rdv.heure }}</p>
+                    {% endfor %}
+                {% endif %}
+                <div class="container-fluid">
+                    <p><a href="{{ path('app_logout') }}" class="btn btn-primary">Se déconnecter</a></p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if app.user is defined and not is_granted('ROLE_CLIENT') or not is_granted('ROLE_CLIENT')  %}
+        <div class="container-fluid">
+            <p>Afin d'accéder aux reservations veuillez vous connecter</p>
+            <p><a href="/login">Se connecter</a></p>
+        </div>
+    {% endif %}
 {% endblock %}
