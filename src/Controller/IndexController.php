@@ -15,7 +15,7 @@ class IndexController extends AbstractController
     public function index(Request $request)
     {
         if($this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('admin_produit_index');
+            return $this->redirectToRoute('accueil');
             // return $this->render('admin/produit/showProduits.html.twig');
         }
         if($this->isGranted('ROLE_CLIENT')) {
