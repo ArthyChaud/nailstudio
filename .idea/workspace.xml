@@ -20,11 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/ProduitStockController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/showStock.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/.preload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/RDV.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RDV.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Client/Rdv/RdvAddForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Client/Rdv/RdvAddForm.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Client/Rdv/RdvShow.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Client/Rdv/RdvShow.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,26 +157,26 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/base" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\admin" />
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Controller\Admin" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\public\assets" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Controller" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\base" />
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\admin\accounting" />
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Form" />
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -183,7 +188,8 @@
       <option name="presentableId" value="Default" />
       <updated>1609683370970</updated>
       <workItem from="1609683374248" duration="71000" />
-      <workItem from="1609683560089" duration="16214000" />
+      <workItem from="1609683560089" duration="6006000" />
+      <workItem from="1609690990833" duration="3939000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -192,14 +198,7 @@
       <option name="project" value="LOCAL" />
       <updated>1609688120987</updated>
     </task>
-    <task id="LOCAL-00002" summary="Import front end with back end">
-      <created>1609690035396</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1609690035397</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,10 +221,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Import front end with back end" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="395" y="91" key="#Inspections" timestamp="1609691416501">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="395" y="91" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1609691416501" />
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -234,21 +229,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1609689701865" />
-    <state width="498" height="451" key="SwitcherDM" timestamp="1609693422833">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609688245543">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="498" height="451" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1609693422833" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609690141307">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609688245543" />
+    <state x="521" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609695548181">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609690141307" />
-    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609686028943">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
+    <state x="521" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1609695548181" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1609686028943" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1609700264139">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1609700264139" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Controller/Admin/ProduitStockController.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

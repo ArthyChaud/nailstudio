@@ -26,10 +26,10 @@ class IndexController extends AbstractController
                             print_r($this->getUser()->getRoles());
                             die();
                         }*/
-            return $this->redirectToRoute('client_rdv_show');
+            return $this->redirectToRoute('rdv_show');
             //  return $this->render('client/boutique/produit.html.twig');
         }
-        return $this->redirectToRoute('client_rdv_show');
+        return $this->redirectToRoute('rdv_show');
 
     }
 }
