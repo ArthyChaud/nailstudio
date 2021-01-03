@@ -1,0 +1,415 @@
+{% include "base/includes.html.twig" %}
+<table class="table dataTable my-0" id="dataTable">
+    <thead id="blueBar">
+    <tr>
+        <th><h3><span id="txtBlueBar">Comptabilité</span></h3></th>
+    </tr>
+    </thead>
+</table>
+<br>
+<div class="container" style="text-align: center">
+    <div class="row">
+        <div class="col-4">
+            <h5>CHARGES</h5>
+        </div>
+        <div class="col-2">
+            <h5>N</h5>
+        </div>
+        <div class="col-4">
+            <h5>PRODUITS</h5>
+        </div>
+        <div class="col-2">
+            <h5>N</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h4>Date</h4>
+        </div>
+        <div class="col">
+            <h4>Libelle</h4>
+        </div>
+        <div class="col">
+            <h4>Prix</h4>
+        </div>
+        <div class="col">
+            <h4>Date</h4>
+        </div>
+        <div class="col">
+            <h4>Libelle</h4>
+        </div>
+        <div class="col">
+            <h4>Prix</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h4>Charges d'exploitation</h4>
+        </div>
+        <div class="col-6">
+            <h4>Produits d'exploitation</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
+                        {{ accounting.date|date("d/m/Y") }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
+                        {{ accounting.libelle }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
+                        {{ accounting.prix }} €
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
+                        {{ accounting.date|date("d/m/Y") }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
+                        {{ accounting.libelle }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
+                        {{ accounting.prix }} €
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            Sous total I
+        </div>
+        <div class="col-2">
+            {% set total = 0 %}
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
+                        {% set total = total + accounting.prix %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {{ total }} €
+        </div>
+        <div class="col-4">
+            Sous total I
+        </div>
+        <div class="col-2">
+            {% set total = 0 %}
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
+                        {% set total = total + accounting.prix %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {{ total }} €
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h4>Charges financières</h4>
+        </div>
+        <div class="col-6">
+            <h4>Produits financiers</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges financières" %}
+                        {{ accounting.date|date("d/m/Y") }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges financières" %}
+                        {{ accounting.libelle }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges financières" %}
+                        {{ accounting.prix }} €
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits financiers" %}
+                        {{ accounting.date|date("d/m/Y") }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits financiers" %}
+                        {{ accounting.libelle }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits financiers" %}
+                        {{ accounting.prix }} €
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            Sous total II
+        </div>
+        <div class="col-2">
+            {% set total = 0 %}
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges financières" %}
+                        {% set total = total + accounting.prix %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {{ total }} €
+        </div>
+        <div class="col-4">
+            Sous total II
+        </div>
+        <div class="col-2">
+            {% set total = 0 %}
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits financiers" %}
+                        {% set total = total + accounting.prix %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {{ total }} €
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h4>Charges exceptionnelles</h4>
+        </div>
+        <div class="col-6">
+            <h4>Produits exceptionnels</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges exceptionnelles" %}
+                        {{ accounting.date|date("d/m/Y") }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges exceptionnelles" %}
+                        {{ accounting.libelle }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges exceptionnelles" %}
+                        {{ accounting.prix }} €
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits exceptionnels" %}
+                        {{ accounting.date|date("d/m/Y") }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits exceptionnels" %}
+                        {{ accounting.libelle }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col">
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits exceptionnels" %}
+                        {{ accounting.prix }} €
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            Sous total III
+        </div>
+        <div class="col-2">
+            {% set total = 0 %}
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Charges exceptionnelles" %}
+                        {% set total = total + accounting.prix %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {{ total }} €
+        </div>
+        <div class="col-4">
+            Sous total III
+        </div>
+        <div class="col-2">
+            {% set total = 0 %}
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if accounting.categoryAccounting.categorie == "Produits exceptionnels" %}
+                        {% set total = total + accounting.prix %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {{ total }} €
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h4>Total des charges (I + II + III)</h4>
+        </div>
+        <div class="col-2">
+            {% set total = 0 %}
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if "Charges" in accounting.categoryAccounting.categorie %}
+                        {% set total = total + accounting.prix %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {{ total }} €
+        </div>
+        <div class="col-4">
+            <h4>Total des produits (I + II + III)</h4>
+        </div>
+        <div class="col-2">
+            {% set total = 0 %}
+            {% if accounting is defined and accounting is not null %}
+                {% for accounting in accounting %}
+                    {% if "Produits" in accounting.categoryAccounting.categorie %}
+                        {% set total = total + accounting.prix %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {{ total }} €
+        </div>
+    </div>
+    {% set produits = 0 %}
+    {% if accounting is defined and accounting is not null %}
+        {% for accounting in accounting %}
+            {% if "Produits" in accounting.categoryAccounting.categorie %}
+                {% set produits = produits + accounting.prix %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% set charges = 0 %}
+    {% if accounting is defined and accounting is not null %}
+        {% for accounting in accounting %}
+            {% if "Charges" in accounting.categoryAccounting.categorie %}
+                {% set charges = charges + accounting.prix %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% set isPositif = produits-charges %}
+    <div class="row">
+        <div class="col-4">
+            <h5>Bénéfice</h5>
+        </div>
+        <div class="col-2">
+            {% if isPositif > 0 %}
+                {{ isPositif }} €
+            {% else %}
+                {% set isPositif = 0 %}
+                {{ isPositif }} €
+            {% endif %}
+        </div>
+        <div class="col-4">
+            <h5>Perte</h5>
+        </div>
+        <div class="col-2">
+            {% if isPositif < 0 %} {
+                {% set isNegatif = isPositif*(-1) %}
+                {{ isNegatif }} €
+            {% else %}
+                {% set isNegatif = 0 %}
+                {{ isNegatif }} €
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <h5>Résultat de l'exercice</h5>
+        </div>
+        <div class="col-2">
+            {% set resCharges = charges+isPositif %}
+            {{ resCharges }} €
+        </div>
+        <div class="col-4">
+            <h5>Résultat de l'exercice</h5>
+        </div>
+        <div class="col-2">
+            {% set resProduits = produits+isNegatif %}
+            {{ resProduits }} €
+        </div>
+    </div>
+</div>

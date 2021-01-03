@@ -2,9 +2,13 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Accounting;
+use App\Entity\CategoryAccounting;
 use App\Entity\RDV;
 use App\Entity\TypeService;
 use App\Entity\User;
+use App\Repository\CategoryAccountingRepository;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -23,6 +27,8 @@ class AppFixtures extends Fixture
         $this->loadUsers($manager);
         $this->loadTypeService($manager);
         $this->loadRdv($manager);
+        $this->loadCategoryAccounting($manager);
+        $this->loadAccounting($manager);
     }
 
 
@@ -96,6 +102,45 @@ class AppFixtures extends Fixture
             echo $rdv['dateRdv']."\n";
 
             $manager->persist($rdv_new);
+            $manager->flush();
+        }
+    }
+
+    private function loadCategoryAccounting(ObjectManager $manager)
+    {
+        $categoryAccounting = [
+            ['categorie' => 'Charges d\'exploitation'],
+            ['categorie' => 'Charges financières'],
+            ['categorie' => 'Charges exceptionnelles'],
+            ['categorie' => 'Produits d\'exploitation'],
+            ['categorie' => 'Produits financiers'],
+            ['categorie' => 'Produits exceptionnels'],
+        ];
+        foreach ($categoryAccounting as $cat) {
+            $new_cat = new CategoryAccounting();
+            $new_cat->setCategorie($cat['categorie']);
+            $manager->persist($new_cat);
+            $manager->flush();
+        }
+    }
+
+    private function loadAccounting(ObjectManager $manager)
+    {
+        $accounting = [
+            ['libelle' => 'Paypal', 'prix' => 0.35, 'categorie' => 1],
+            ['libelle' => 'Paypal', 'prix' => 0.37, 'categorie' => 4],
+            ['libelle' => 'Actions', 'prix' => 500, 'categorie' => 2],
+            ['libelle' => 'Actions', 'prix' => 1500, 'categorie' => 5],
+            ['libelle' => 'Hébergement internet', 'prix' => 11.01, 'categorie' => 3],
+            ['libelle' => 'Abonnements', 'prix' => 200, 'categorie' => 6],
+        ];
+        foreach ($accounting as $value) {
+            $new_acc = new Accounting();
+            $new_acc->setLibelle($value['libelle'])
+                ->setPrix($value['prix'])
+                ->setDate(DateTime::createFromFormat('Y-m-d', date('Y-m-d')))
+                ->setCategoryAccounting($manager->getRepository(CategoryAccounting::class)->find($value['categorie']));
+            $manager->persist($new_acc);
             $manager->flush();
         }
     }

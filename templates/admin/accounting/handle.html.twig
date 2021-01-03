@@ -1,0 +1,12 @@
+{% include "base/base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="heading-stylized">{% if view == "edit" %}Éditer{% else %}Ajouter{% endif %}</h1>
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

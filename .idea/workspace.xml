@@ -20,10 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Nailstudio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Nailstudio.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +93,57 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/doctrine/common" />
       <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/symfony/orm-pack" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/vendor/symfony/intl" />
+      <path value="$PROJECT_DIR$/vendor/symfony/notifier" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/form" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
+      <path value="$PROJECT_DIR$/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
     </include_path>
   </component>
   <component name="ProjectId" id="1mYvWYCxjYR263FPxyfpCTQgms4" />
@@ -100,19 +152,25 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/base" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\admin" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Controller\Admin" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\public\assets" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Controller" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\base" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates\admin\accounting" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Form" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio" />
     </key>
   </component>
@@ -125,7 +183,7 @@
       <option name="presentableId" value="Default" />
       <updated>1609683370970</updated>
       <workItem from="1609683374248" duration="71000" />
-      <workItem from="1609683560089" duration="6006000" />
+      <workItem from="1609683560089" duration="16214000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -134,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609688120987</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Import front end with back end">
+      <created>1609690035396</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1609690035397</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +222,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Import front end with back end" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="395" y="91" key="#Inspections" timestamp="1609691416501">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="395" y="91" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1609691416501" />
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -165,13 +234,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1609689701865" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609688245543">
+    <state width="498" height="451" key="SwitcherDM" timestamp="1609693422833">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609688245543" />
+    <state width="498" height="451" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1609693422833" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609690141307">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609690141307" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609686028943">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1609686028943" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1609700264139">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1609700264139" />
   </component>
 </project>
