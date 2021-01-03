@@ -109,10 +109,10 @@ class AppFixtures extends Fixture
     private function loadCategoryAccounting(ObjectManager $manager)
     {
         $categoryAccounting = [
-            ['categorie' => 'Charges d\'exploitation'],
+            ['categorie' => "Charges exploitation"],
             ['categorie' => 'Charges financières'],
             ['categorie' => 'Charges exceptionnelles'],
-            ['categorie' => 'Produits d\'exploitation'],
+            ['categorie' => "Produits exploitation"],
             ['categorie' => 'Produits financiers'],
             ['categorie' => 'Produits exceptionnels'],
         ];

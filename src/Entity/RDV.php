@@ -32,13 +32,11 @@ class RDV
      */
     private $typeService;
 
-    /*
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="rDVs")
      */
-    /*
     private $user;
-*/
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,7 +77,7 @@ class RDV
 
         return $this;
     }
-/*
+
     public function getUser(): ?User
     {
         return $this->user;
@@ -90,5 +88,5 @@ class RDV
         $this->user = $user;
 
         return $this;
-    }*/
+    }
 }

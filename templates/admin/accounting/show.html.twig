@@ -54,7 +54,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
                         {{ accounting.date|date("d/m/Y") }}
                     {% endif %}
                 {% endfor %}
@@ -63,7 +63,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
                         {{ accounting.libelle }}
                     {% endif %}
                 {% endfor %}
@@ -72,7 +72,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
                         {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
@@ -81,7 +81,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
                         {{ accounting.date|date("d/m/Y") }}
                     {% endif %}
                 {% endfor %}
@@ -90,7 +90,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
                         {{ accounting.libelle }}
                     {% endif %}
                 {% endfor %}
@@ -99,7 +99,7 @@
         <div class="col">
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
                         {{ accounting.prix|number_format(2) }} €
                     {% endif %}
                 {% endfor %}
@@ -114,7 +114,7 @@
             {% set total = 0 %}
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Charges d'exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
                         {% set total = total + accounting.prix %}
                     {% endif %}
                 {% endfor %}
@@ -128,7 +128,7 @@
             {% set total = 0 %}
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
-                    {% if accounting.categoryAccounting.categorie == "Produits d'exploitation" %}
+                    {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
                         {% set total = total + accounting.prix %}
                     {% endif %}
                 {% endfor %}

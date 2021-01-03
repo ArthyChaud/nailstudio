@@ -104,4 +104,17 @@ class AccountingController extends AbstractController
         $accounting = $accountingRepository->findAll();
         return $this->render('admin/accounting/show.html.twig', ['accounting' => $accounting]);
     }
+
+    /**
+     * @Route("/admin/accounting/stats", name="admin_accounting_stats")
+     * @param AccountingRepository $accountingRepository
+     * @return Response
+     */
+    public function AccountingStats(AccountingRepository $accountingRepository)
+    {
+        $stats = $accountingRepository->findAll();
+        return $this->render('admin/accounting/stats.html.twig', [
+            'stats' => $stats
+        ]);
+    }
 }
