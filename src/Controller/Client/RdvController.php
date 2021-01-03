@@ -10,25 +10,16 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Validator\Constraints\Date;
 use Twig\Environment;
-/**
- * @Route(path="/client", name="client_")
- */
+
 class RdvController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
-     */
-    public function index(Request $request)
-    {
-        return $this->redirectToRoute('client_rdv_show');
-    }
-    /**
-     * @Route("/VosRendezVous", name="rdv_show")
+     * @Route("/admin/VosRendezVous", name="admin_rdv_show")
      */
     public function rdvShow(Request $request)
     {
-        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['user'=>$this->getUser()],['dateRdv'=>'ASC','heure'=>'ASC']);
-        return $this->render('client/Rdv/RdvShow.html.twig',['rdvs'=>$rdvs]);
+        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy([/*'user'=>$this->getUser()*/],['dateRdv'=>'ASC','heure'=>'ASC']);
+        return $this->render('Client/Rdv/RdvShow.html.twig',['rdvs'=>$rdvs]);
 
     }
     /**
@@ -133,7 +124,7 @@ class RdvController extends AbstractController
         foreach($rdvs as $rdv){
             $heures[$rdv->getHeure()]["select"]=True;
         }
-        return $this->render('client/Rdv/RdvAddForm.html.twig',['date'=>$expire_date,'heures'=>$heures,'typeServices'=>$typeServices]);
+        return $this->render('Client/Rdv/RdvAddForm.html.twig',['date'=>$expire_date,'heures'=>$heures,'typeServices'=>$typeServices]);
     }
     /**
      * @Route("/PrendreRendezVous/validation", name="rdv_date_valide")
@@ -151,20 +142,20 @@ class RdvController extends AbstractController
             $rdv->setHeure($donnees['heure']);
             $typeService=$this->getDoctrine()->getRepository(TypeService::class)->find($donnees['typeService']);
             $rdv->setTypeService($typeService);
-            $rdv->setUser($this->getUser());
+            /*$rdv->setUser($this->getUser());*/
             $this->getDoctrine()->getManager()->persist($rdv);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('client_rdv_show');
+            return $this->redirectToRoute('accueil');
         }
     }
 
     /**
-     * @Route("/annulationRendezVous", name="rdv_delete")
+     * @Route("/admin/annulationRendezVous", name="admin_rdv_delete")
      */
     public function rdvDelete(Request $request)
     {
-        if(!$this->isCsrfTokenValid('client_rdv_delete', $request->get('token'))) {
+        if(!$this->isCsrfTokenValid('rdv_delete', $request->get('token'))) {
             throw new  InvalidCsrfTokenException('Invalid CSRF token formulaire depense');
         }
         $id= $request->request->get('id');
@@ -172,7 +163,7 @@ class RdvController extends AbstractController
         $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
         $entityManager->remove($rdv);
         $entityManager->flush();
-        return $this->redirectToRoute('client_rdv_show');
+        return $this->redirectToRoute('admin_rdv_show');
 
     }
 }

@@ -52,12 +52,12 @@ class User implements UserInterface
      * @ORM\Column(type="string", nullable=true)
      */
     private $tokenMail = '';
-
+/*
     /**
      * @ORM\OneToMany(targetEntity=RDV::class, mappedBy="user")
-     */
+     *//*
     private $rDVs;
-
+*/
     public function __toString()
     {
         // TODO: Implement __toString() method.
@@ -182,10 +182,10 @@ class User implements UserInterface
 
         return $this;
     }
-
+/*
     /**
      * @return Collection|RDV[]
-     */
+     *//*
     public function getRDVs(): Collection
     {
         return $this->rDVs;
@@ -211,7 +211,7 @@ class User implements UserInterface
         }
 
         return $this;
-    }
+    }*/
 
 
 }
