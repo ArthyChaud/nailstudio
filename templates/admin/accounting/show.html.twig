@@ -374,6 +374,7 @@
         {% endfor %}
     {% endif %}
     {% set isPositif = produits-charges %}
+    {% set isNegatif = charges-produits %}
     <div class="row">
         <div class="col-4">
             <h5>Bénéfice</h5>
@@ -390,8 +391,7 @@
             <h5>Perte</h5>
         </div>
         <div class="col-2">
-            {% if isPositif < 0 %} {
-                {% set isNegatif = isPositif*(-1) %}
+            {% if isNegatif > 0 %}
                 {{ isNegatif|number_format(2) }} €
             {% else %}
                 {% set isNegatif = 0 %}
