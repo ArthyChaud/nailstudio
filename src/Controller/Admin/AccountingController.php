@@ -6,6 +6,7 @@ use App\Entity\Accounting;
 use App\Entity\CategoryAccounting;
 use App\Form\AccountingForm;
 use App\Repository\AccountingRepository;
+use App\Repository\CategoryAccountingRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -108,13 +109,16 @@ class AccountingController extends AbstractController
     /**
      * @Route("/admin/accounting/stats", name="admin_accounting_stats")
      * @param AccountingRepository $accountingRepository
+     * @param CategoryAccountingRepository $categoryAccountingRepository
      * @return Response
      */
-    public function AccountingStats(AccountingRepository $accountingRepository)
+    public function AccountingStats(AccountingRepository $accountingRepository, CategoryAccountingRepository $categoryAccountingRepository)
     {
         $stats = $accountingRepository->findAll();
+        $cats = $categoryAccountingRepository->findAll();
         return $this->render('admin/accounting/stats.html.twig', [
-            'stats' => $stats
+            'stats' => $stats,
+            'cats' => $cats
         ]);
     }
 }

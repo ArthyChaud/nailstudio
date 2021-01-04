@@ -1,154 +1,158 @@
-{% include "base/includes.html.twig" %}
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>Statistiques</h1>
+{% extends "base/base.html.twig" %}
+
+{% block body %}
+    {% include "base/includes.html.twig" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Statistiques</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <canvas id="myChart2"></canvas>
+                <br>
+                {% set price = 0 %}
+                {% for stat in stats %}
+                    {% if "Produits exploitation" in stat.categoryaccounting.categorie %}
+                        {% set price = price + stat.prix %}
+                    {% endif %}
+                {% endfor %}
+                <h5>Produits d'exploitations : {{ price|number_format(2 ,'.', ' ') }} €</h5>
+                <br>
+                {% set price = 0 %}
+                {% for stat in stats %}
+                    {% if "Produits financiers" in stat.categoryaccounting.categorie %}
+                        {% set price = price + stat.prix %}
+                    {% endif %}
+                {% endfor %}
+                <h5>Produits financiers : {{ price|number_format(2 ,'.', ' ') }} €</h5>
+                <br>
+                {% set price = 0 %}
+                {% for stat in stats %}
+                    {% if "Produits exceptionnels" in stat.categoryaccounting.categorie %}
+                        {% set price = price + stat.prix %}
+                    {% endif %}
+                {% endfor %}
+                <h5>Produits exceptionnels : {{ price|number_format(2 ,'.', ' ') }} €</h5>
+            </div>
+            <div class="col">
+                <canvas id="myChart"></canvas>
+                <br>
+                {% set price = 0 %}
+                {% for stat in stats %}
+                    {% if "Charges exploitation" in stat.categoryaccounting.categorie %}
+                        {% set price = price + stat.prix %}
+                    {% endif %}
+                {% endfor %}
+                <h5>Charges d'exploitations : {{ price|number_format(2 ,'.', ' ') }} €</h5>
+                <br>
+                {% set price = 0 %}
+                {% for stat in stats %}
+                    {% if "Charges financières" in stat.categoryaccounting.categorie %}
+                        {% set price = price + stat.prix %}
+                    {% endif %}
+                {% endfor %}
+                <h5>Charges financières : {{ price|number_format(2 ,'.', ' ') }} €</h5>
+                <br>
+                {% set price = 0 %}
+                {% for stat in stats %}
+                    {% if "Charges exceptionnelles" in stat.categoryaccounting.categorie %}
+                        {% set price = price + stat.prix %}
+                    {% endif %}
+                {% endfor %}
+                <h5>Charges exceptionnelles : {{ price|number_format(2 ,'.', ' ') }} €</h5>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <canvas id="myChart2"></canvas>
-            <br>
-            {% set price = 0 %}
-            {% for stat in stats %}
-                {% if "Produits exploitation" in stat.categoryaccounting.categorie %}
-                    {% set price = price + stat.prix %}
-                {% endif %}
-            {% endfor %}
-            <h5>Produits d'exploitations : {{ price|number_format(2 ,'.', ' ') }} €</h5>
-            <br>
-            {% set price = 0 %}
-            {% for stat in stats %}
-                {% if "Produits financiers" in stat.categoryaccounting.categorie %}
-                    {% set price = price + stat.prix %}
-                {% endif %}
-            {% endfor %}
-            <h5>Produits financiers : {{ price|number_format(2 ,'.', ' ') }} €</h5>
-            <br>
-            {% set price = 0 %}
-            {% for stat in stats %}
-                {% if "Produits exceptionnels" in stat.categoryaccounting.categorie %}
-                    {% set price = price + stat.prix %}
-                {% endif %}
-            {% endfor %}
-            <h5>Produits exceptionnels : {{ price|number_format(2 ,'.', ' ') }} €</h5>
-        </div>
-        <div class="col">
-            <canvas id="myChart"></canvas>
-            <br>
-            {% set price = 0 %}
-            {% for stat in stats %}
-                {% if "Charges exploitation" in stat.categoryaccounting.categorie %}
-                    {% set price = price + stat.prix %}
-                {% endif %}
-            {% endfor %}
-            <h5>Charges d'exploitations : {{ price|number_format(2 ,'.', ' ') }} €</h5>
-            <br>
-            {% set price = 0 %}
-            {% for stat in stats %}
-                {% if "Charges financières" in stat.categoryaccounting.categorie %}
-                    {% set price = price + stat.prix %}
-                {% endif %}
-            {% endfor %}
-            <h5>Charges financières : {{ price|number_format(2 ,'.', ' ') }} €</h5>
-            <br>
-            {% set price = 0 %}
-            {% for stat in stats %}
-                {% if "Charges exceptionnelles" in stat.categoryaccounting.categorie %}
-                    {% set price = price + stat.prix %}
-                {% endif %}
-            {% endfor %}
-            <h5>Charges exceptionnelles : {{ price|number_format(2 ,'.', ' ') }} €</h5>
-        </div>
-    </div>
-</div>
 
-{% block charts %}
-    <script type="text/javascript">
-        let ctx = document.getElementById('myChart').getContext('2d');
-        let chart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    {% for stat in stats %}
-                        {% if "Charges" in stat.categoryaccounting.categorie %}
-                            '{{ stat.categoryaccounting.categorie }}',
-                        {% endif %}
-                    {% endfor %}
-                ],
-                datasets: [{
-                    backgroundColor: ['rgb(255,0,0)', 'rgb(255,102,102)', 'rgb(255,179,179)'],
-                    borderColor: 'rgb(0,0,0)',
-                    data: [
-                        {% set price = 0 %}
-                        {% for stat in stats %}
-                            {% if "Charges exploitation" in stat.categoryaccounting.categorie %}
-                                {% set price = price + stat.prix %}
+    {% block charts %}
+        <script type="text/javascript">
+            let ctx = document.getElementById('myChart').getContext('2d');
+            let chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        {% for cat in cats %}
+                            {% if "Charges" in cat.categorie %}
+                                '{{ cat.categorie }}',
                             {% endif %}
                         {% endfor %}
-                        '{{ price|number_format(2 ,'.', '') }}',
-                        {% set price = 0 %}
-                        {% for stat in stats %}
-                            {% if "Charges financières" in stat.categoryaccounting.categorie %}
-                                {% set price = price + stat.prix %}
-                            {% endif %}
-                        {% endfor %}
-                        '{{ price|number_format(2 ,'.', '') }}',
-                        {% set price = 0 %}
-                        {% for stat in stats %}
-                            {% if "Charges exceptionnelles" in stat.categoryaccounting.categorie %}
-                                {% set price = price + stat.prix %}
-                            {% endif %}
-                        {% endfor %}
-                        '{{ price|number_format(2 ,'.', '') }}',
-                    ]
-                }]
-            },
-            options: {}
-        });
-    </script>
+                    ],
+                    datasets: [{
+                        backgroundColor: ['rgb(255,0,0)', 'rgb(255,102,102)', 'rgb(255,179,179)'],
+                        borderColor: 'rgb(0,0,0)',
+                        data: [
+                            {% set price = 0 %}
+                            {% for stat in stats %}
+                                {% if "Charges exploitation" in stat.categoryaccounting.categorie %}
+                                    {% set price = price + stat.prix %}
+                                {% endif %}
+                            {% endfor %}
+                            '{{ price|number_format(2 ,'.', '') }}',
+                            {% set price = 0 %}
+                            {% for stat in stats %}
+                                {% if "Charges financières" in stat.categoryaccounting.categorie %}
+                                    {% set price = price + stat.prix %}
+                                {% endif %}
+                            {% endfor %}
+                            '{{ price|number_format(2 ,'.', '') }}',
+                            {% set price = 0 %}
+                            {% for stat in stats %}
+                                {% if "Charges exceptionnelles" in stat.categoryaccounting.categorie %}
+                                    {% set price = price + stat.prix %}
+                                {% endif %}
+                            {% endfor %}
+                            '{{ price|number_format(2 ,'.', '') }}',
+                        ]
+                    }]
+                },
+                options: {}
+            });
+        </script>
 
-    <script type="text/javascript">
-        let ctx2 = document.getElementById('myChart2').getContext('2d');
-        let chart2 = new Chart(ctx2, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    {% for stat in stats %}
-                        {% if "Produits" in stat.categoryaccounting.categorie %}
-                            '{{ stat.categoryaccounting.categorie }}',
-                        {% endif %}
-                    {% endfor %}
-                ],
-                datasets: [{
-                    backgroundColor: ['rgb(0,51,204)', 'rgb(77,121,255)', 'rgb(153,179,255)'],
-                    borderColor: 'rgb(0,0,0)',
-                    data: [
-                        {% set price = 0 %}
-                        {% for stat in stats %}
-                            {% if "Produits exploitation" in stat.categoryaccounting.categorie %}
-                                {% set price = price + stat.prix %}
+        <script type="text/javascript">
+            let ctx2 = document.getElementById('myChart2').getContext('2d');
+            let chart2 = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        {% for cat in cats %}
+                            {% if "Produits" in cat.categorie %}
+                                '{{ cat.categorie }}',
                             {% endif %}
                         {% endfor %}
-                        '{{ price|number_format(2 ,'.', '') }}',
-                        {% set price = 0 %}
-                        {% for stat in stats %}
-                            {% if "Produits financiers" in stat.categoryaccounting.categorie %}
-                                {% set price = price + stat.prix %}
-                            {% endif %}
-                        {% endfor %}
-                        '{{ price|number_format(2 ,'.', '') }}',
-                        {% set price = 0 %}
-                        {% for stat in stats %}
-                            {% if "Produits exceptionnels" in stat.categoryaccounting.categorie %}
-                                {% set price = price + stat.prix %}
-                            {% endif %}
-                        {% endfor %}
-                        '{{ price|number_format(2 ,'.', '') }}',
-                    ]
-                }]
-            },
-            options: {}
-        });
-    </script>
+                    ],
+                    datasets: [{
+                        backgroundColor: ['rgb(0,51,204)', 'rgb(77,121,255)', 'rgb(153,179,255)'],
+                        borderColor: 'rgb(0,0,0)',
+                        data: [
+                            {% set price = 0 %}
+                            {% for stat in stats %}
+                                {% if "Produits exploitation" in stat.categoryaccounting.categorie %}
+                                    {% set price = price + stat.prix %}
+                                {% endif %}
+                            {% endfor %}
+                            '{{ price|number_format(2 ,'.', '') }}',
+                            {% set price = 0 %}
+                            {% for stat in stats %}
+                                {% if "Produits financiers" in stat.categoryaccounting.categorie %}
+                                    {% set price = price + stat.prix %}
+                                {% endif %}
+                            {% endfor %}
+                            '{{ price|number_format(2 ,'.', '') }}',
+                            {% set price = 0 %}
+                            {% for stat in stats %}
+                                {% if "Produits exceptionnels" in stat.categoryaccounting.categorie %}
+                                    {% set price = price + stat.prix %}
+                                {% endif %}
+                            {% endfor %}
+                            '{{ price|number_format(2 ,'.', '') }}',
+                        ]
+                    }]
+                },
+                options: {}
+            });
+        </script>
 {% endblock %}
+{% endblock body %}

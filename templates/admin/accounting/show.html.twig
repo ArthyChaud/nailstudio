@@ -58,7 +58,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
-                        {{ accounting.date|date("d/m/Y") }}
+                        <div>{{ accounting.date|date("d/m/Y") }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -67,7 +67,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
-                        {{ accounting.libelle }}
+                        <div>{{ accounting.libelle }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -76,7 +76,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges exploitation" %}
-                        {{ accounting.prix|number_format(2) }} €
+                        <div>{{ accounting.prix|number_format(2) }} €</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -85,7 +85,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
-                        {{ accounting.date|date("d/m/Y") }}
+                        <div>{{ accounting.date|date("d/m/Y") }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -94,7 +94,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
-                        {{ accounting.libelle }}
+                        <div>{{ accounting.libelle }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -103,7 +103,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits exploitation" %}
-                        {{ accounting.prix|number_format(2) }} €
+                        <div>{{ accounting.prix|number_format(2) }} €</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -152,7 +152,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges financières" %}
-                        {{ accounting.date|date("d/m/Y") }}
+                        <div>{{ accounting.date|date("d/m/Y") }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -161,7 +161,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges financières" %}
-                        {{ accounting.libelle }}
+                        <div>{{ accounting.libelle }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -170,7 +170,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges financières" %}
-                        {{ accounting.prix|number_format(2) }} €
+                        <div>{{ accounting.prix|number_format(2) }} €</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -179,7 +179,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits financiers" %}
-                        {{ accounting.date|date("d/m/Y") }}
+                        <div>{{ accounting.date|date("d/m/Y") }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -188,7 +188,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits financiers" %}
-                        {{ accounting.libelle }}
+                        <div>{{ accounting.libelle }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -197,7 +197,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits financiers" %}
-                        {{ accounting.prix|number_format(2) }} €
+                        <div>{{ accounting.prix|number_format(2) }} €</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -246,7 +246,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges exceptionnelles" %}
-                        {{ accounting.date|date("d/m/Y") }}
+                        <div>{{ accounting.date|date("d/m/Y") }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -255,7 +255,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges exceptionnelles" %}
-                        {{ accounting.libelle }}
+                        <div>{{ accounting.libelle }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -264,7 +264,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Charges exceptionnelles" %}
-                        {{ accounting.prix|number_format(2) }} €
+                        <div>{{ accounting.prix|number_format(2) }} €</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -273,7 +273,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits exceptionnels" %}
-                        {{ accounting.date|date("d/m/Y") }}
+                        <div>{{ accounting.date|date("d/m/Y") }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -282,7 +282,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits exceptionnels" %}
-                        {{ accounting.libelle }}
+                        <div>{{ accounting.libelle }}</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -291,7 +291,7 @@
             {% if accounting is defined and accounting is not null %}
                 {% for accounting in accounting %}
                     {% if accounting.categoryAccounting.categorie == "Produits exceptionnels" %}
-                        {{ accounting.prix|number_format(2) }} €
+                        <div>{{ accounting.prix|number_format(2) }} €</div>
                     {% endif %}
                 {% endfor %}
             {% endif %}

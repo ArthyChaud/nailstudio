@@ -13,18 +13,19 @@
         {% endblock %}
     </head>
     <body>
-            <!-- header -->
-            <!-- Informations -->
+    <!-- header -->
+    <div class="container-fluid" id="divAll">
+        <!-- Informations -->
+        <div class="container-fluid" >
             <br>
-            <div class="container-fluid" >
-                <div class="text-right" id="reseauTopBar">
+            <div class="text-right" id="reseauTopBar">
                     <span id="spanCoordonees">
                         <img src="{{ asset('assets/img/reseau/logo_mobile.png') }}" id="logo">
                             <span><a id="topNumMobile">07.84.97.89.69</a></span>
                         <img src="{{ asset('assets/img/reseau/logo_mail.png') }}" id="logo">
                             <strong><a>nailstudio22icloud.com</a></strong>
                     </span>
-                    <span id="spanReseau">
+                <span id="spanReseau">
                         <a href="https://facebook.com/" target="_blank" id="facebook">
                             <img src="{{ asset('assets/img/reseau/logo_facebook.png') }}" id="logo_reseau">
                         </a>
@@ -32,15 +33,21 @@
                             <img src="{{ asset('assets/img/reseau/logo_instagram.png') }}" id="logo_reseau">
                         </a>
                     </span>
-                </div>
             </div>
-            <br>
-            <div class="container-fluid">
-                <img src="">
-            </div>
-            <!-- Menu -->
-            <div class="container-fluid" >
-                <div class="text"id="menuBar">
+        </div>
+        <!-- Wallpaper -->
+        <div class="container-fluid" id="divFondEcran">
+            <style>
+                #fondEcran{
+                    max-width: 100%;
+                    min-width: 100%;
+                }
+            </style>
+            <img src="{{ asset('assets/img/fondEcran/fondEcran.png') }}" id="fondEcran">
+        </div>
+        <!-- Menu -->
+        <div class="container-fluid" >
+            <div class="text"id="menuBar">
                 <div class="row">
                     <div class="col">
                         <div class="text-center" id="accueil">
@@ -83,9 +90,10 @@
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
-            <br>
+        </div>
+    </div>
+    <br>
             <!-- Text -->
             <br>
             <div class="container-fluid">
@@ -183,6 +191,7 @@
             </div>
             <br>
         {% block javascripts %}
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
