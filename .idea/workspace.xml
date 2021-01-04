@@ -20,16 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="Carousel">
-      <change afterPath="$PROJECT_DIR$/src/Form/MailFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Nailstudio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Nailstudio.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AccueilController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccueilController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/contact.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/accounting/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/accounting/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +190,7 @@
       <workItem from="1609683374248" duration="71000" />
       <workItem from="1609683560089" duration="6006000" />
       <workItem from="1609690990833" duration="3939000" />
-      <workItem from="1609715719038" duration="4091000" />
+      <workItem from="1609715719038" duration="4993000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -242,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609718598148</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Mailer with google">
+      <created>1609720097705</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1609720097705</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +265,8 @@
     <MESSAGE value="Comptabilité &amp; stats" />
     <MESSAGE value="Carousel" />
     <MESSAGE value="Carousel, upload image, implement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Carousel, upload image, implement" />
+    <MESSAGE value="Mailer with google" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mailer with google" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
@@ -289,10 +289,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1609712289139" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609718617827">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1609720113811">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609718617827" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609720113811" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609713482936">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
