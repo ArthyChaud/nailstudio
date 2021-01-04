@@ -3,11 +3,11 @@
 namespace App\DataFixtures;
 
 use App\Entity\Accounting;
+use App\Entity\CarouselLike;
 use App\Entity\CategoryAccounting;
 use App\Entity\RDV;
 use App\Entity\TypeService;
 use App\Entity\User;
-use App\Repository\CategoryAccountingRepository;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -29,6 +29,7 @@ class AppFixtures extends Fixture
         $this->loadRdv($manager);
         $this->loadCategoryAccounting($manager);
         $this->loadAccounting($manager);
+        $this->loadCarousel($manager);
     }
 
 
@@ -90,7 +91,7 @@ class AppFixtures extends Fixture
         foreach ($rdvs as $rdv)
         {
             $rdv_new = new RDV();
-            $rdv_new->setDateRdv(\DateTime::createFromFormat('Y-m-d',$rdv['dateRdv']));
+            $rdv_new->setDateRdv(DateTime::createFromFormat('Y-m-d',$rdv['dateRdv']));
             $typeService = $manager->getRepository(TypeService::class)->findOneby(["libelle"  =>  $rdv['typeService']]);
             if($typeService != null)
                 $rdv_new->setTypeService($typeService);
@@ -141,6 +142,24 @@ class AppFixtures extends Fixture
                 ->setDate(DateTime::createFromFormat('Y-m-d', date('Y-m-d')))
                 ->setCategoryAccounting($manager->getRepository(CategoryAccounting::class)->find($value['categorie']));
             $manager->persist($new_acc);
+            $manager->flush();
+        }
+    }
+
+    private function loadCarousel(ObjectManager $manager)
+    {
+        $carousel = [
+            ['name' => 'Onglerie','type' => 'Onglerie'],
+            ['name' => 'Extension de cils','type' => 'Extension de cils'],
+            ['name' => 'Epilation sourcils et lèvre','type' => 'Epilation sourcils et lèvre'],
+            ['name' => 'Soins visage','type' => 'Soins visage'],
+        ];
+        foreach ($carousel as $cat) {
+            $new_cat = new CarouselLike();
+            $new_cat->setDescription("")
+                ->setName($cat['name'])
+                ->setType($cat['type']);
+            $manager->persist($new_cat);
             $manager->flush();
         }
     }
