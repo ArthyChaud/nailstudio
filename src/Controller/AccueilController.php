@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\CarouselLike;
+use App\Repository\CarouselLikeRepository;
+use App\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
@@ -45,9 +49,13 @@ class AccueilController extends AbstractController
 
     /**
      * @Route("/services", name="services")
+     * @param CarouselLikeRepository $carousel
+     * @return Response
      */
-    public function services(){
-        return $this->render('services/services.html.twig');
+    public function services(CarouselLikeRepository $carousel){
+        return $this->render('services/services.html.twig', [
+            'carousels' => $carousel->findAll()
+        ]);
     }
 
 }

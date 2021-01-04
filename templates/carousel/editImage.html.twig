@@ -1,0 +1,17 @@
+{% extends 'base/base.html.twig' %}
+
+{% block title %}Éditer une image{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <img src="{{ asset('uploads/carousel_like/' ~ image.path) }}" alt="">
+        </div>
+        <div class="row">
+            <div class="col">
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

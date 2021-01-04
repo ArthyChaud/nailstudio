@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\CarouselLike;
 use App\Entity\Media;
@@ -43,20 +43,13 @@ class MediaController extends AbstractController
             foreach ($form->get('medias')->getData() as $media) {
                 $mediaEntity = new Media();
                 $filePath = $this->fileUploader->upload($media);
-                if ($form->get('description')->getData() != null) {
-                    $mediaEntity->setDescription($form->get('description')->getData())
-                        ->setPath($filePath)
-                        ->setType($this->fileUploader->getType($filePath))
-                        ->setCarouselLike($carouselLike);
-                } else {
-                    $mediaEntity->setDescription("")
-                        ->setPath($filePath)
-                        ->setType($this->fileUploader->getType($filePath))
-                        ->setCarouselLike($carouselLike);
-                }
+               $mediaEntity->setDescription("")
+                    ->setPath($filePath)
+                    ->setType($this->fileUploader->getType($filePath))
+                    ->setCarouselLike($carouselLike);
 
-                $this->manager->persist($mediaEntity);
-                $this->manager->flush();
+               $this->manager->persist($mediaEntity);
+               $this->manager->flush();
             }
             return $this->redirectToRoute($page);
         }
@@ -76,6 +69,8 @@ class MediaController extends AbstractController
         if (!$media) {
             $this->createNotFoundException("Ce média n'existe pas");
         }
+
+        unlink($this->getParameter('unlinkmedia').'/'.$page.'/'.$media->getpath());
 
         $this->manager->remove($media);
         $this->manager->flush();
