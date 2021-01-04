@@ -33,7 +33,7 @@
                         <td>{{ accounting.date|date("d/m/Y") }}</td>
                         <td>{{ accounting.libelle }}</td>
                         <td>{{ accounting.categoryAccounting.categorie }}</td>
-                        <td>{{ accounting.prix }}</td>
+                        <td>{{ accounting.prix }} €</td>
                         <td>
                             <div class="form-group">
                                 <a type="button" class="btn" id="" href="{{ path('admin_accounting_edit', { 'id' : accounting.id }) }}"><i class="fas fa-edit"></i> </a>

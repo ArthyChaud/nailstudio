@@ -15,7 +15,7 @@
                     {% set price = price + stat.prix %}
                 {% endif %}
             {% endfor %}
-            <h5>Produits d'exploitations : {{ price|number_format(2 ,'.', ' ') }}</h5>
+            <h5>Produits d'exploitations : {{ price|number_format(2 ,'.', ' ') }} €</h5>
             <br>
             {% set price = 0 %}
             {% for stat in stats %}
@@ -23,7 +23,7 @@
                     {% set price = price + stat.prix %}
                 {% endif %}
             {% endfor %}
-            <h5>Produits financiers : {{ price|number_format(2 ,'.', ' ') }}</h5>
+            <h5>Produits financiers : {{ price|number_format(2 ,'.', ' ') }} €</h5>
             <br>
             {% set price = 0 %}
             {% for stat in stats %}
@@ -31,7 +31,7 @@
                     {% set price = price + stat.prix %}
                 {% endif %}
             {% endfor %}
-            <h5>Produits exceptionnels : {{ price|number_format(2 ,'.', ' ') }}</h5>
+            <h5>Produits exceptionnels : {{ price|number_format(2 ,'.', ' ') }} €</h5>
         </div>
         <div class="col">
             <canvas id="myChart"></canvas>
@@ -42,7 +42,7 @@
                     {% set price = price + stat.prix %}
                 {% endif %}
             {% endfor %}
-            <h5>Charges d'exploitations : {{ price|number_format(2 ,'.', ' ') }}</h5>
+            <h5>Charges d'exploitations : {{ price|number_format(2 ,'.', ' ') }} €</h5>
             <br>
             {% set price = 0 %}
             {% for stat in stats %}
@@ -50,7 +50,7 @@
                     {% set price = price + stat.prix %}
                 {% endif %}
             {% endfor %}
-            <h5>Charges financières : {{ price|number_format(2 ,'.', ' ') }}</h5>
+            <h5>Charges financières : {{ price|number_format(2 ,'.', ' ') }} €</h5>
             <br>
             {% set price = 0 %}
             {% for stat in stats %}
@@ -58,7 +58,7 @@
                     {% set price = price + stat.prix %}
                 {% endif %}
             {% endfor %}
-            <h5>Charges exceptionnelles : {{ price|number_format(2 ,'.', ' ') }}</h5>
+            <h5>Charges exceptionnelles : {{ price|number_format(2 ,'.', ' ') }} €</h5>
         </div>
     </div>
 </div>
