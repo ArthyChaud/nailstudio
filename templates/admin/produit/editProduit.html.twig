@@ -49,7 +49,6 @@
             <input type="hidden" name="token" value="{{ csrf_token('form_produit') }}">
 
             <button type="submit" class="btn btn-primary">{{ button|default('Valider') }}</button>
-
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="id" value="{{ donnees.id | default('')}}">
         </form>

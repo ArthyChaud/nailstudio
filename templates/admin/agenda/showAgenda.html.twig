@@ -1,0 +1,33 @@
+{% extends 'base/base.html.twig'%}
+{% block body %}
+    <a href="{{ path('admin_add_agenda') }}" class="btn btn-primary">ajouter un élément à l'agenda</a>
+    <br>
+    <table class="table">
+        <caption>Agenda</caption>
+        <thead class="thead-dark">
+        <tr><th>id</th><th>libelle</th><th>description</th><th>date</th><th>horaire</th><th>option</th></tr>
+        </thead>
+        {% if agendas is not empty %}
+            {% for agenda in agendas  %}
+                <tr>
+                    <td>{{agenda.id}}</td>
+                    <td>{{agenda.libelle}}</td>
+                    <td>{{agenda.description}}</td>
+                    <td>{{ agenda.date|date('d/m/Y')}} </td>
+                    <td>{{agenda.horaire}}</td>
+                    <td>
+                        <a href="{{ path('admin_edit_agenda', {id: agenda.id}) }}" class="btn btn-primary">modifier</a>
+                        <form action="{{ path('admin_delete_agenda') }}" method="POST" style="display:inline">
+                            <input type="hidden" name="token" value="{{ csrf_token('agenda_delete') }}">
+                            <input type="hidden" name="id" value="{{ agenda.id }}">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="btn btn-warning">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr class="table-warning"><td>Pas de Produit</td></tr>
+        {% endif %}
+    </table>
+{% endblock %}

@@ -19,10 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="validation rdv">
+    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="prix : int to decimal">
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/AgendaController2.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/agenda/addAgenda.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/agenda/editAgenda.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/ProduitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/produit/editProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/editProduit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/produit/showProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/showProduit.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +191,7 @@
       <workItem from="1609683374248" duration="71000" />
       <workItem from="1609683560089" duration="6006000" />
       <workItem from="1609690990833" duration="3939000" />
+      <workItem from="1609886824139" duration="1177000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -216,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609883589633</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="prix : int to decimal">
+      <created>1609884206394</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1609884206394</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,7 +252,8 @@
     <MESSAGE value="affichage et formulaire sur la vue reservations.html.twig" />
     <MESSAGE value="gestion Produit(stock-besoin)" />
     <MESSAGE value="validation rdv" />
-    <option name="LAST_COMMIT_MESSAGE" value="validation rdv" />
+    <MESSAGE value="prix : int to decimal" />
+    <option name="LAST_COMMIT_MESSAGE" value="prix : int to decimal" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
@@ -251,27 +264,43 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1609870816759" />
+    <state x="421" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609886399112">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="421" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1609886399112" />
     <state x="380" y="55" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609864989928">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="380" y="55" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1609864989928" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609868722883">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609887092582">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1609868722883" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1609887092582" />
     <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1609689701865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1609689701865" />
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1609881060834">
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1609887548072">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1609881060834" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1609887548072" />
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1609884208723">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1609884208723" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609688245543" />
+    <state x="367" y="98" key="VcsDiffUtil.ChangesDialog" timestamp="1609887410509">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="367" y="98" key="VcsDiffUtil.ChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1609887410509" />
     <state x="521" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609868318415">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="521" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1609868318415" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1609686028943" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1609887798882">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1609887798882" />
   </component>
 </project>

@@ -1,0 +1,48 @@
+{% extends 'base/base.html.twig'%}
+{% block body %}
+    <div class="container">
+        <form method="post" action="{{ path('admin_edit_agenda_valid') }}">
+            <legend>Modifier l'élément de l'agenda</legend>
+
+            <div class="form-group">
+                <label>libelle :</label>
+                <input name="libelle"  type="text"  size="18" value="{{donnees.libelle|default('')}}" class="form-control">
+                {% if erreurs.libelle is defined %}
+                    <div style="color: red">{{ erreurs.libelle }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label>description :</label>
+                <input name="description"  type="text"  size="18" value="{{donnees.description|default('')}}" class="form-control">
+                {% if erreurs.description is defined %}
+                    <div style="color: red">{{ erreurs.description }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label>date :</label>
+                <input name="date"  type="text"  size="18"
+                       value="{{ (date is defined) and (date is not null) ? date|date("d/m/Y") : donnees.date | default('') }}"
+                       class="form-control {% if erreurs.date is defined %}is-invalid{% endif %}">
+                {% if erreurs.date is defined %}
+                    <div class="invalid-feedback">{{erreurs.date}}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label>horaire :</label>
+                <input name="horaire"  type="text"  size="18" value="{{donnees.horaire|default('')}}" class="form-control">
+                {% if erreurs.horaire is defined %}
+                    <div style="color: red">{{ erreurs.horaire }}</div>
+                {% endif %}
+            </div>
+            <input type="hidden" name="token" value="{{ csrf_token('form_agenda') }}">
+
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="id" value="{{ donnees.id | default('')}}">
+            <button type="submit" class="btn btn-primary">{{ button|default('Valider') }}</button>
+
+        </form>
+    </div>
+{% endblock %}
