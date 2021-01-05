@@ -87,12 +87,11 @@ class AccueilController extends AbstractController
     public function reservations(){
         if($this->getUser()!=null) {
             //dd($this->getUser()->getRoles());
-            if ($this->getUser()->getRoles() == ['ROLE_ADMIN']) {
-
-                $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['user'=>$this->getUser()],['dateRdv' => 'ASC', 'heure' => 'ASC']);
+            if ($this->getUser()->getRoles() == ['ROLE_ADMIN','ROLE_USER']) {
+                $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findAll();
             }
             else{
-                $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy([],['dateRdv'=>'ASC','heure'=>'ASC']);
+                $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['user'=>$this->getUser()],['dateRdv'=>'ASC','heure'=>'ASC']);
             }
         }
         else{

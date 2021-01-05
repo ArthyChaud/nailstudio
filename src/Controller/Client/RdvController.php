@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormRegistryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Validator\Constraints\Date;
 use Twig\Environment;
 
@@ -120,6 +121,7 @@ class RdvController extends AbstractController
     }
         return $this->render('Client/Rdv/RdvAddForm.html.twig',['date'=>$expire_date,'heures'=>$heures,'typeServices'=>$typeServices]);
     }
+
     /**
      * @Route("/PrendreRendezVous/validation", name="rdv_date_valide")
      */
@@ -137,6 +139,8 @@ class RdvController extends AbstractController
             $typeService=$this->getDoctrine()->getRepository(TypeService::class)->find($donnees['typeService']);
             $rdv->setTypeService($typeService);
             $rdv->setUser($this->getUser());
+            $rdv->setValider(false);
+
             $this->getDoctrine()->getManager()->persist($rdv);
             $this->getDoctrine()->getManager()->flush();
 
@@ -156,6 +160,23 @@ class RdvController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
         $entityManager->remove($rdv);
+        $entityManager->flush();
+        return $this->redirectToRoute('reservations');
+
+    }
+    /**
+     * @Route("/admin/validerRdv", name="admin_rdv_validation")
+     */
+    public function rdvValidation(Request $request)
+    {
+        if(!$this->isCsrfTokenValid('rdv_validation', $request->get('token'))) {
+            throw new  InvalidCsrfTokenException('Invalid CSRF token formulaire rdv validation');
+        }
+        $id= $request->request->get('id');
+        $entityManager = $this->getDoctrine()->getManager();
+        $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
+        $rdv->setValider(True);
+        $entityManager->persist($rdv);
         $entityManager->flush();
         return $this->redirectToRoute('reservations');
 

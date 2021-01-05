@@ -59,7 +59,7 @@ class ProduitController extends AbstractController
         return $this->redirectToRoute('admin_show_besoin');
     }
     /**
-     * @Route("/admin/deelte/besoin", name="admin_delete_besoin")
+     * @Route("/admin/delete/besoin", name="admin_delete_besoin")
      */
     public function deleteBesoin(Request $request){
 
@@ -142,7 +142,7 @@ class ProduitController extends AbstractController
      * @Route("/admin/edit/{id}/produit", name="admin_edit_produit", methods={"GET"})
      * @Route("/admin/edit/produit",name="admin_edit_produit_valid",methods={"PUT"})
      */
-    public function edit(Request $request, $id=null)
+    public function editProduit(Request $request, $id=null)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $typeProduits = $this->getDoctrine()->getRepository(TypeProduit::class)->findBy([], ['libelle' => 'ASC']);
