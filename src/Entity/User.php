@@ -182,10 +182,10 @@ class User implements UserInterface
 
         return $this;
     }
-/*
+
     /**
      * @return Collection|RDV[]
-     *//*
+     */
     public function getRDVs(): Collection
     {
         return $this->rDVs;
@@ -211,7 +211,7 @@ class User implements UserInterface
         }
 
         return $this;
-    }*/
+    }
 
 
 }

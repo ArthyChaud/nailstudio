@@ -5,9 +5,26 @@
 {% block body %}
     {% if app.user is defined and is_granted('ROLE_CLIENT') %}
         <div class="container-fluid">
-            <div class="text-center">
+            <p class="text-center">
+                <p>liste des rendez vous</p>
+                {% if rdvs is not defined %}
+                    <p>aucun rendez vous</p>
+                {% endif %}
+                {% if rdvs is defined %}
+                    {% for rdv in rdvs %}
+                        <p>date rendez-vous : {{ rdv.dateRdv|date('d/m/Y')}} à {{ rdv.heure }}
+                            {# Pour supprimer un rendez-vous
+                            <form action=" {{ path('rdv_delete') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
+                                <input type="hidden" name="token" value="{{ csrf_token('rdv_delete') }}">
+                                <input type="hidden" name="id" value="{{ rdv.id }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-primary">Annulée</button>
+                                <br>
+                            </form>#}
+                        </p>
+                    {% endfor %}
+                {% endif %}
                 <p><a href="/PrendreRendezVous" class="btn btn-primary">Prendre un rendez vous</a></p>
-                <p><a href="/VosRendezVous" class="btn btn-primary">Consulter votre rendez-vous</a></p>
                 <div class="container-fluid">
                     <p><a href="{{ path('app_logout') }}" class="btn btn-primary">Se déconnecter</a></p>
                 </div>
@@ -18,12 +35,24 @@
         <div class="container-fluid">
             <div class="text-center">
                 <p>liste des rendez vous</p>
-                {% if rdv is not defined %}
+                {% if rdvs is not defined %}
                     <p>aucun rendez vous</p>
                 {% endif %}
-                {% if rdv is defined %}
+                {% if rdvs is null %}
+                    <p>aucun rendez vous</p>
+                {% endif %}
+                {% if rdvs is defined %}
                     {% for rdv in rdvs %}
-                        <p>utilisateur : {{ rdv.user_id }}, date rendez-vous : {{ rdv.date_rdv }} à {{ rdv.heure }}</p>
+                        <p>utilisateur : {{ rdv.user.id }}, date rendez-vous : {{ rdv.dateRdv|date('d/m/Y')}} à {{ rdv.heure }}
+                            {# Pour supprimer un rendez-vous
+                            <form action=" {{ path('rdv_delete') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
+                                <input type="hidden" name="token" value="{{ csrf_token('rdv_delete') }}">
+                                <input type="hidden" name="id" value="{{ rdv.id }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-primary">Annulée</button>
+                                <br>
+                            </form>#}
+                        </p>
                     {% endfor %}
                 {% endif %}
                 <div class="container-fluid">

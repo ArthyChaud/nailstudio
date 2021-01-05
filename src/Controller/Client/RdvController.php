@@ -13,117 +13,111 @@ use Twig\Environment;
 
 class RdvController extends AbstractController
 {
-    /**
-     * @Route("/admin/VosRendezVous", name="admin_rdv_show")
-     */
-    public function rdvShow(Request $request)
-    {
-        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy([/*'user'=>$this->getUser()*/],['dateRdv'=>'ASC','heure'=>'ASC']);
-        return $this->render('Client/Rdv/RdvShow.html.twig',['rdvs'=>$rdvs]);
 
-    }
     /**
      * @Route("/PrendreRendezVous", name="rdv_date")
      */
     public function rdvAdd(Request $request)
     {
-        $heures=array(
-            "08:00"=>array(
-                "libelle"=>"08:00",
-                "select"=>False,
+        $heures = array(
+            "08:00" => array(
+                "libelle" => "08:00",
+                "select" => False,
             ),
-            "08:30"=>array(
-                "libelle"=>"08:30",
-                "select"=>False,
+            "08:30" => array(
+                "libelle" => "08:30",
+                "select" => False,
             ),
-            "09:00"=>array(
-                "libelle"=>"09:00",
-                "select"=>False,
+            "09:00" => array(
+                "libelle" => "09:00",
+                "select" => False,
             ),
-            "09:30"=>array(
-                "libelle"=>"09:30",
-                "select"=>False,
+            "09:30" => array(
+                "libelle" => "09:30",
+                "select" => False,
             ),
-            "10:00"=>array(
-                "libelle"=>"10:00",
-                "select"=>False,
+            "10:00" => array(
+                "libelle" => "10:00",
+                "select" => False,
             ),
-            "10:30"=>array(
-                "libelle"=>"10:30",
-                "select"=>False,
+            "10:30" => array(
+                "libelle" => "10:30",
+                "select" => False,
             ),
-            "11:00"=>array(
-                "libelle"=>"11:00",
-                "select"=>False,
+            "11:00" => array(
+                "libelle" => "11:00",
+                "select" => False,
             ),
-            "11:30"=>array(
-                "libelle"=>"11:30",
-                "select"=>False,
+            "11:30" => array(
+                "libelle" => "11:30",
+                "select" => False,
             ),
-            "12:00"=>array(
-                "libelle"=>"12:00",
-                "select"=>False,
+            "12:00" => array(
+                "libelle" => "12:00",
+                "select" => False,
             ),
-            "12:30"=>array(
-                "libelle"=>"12:30",
-                "select"=>False,
+            "12:30" => array(
+                "libelle" => "12:30",
+                "select" => False,
             ),
-            "13:00"=>array(
-                "libelle"=>"13:00",
-                "select"=>False,
+            "13:00" => array(
+                "libelle" => "13:00",
+                "select" => False,
             ),
-            "13:30"=>array(
-                "libelle"=>"13:30",
-                "select"=>False,
+            "13:30" => array(
+                "libelle" => "13:30",
+                "select" => False,
             ),
-            "14:00"=>array(
-                "libelle"=>"14:00",
-                "select"=>False,
+            "14:00" => array(
+                "libelle" => "14:00",
+                "select" => False,
             ),
-            "14:30"=>array(
-                "libelle"=>"14:30",
-                "select"=>False,
+            "14:30" => array(
+                "libelle" => "14:30",
+                "select" => False,
             ),
-            "15:00"=>array(
-                "libelle"=>"15:00",
-                "select"=>False,
+            "15:00" => array(
+                "libelle" => "15:00",
+                "select" => False,
             ),
-            "15:30"=>array(
-                "libelle"=>"15:30",
-                "select"=>False,
+            "15:30" => array(
+                "libelle" => "15:30",
+                "select" => False,
             ),
-            "16:00"=>array(
-                "libelle"=>"16:00",
-                "select"=>False,
+            "16:00" => array(
+                "libelle" => "16:00",
+                "select" => False,
             ),
-            "16:30"=>array(
-                "libelle"=>"16:30",
-                "select"=>False,
+            "16:30" => array(
+                "libelle" => "16:30",
+                "select" => False,
             ),
-            "17:00"=>array(
-                "libelle"=>"17:00",
-                "select"=>False,
+            "17:00" => array(
+                "libelle" => "17:00",
+                "select" => False,
             ),
-            "17:30"=>array(
-                "libelle"=>"17:30",
-                "select"=>False,
+            "17:30" => array(
+                "libelle" => "17:30",
+                "select" => False,
             ),
         );
 
-        $typeServices=$this->getDoctrine()->getRepository(TypeService::class)->findBy([],['libelle'=>'ASC']);
+        $typeServices = $this->getDoctrine()->getRepository(TypeService::class)->findBy([], ['libelle' => 'ASC']);
 
-        if($request->request->get('date_autre')!=null){
-            $literalTime = \DateTime::createFromFormat("Y-m-d",$request->request->get('date_autre'));
-        }else{
+        if ($request->request->get('date_autre') != null) {
+            $literalTime = \DateTime::createFromFormat("Y-m-d", $request->request->get('date_autre'));
+        } else {
             $literalTime = new\DateTime('now');
         }
 
-        $expire_date =  $literalTime->format("Y-m-d");
+        $expire_date = $literalTime->format("Y-m-d");
         $date = new \DateTime($expire_date);
         $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['dateRdv' => $date]);
-        foreach($rdvs as $rdv){
-            $heures[$rdv->getHeure()]["select"]=True;
+        if ($rdvs != null) {
+        foreach ($rdvs as $rdv) {
+            $heures[$rdv->getHeure()]["select"] = True;
         }
+    }
         return $this->render('Client/Rdv/RdvAddForm.html.twig',['date'=>$expire_date,'heures'=>$heures,'typeServices'=>$typeServices]);
     }
     /**
@@ -142,16 +136,16 @@ class RdvController extends AbstractController
             $rdv->setHeure($donnees['heure']);
             $typeService=$this->getDoctrine()->getRepository(TypeService::class)->find($donnees['typeService']);
             $rdv->setTypeService($typeService);
-            /*$rdv->setUser($this->getUser());*/
+            $rdv->setUser($this->getUser());
             $this->getDoctrine()->getManager()->persist($rdv);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('accueil');
+            return $this->redirectToRoute('reservations');
         }
     }
 
     /**
-     * @Route("/admin/annulationRendezVous", name="admin_rdv_delete")
+     * @Route("/annulationRendezVous", name="rdv_delete")
      */
     public function rdvDelete(Request $request)
     {
@@ -163,7 +157,7 @@ class RdvController extends AbstractController
         $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
         $entityManager->remove($rdv);
         $entityManager->flush();
-        return $this->redirectToRoute('admin_rdv_show');
+        return $this->redirectToRoute('reservations');
 
     }
 }

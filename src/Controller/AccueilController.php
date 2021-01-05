@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\CarouselLike;
+use App\Entity\RDV;
 use App\Form\MailFormType;
 use App\Repository\CarouselLikeRepository;
 use App\Repository\MediaRepository;
@@ -84,7 +85,20 @@ class AccueilController extends AbstractController
      * @Route("/reservations", name="reservations")
      */
     public function reservations(){
-        return $this->render('reservations/reservations.html.twig');
+        if($this->getUser()!=null) {
+            //dd($this->getUser()->getRoles());
+            if ($this->getUser()->getRoles() == ['ROLE_ADMIN']) {
+
+                $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['user'=>$this->getUser()],['dateRdv' => 'ASC', 'heure' => 'ASC']);
+            }
+            else{
+                $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy([],['dateRdv'=>'ASC','heure'=>'ASC']);
+            }
+        }
+        else{
+            $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy([],['dateRdv'=>'ASC','heure'=>'ASC']);
+        }
+        return $this->render('reservations/reservations.html.twig',['rdvs'=>$rdvs]);
     }
 
     /**

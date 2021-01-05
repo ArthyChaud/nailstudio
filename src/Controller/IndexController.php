@@ -18,7 +18,7 @@ class IndexController extends AbstractController
             return $this->redirectToRoute('accueil');
         }
         if($this->isGranted('ROLE_CLIENT')) {
-            return $this->redirectToRoute('rdv_show');
+            return $this->redirectToRoute('reservations');
         }
         return $this->redirectToRoute('accueil');
     }
