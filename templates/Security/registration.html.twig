@@ -28,7 +28,7 @@
                 {% endif %}
             </div>
 
-            <input type="hidden" name="token" value="{{ csrf_token('form_client') }}">
+            <input type="hidden" name="token" value="{{ csrf_token('form_registration') }}">
 
             <button type="submit" class="btn btn-primary">{{ button|default('Valider') }}</button>
             <a href="/login" class="btn btn-primary ">Retour</a>

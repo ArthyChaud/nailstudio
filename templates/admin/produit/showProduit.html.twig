@@ -1,0 +1,58 @@
+{% extends 'base/base.html.twig'%}
+{% block body %}
+    <a href="{{ path('admin_add_produit') }}" class="btn btn-primary">ajouter un produit</a>
+    <a href="{{ path('admin_add_typeProduit') }}" class="btn btn-primary">ajouter un type de produit</a>
+    <a href="{{ path('admin_show_besoin') }}" class="btn btn-primary">gérer les besoins</a>
+    <a href="{{ path('admin_show_produit') }}" class="btn btn-primary">gérer les produits</a>
+
+    <br>
+    <table class="table">
+    <caption>Recapitulatifs des produits</caption>
+    <thead class="thead-dark">
+    <tr><th>id</th><th>libelle</th><th>stock</th><th>type</th><th>prix</th><th>option</th></tr>
+    </thead>
+    {% if produits is not empty %}
+        {% for produit in produits  %}
+            <tr>
+                <td>{{produit.id}}</td>
+                <td>{{produit.libelle}}</td>
+                {% if produit.stock<5 and produit.besoin==0 %}
+                   <td>
+                       {{ produit.stock }}
+                       <input type="hidden" name="id" value="{{ produit.id }}">
+                       <form action="{{ path('admin_add_besoin') }}" method="POST" style="display:inline">
+                           <input type="hidden" name="id" value="{{ produit.id }}">
+                           <button type="submit" class="btn btn-warning">Ajouter au besoin</button>
+                       </form>
+                   </td>
+                {% elseif produit.stock>10 %}
+                    <td style="color: green">disponible</td>
+                {% elseif produit.besoin==0 %}
+                    <td>{{ produit.stock }}
+                    <input type="hidden" name="id" value="{{ produit.id }}">
+                    <form action="{{ path('admin_add_besoin') }}" method="POST" style="display:inline">
+                        <input type="hidden" name="id" value="{{ produit.id }}">
+                        <button type="submit" class="btn btn-warning">Ajouter au besoin</button>
+                    </form>
+                    </td>
+                {% else %}
+                    <td>{{ produit.stock }}</td>
+                {% endif %}
+                <td>{{produit.typeProduit.libelle | default('pas de type')}}</td>
+                <td>{{produit.prix}} €</td>
+                <td>
+                     <a href="{{ path('admin_edit_produit', {id: produit.id}) }}" class="btn btn-primary">modifier</a>
+                    <form action="{{ path('admin_delete_produit') }}" method="POST" style="display:inline">
+                        <input type="hidden" name="token" value="{{ csrf_token('produit_delete') }}">
+                        <input type="hidden" name="id" value="{{ produit.id }}">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-warning">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr class="table-warning"><td>Pas de Produit</td></tr>
+    {% endif %}
+    </table>
+{% endblock %}

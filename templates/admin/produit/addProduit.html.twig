@@ -1,0 +1,54 @@
+{% extends 'base/base.html.twig'%}
+{% block body %}
+<div class="container">
+    <form method="post" action="{{ path('admin_add_produit') }}">
+        <legend>Ajouter un produit</legend>
+
+        <div class="form-group">
+            <label>libelle :</label>
+            <input name="libelle"  type="text"  size="18" value="{{donnees.libelle|default('')}}" class="form-control">
+            {% if erreurs.libelle is defined %}
+                <div style="color: red">{{ erreurs.libelle }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>type :</label>
+            <select name="typeProduitId" class="form-control {% if erreurs.categorieDepense_id is defined %}is-invalid{% endif %}">
+                {% if  donnees.typeProduit.id is not defined or donnees.typeProduit.id is empty   %}
+                    <option value="">Veuillez sélectionner un type</option>
+                {%endif%}
+                {% for typeProduit in typeProduits %}
+                    <option value="{{ typeProduit.id }}"
+                            {% if donnees.typeProduit.id is defined and typeProduit.id == donnees.typeProduit.id %}selected{% endif %}
+                    >
+                        {{ typeProduit.libelle }}
+                    </option>
+                {% endfor %}
+            </select>
+            {% if erreurs.typeProduitId is defined %}
+                <div class="invalid-feedback">{{erreurs.typeProduitId}}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>stock :</label>
+            <input name="stock"  type="text"  size="18" value="{{donnees.stock|default('')}}" class="form-control">
+            {% if erreurs.stock is defined %}
+                <div style="color: red">{{ erreurs.stock }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label>prix :</label>
+            <input name="prix"  type="text"  size="18" value="{{donnees.prix|default('')}}" class="form-control">
+            {% if erreurs.prix is defined %}
+                <div style="color: red">{{ erreurs.prix }}</div>
+            {% endif %}
+        </div>
+        <input type="hidden" name="token" value="{{ csrf_token('form_produit') }}">
+
+        <button type="submit" class="btn btn-primary">{{ button|default('Valider') }}</button>
+    </form>
+</div>
+{% endblock %}

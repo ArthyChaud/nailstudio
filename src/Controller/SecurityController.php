@@ -44,8 +44,8 @@ class SecurityController extends AbstractController
         if($request->getMethod() == 'GET'){
             return $this->render('security/registration.html.twig');
         }
-        if(!$this->isCsrfTokenValid('form_client', $request->get('token'))) {
-            throw new  InvalidCsrfTokenException('Invalid CSRF token formulaire depense');
+        if(!$this->isCsrfTokenValid('form_registration', $request->get('token'))) {
+            throw new  InvalidCsrfTokenException('Invalid CSRF token formulaire register');
         }
         $donnees['username']=$_POST['username'];
         $donnees['password']=$_POST['password'];

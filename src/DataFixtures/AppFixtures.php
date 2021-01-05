@@ -11,6 +11,7 @@ use App\Entity\User;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use phpDocumentor\Reflection\Types\False_;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class AppFixtures extends Fixture
@@ -82,10 +83,10 @@ class AppFixtures extends Fixture
     private function loadRdv(ObjectManager $manager)
     {
         $rdvs = [
-            ['id' => 1,'dateRdv' => '2020-12-29','heure' => '08:00','typeService' => 'type1','user'=>'client'],
-            ['id' => 2,'dateRdv' => '2020-12-30','heure' => '09:00','typeService' => 'type1','user'=>'client'],
-            ['id' => 3,'dateRdv' => '2020-12-31','heure' => '10:00','typeService' => 'type2','user'=>'client2'],
-            ['id' => 4,'dateRdv' => '2021-01-01','heure' => '11:00','typeService' => 'type2','user'=>'client2'],
+            ['id' => 1,'dateRdv' => '2020-12-29','heure' => '08:00','typeService' => 'type1','user'=>'client','valider'=>false],
+            ['id' => 2,'dateRdv' => '2020-12-30','heure' => '09:00','typeService' => 'type1','user'=>'client','valider'=>true],
+            ['id' => 3,'dateRdv' => '2020-12-31','heure' => '10:00','typeService' => 'type2','user'=>'client2','valider'=>false],
+            ['id' => 4,'dateRdv' => '2021-01-01','heure' => '11:00','typeService' => 'type2','user'=>'client2','valider'=>true],
 
         ];
         foreach ($rdvs as $rdv)
@@ -100,6 +101,7 @@ class AppFixtures extends Fixture
             if($user != null) {
                 $rdv_new->setUser($user);
             }
+            $rdv_new->setValider($rdv['valider']);
             echo $rdv['dateRdv']."\n";
 
             $manager->persist($rdv_new);

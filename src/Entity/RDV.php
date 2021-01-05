@@ -37,6 +37,11 @@ class RDV
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $valider;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class RDV
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getValider(): ?bool
+    {
+        return $this->valider;
+    }
+
+    public function setValider(bool $valider): self
+    {
+        $this->valider = $valider;
 
         return $this;
     }

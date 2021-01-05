@@ -25,7 +25,7 @@ class Produit
     /**
      * @ORM\ManyToOne(targetEntity=TypeProduit::class, inversedBy="produits")
      */
-    private $idTypeProduit;
+    private $typeProduit;
 
     /**
      * @ORM\Column(type="integer")
@@ -36,6 +36,11 @@ class Produit
      * @ORM\Column(type="integer")
      */
     private $besoin;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $prix;
 
     public function getId(): ?int
     {
@@ -54,14 +59,14 @@ class Produit
         return $this;
     }
 
-    public function getIdTypeProduit(): ?TypeProduit
+    public function getTypeProduit(): ?TypeProduit
     {
-        return $this->idTypeProduit;
+        return $this->typeProduit;
     }
 
-    public function setIdTypeProduit(?TypeProduit $idTypeProduit): self
+    public function setTypeProduit(?TypeProduit $typeProduit): self
     {
-        $this->idTypeProduit = $idTypeProduit;
+        $this->typeProduit = $typeProduit;
 
         return $this;
     }
@@ -86,6 +91,18 @@ class Produit
     public function setBesoin(int $besoin): self
     {
         $this->besoin = $besoin;
+
+        return $this;
+    }
+
+    public function getPrix(): ?int
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(int $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }
