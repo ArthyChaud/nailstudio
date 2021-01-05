@@ -226,7 +226,7 @@ class ProduitController extends AbstractController
         if($donnees['prix']==NULL OR !is_numeric($donnees['prix']))
             $erreurs['prix'] = 'Veuillez entrer un prix';
 
-        if($donnees['stock']==NULL OR !is_numeric($donnees['stock']))
+        if($donnees['stock']==NULL)
             $erreurs['stock'] = 'Veuillez entrer un stock';
 
         return $erreurs;
