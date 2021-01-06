@@ -221,7 +221,9 @@ class ProduitController extends AbstractController
         $donnees['stock'] = $_POST['stock'];
         if($donnees['stock']==NULL OR !is_numeric($donnees['stock']))
             return $this->redirectToRoute('admin_show_produit');
-
+        if($donnees['stock']>100000){
+            return $this->redirectToRoute('admin_show_produit');
+        }
         $entityManager = $this->getDoctrine()->getManager();
         $id = $request->request->get('id');
         $produit = $entityManager->getRepository(Produit::class)->find($id);
@@ -251,7 +253,9 @@ class ProduitController extends AbstractController
         $donnees['besoin'] = $_POST['besoin'];
         if($donnees['besoin']==NULL OR !is_numeric($donnees['besoin']))
             return $this->redirectToRoute('admin_show_produit');
-
+        if($donnees['besoin']>100000){
+            return $this->redirectToRoute('admin_show_produit');
+        }
         $entityManager = $this->getDoctrine()->getManager();
         $id = $request->request->get('id');
         $produit = $entityManager->getRepository(Produit::class)->find($id);
@@ -297,7 +301,7 @@ class ProduitController extends AbstractController
         if($donnees['marqueId']==NULL)
             $erreurs['marqueId'] = 'Veuillez entrer une marque';
 
-        if($donnees['prix']==NULL OR !is_numeric($donnees['prix']))
+        if($donnees['prix']==NULL OR !is_numeric($donnees['prix'] OR $donnees['prix']>10000))
             $erreurs['prix'] = 'Veuillez entrer un prix';
 
         if($donnees['stock']==NULL OR !is_numeric($donnees['stock']))
