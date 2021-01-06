@@ -2,55 +2,59 @@
 {% block body %}
     <a href="{{ path('admin_add_produit') }}" class="btn btn-primary">ajouter un produit</a>
     <a href="{{ path('admin_add_typeProduit') }}" class="btn btn-primary">ajouter un type de produit</a>
-    <a href="{{ path('admin_show_besoin') }}" class="btn btn-primary">gérer les besoins</a>
+    <a href="{{ path('admin_add_marque') }}" class="btn btn-primary">ajouter une marque</a>
     <a href="{{ path('admin_show_produit') }}" class="btn btn-primary">gérer les produits</a>
-    <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">gérer les produits</a>
+    <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">agenda</a>
 
     <br>
     <table class="table">
     <caption>Recapitulatifs des produits</caption>
     <thead class="thead-dark">
-    <tr><th>id</th><th>libelle</th><th>stock</th><th>type</th><th>prix</th><th>option</th></tr>
+    <tr><th>id</th><th>libelle</th><th>stock</th><th>gérer le stock</th><th>besoin</th><th>gérer besoin</th><th>type</th><th>marque</th><th>prix</th><th>option</th></tr>
     </thead>
     {% if produits is not empty %}
         {% for produit in produits  %}
-            <tr>
-                <td>{{produit.id}}</td>
-                <td>{{produit.libelle}}</td>
-                {% if produit.stock<5 and produit.besoin==0 %}
-                   <td>
-                       {{ produit.stock }}
-                       <input type="hidden" name="id" value="{{ produit.id }}">
-                       <form action="{{ path('admin_add_besoin') }}" method="POST" style="display:inline">
-                           <input type="hidden" name="id" value="{{ produit.id }}">
-                           <button type="submit" class="btn btn-warning">Ajouter au besoin</button>
-                       </form>
-                   </td>
-                {% elseif produit.stock>10 %}
-                    <td style="color: green">disponible</td>
-                {% elseif produit.besoin==0 %}
-                    <td>{{ produit.stock }}
+        <tr>
+            <td>{{produit.id}}</td>
+            <td>{{produit.libelle}}</td>
+            <td>{{ produit.stock }}</td>
+            <td>
+                <form  action="{{ path('admin_increment_stock')}}" method="post">
+                    <button type="submit" name="submitAction"  value="moins"  class="btn btn-primary">-</button>
                     <input type="hidden" name="id" value="{{ produit.id }}">
-                    <form action="{{ path('admin_add_besoin') }}" method="POST" style="display:inline">
-                        <input type="hidden" name="id" value="{{ produit.id }}">
-                        <button type="submit" class="btn btn-warning">Ajouter au besoin</button>
-                    </form>
-                    </td>
-                {% else %}
-                    <td>{{ produit.stock }}</td>
-                {% endif %}
-                <td>{{produit.typeProduit.libelle | default('pas de type')}}</td>
-                <td>{{produit.prix}} €</td>
-                <td>
-                     <a href="{{ path('admin_edit_produit', {id: produit.id}) }}" class="btn btn-primary">modifier</a>
-                    <form action="{{ path('admin_delete_produit') }}" method="POST" style="display:inline">
-                        <input type="hidden" name="token" value="{{ csrf_token('produit_delete') }}">
-                        <input type="hidden" name="id" value="{{ produit.id }}">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-warning">Supprimer</button>
-                    </form>
-                </td>
-            </tr>
+                    <input type="text" name="stock" value="">
+                    <button type="submit" name="submitAction"  value="plus" class="btn btn-primary">+</button>
+                    <button type="submit" name="submitAction"  value="égale" class="btn btn-primary">=</button>
+
+                </form>
+            </td>
+
+            <td>{{ produit.besoin }}</td>
+            <td>
+                <form  action="{{ path('admin_increment_besoin')}}" method="post">
+                    <button type="submit" name="submitAction"  value="moins"  class="btn btn-primary">-</button>
+                    <input type="hidden" name="id" value="{{ produit.id }}">
+                    <input type="text" name="besoin" value="">
+                    <button type="submit" name="submitAction"  value="plus" class="btn btn-primary">+</button>
+                    <button type="submit" name="submitAction"  value="égale" class="btn btn-primary">=</button>
+
+                </form>
+            </td>
+
+            <td>{{produit.typeProduit.libelle | default('pas de type')}}</td>
+            <td>{{produit.marque.libelle | default('pas de marque')}}</td>
+
+            <td>{{produit.prix}} €</td>
+            <td>
+                 <a href="{{ path('admin_edit_produit', {id: produit.id}) }}" class="btn btn-primary">modifier</a>
+                <form action="{{ path('admin_delete_produit') }}" method="POST" style="display:inline">
+                    <input type="hidden" name="token" value="{{ csrf_token('produit_delete') }}">
+                    <input type="hidden" name="id" value="{{ produit.id }}">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-warning">Supprimer</button>
+                </form>
+            </td>
+        </tr>
         {% endfor %}
     {% else %}
         <tr class="table-warning"><td>Pas de Produit</td></tr>

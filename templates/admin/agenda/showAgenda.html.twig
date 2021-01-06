@@ -1,6 +1,10 @@
 {% extends 'base/base.html.twig'%}
 {% block body %}
     <a href="{{ path('admin_add_agenda') }}" class="btn btn-primary">ajouter un élément à l'agenda</a>
+
+    <a href="{{ path('admin_show_produit') }}" class="btn btn-primary">gérer les produits</a>
+    <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">agenda</a>
+
     <br>
     <table class="table">
         <caption>Agenda</caption>

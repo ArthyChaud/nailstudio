@@ -1,0 +1,18 @@
+{% extends 'base/base.html.twig'%}
+{% block body %}
+    <div class="container">
+        <form method="post" action="{{ path('admin_add_marque') }}">
+            <legend>Ajouter une marque</legend>
+            <div class="form-group">
+                <label>libelle :</label>
+                <input name="libelle"  type="text"  size="18" value="{{donnees.libelle|default('')}}" class="form-control">
+                {% if erreurs.libelle is defined %}
+                    <div style="color: red">{{ erreurs.libelle }}</div>
+                {% endif %}
+            </div>
+            <input type="hidden" name="token" value="{{ csrf_token('form_marque') }}">
+
+            <button type="submit" class="btn btn-primary">{{ button|default('Valider') }}</button>
+        </form>
+    </div>
+{% endblock %}
