@@ -87,7 +87,6 @@ class AppFixtures extends Fixture
             ['id' => 2,'dateRdv' => '2020-12-30','heure' => '09:00','typeService' => 'type1','user'=>'client','valider'=>true],
             ['id' => 3,'dateRdv' => '2020-12-31','heure' => '10:00','typeService' => 'type2','user'=>'client2','valider'=>false],
             ['id' => 4,'dateRdv' => '2021-01-01','heure' => '11:00','typeService' => 'type2','user'=>'client2','valider'=>true],
-
         ];
         foreach ($rdvs as $rdv)
         {
@@ -130,19 +129,19 @@ class AppFixtures extends Fixture
     private function loadAccounting(ObjectManager $manager)
     {
         $accounting = [
-            ['libelle' => 'Paypal', 'prix' => 0.35, 'categorie' => 1],
-            ['libelle' => 'Paypal', 'prix' => 0.37, 'categorie' => 4],
-            ['libelle' => 'Actions', 'prix' => 500, 'categorie' => 2],
-            ['libelle' => 'Actions', 'prix' => 1500, 'categorie' => 5],
-            ['libelle' => 'Hébergement internet', 'prix' => 11.01, 'categorie' => 3],
-            ['libelle' => 'Abonnements', 'prix' => 200, 'categorie' => 6],
+            ['libelle' => 'Paypal', 'prix' => 0.35, 'categorie' => 'Charges exploitation'],
+            ['libelle' => 'Paypal', 'prix' => 0.37, 'categorie' => 'Produits exploitation'],
+            ['libelle' => 'Actions', 'prix' => 500, 'categorie' => 'Charges financières'],
+            ['libelle' => 'Actions', 'prix' => 1500, 'categorie' => 'Produits financiers'],
+            ['libelle' => 'Hébergement internet', 'prix' => 11.01, 'categorie' => 'Charges exceptionnelles'],
+            ['libelle' => 'Abonnements', 'prix' => 200, 'categorie' => 'Produits exceptionnels'],
         ];
         foreach ($accounting as $value) {
             $new_acc = new Accounting();
             $new_acc->setLibelle($value['libelle'])
                 ->setPrix($value['prix'])
                 ->setDate(DateTime::createFromFormat('Y-m-d', date('Y-m-d')))
-                ->setCategoryAccounting($manager->getRepository(CategoryAccounting::class)->find($value['categorie']));
+                ->setCategoryAccounting($manager->getRepository(CategoryAccounting::class)->findOneBy(['categorie'  => $value['categorie']]));
             $manager->persist($new_acc);
             $manager->flush();
         }

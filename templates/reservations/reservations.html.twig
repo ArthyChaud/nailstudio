@@ -37,49 +37,9 @@
         </div>
     {% endif %}
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-        <div class="container-fluid">
-            <div class="text-center">
-                <p>liste des rendez vous</p>
-
-                {% if rdvs is not defined %}
-                    <p>aucun rendez vous</p>
-                {% elseif rdvs is null %}
-                    <p>aucun rendez vous</p>
-                {% elseif rdvs is not empty %}
-                    <table class="table">
-                        <thead class="thead-dark">
-                        <tr><th>utilisateur</th><th>date</th><th>heure</th><th>valider</th></tr>
-                        </thead>
-                    {% for rdv in rdvs %}
-                        <tr>
-                    <td>{{ rdv.user.id }}</td><td>{{ rdv.dateRdv|date('d/m/Y')}}</td><td>{{ rdv.heure }}</td>
-                        {% if rdv.valider%}
-                    <td>déjà valider</td>
-                        {% else %}<td>
-                            <form action=" {{ path('admin_rdv_validation') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
-                            <input type="hidden" name="token" value="{{ csrf_token('rdv_validation') }}">
-                            <input type="hidden" name="id" value="{{ rdv.id }}">
-                                <button type="submit" class="btn btn-primary">Valider</button>
-                            </form>
-                            <form action=" {{ path('rdv_delete') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
-                                <input type="hidden" name="token" value="{{ csrf_token('rdv_delete') }}">
-                                <input type="hidden" name="id" value="{{ rdv.id }}">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-primary">Refuser</button>
-                            </form></td>
-                        {% endif %}
-                        </tr>
-
-                    {% endfor %}
-                </table>
-                {% endif %}
-                <div class="container-fluid">
-                    <p><a href="{{ path('app_logout') }}" class="btn btn-primary">Se déconnecter</a></p>
-                </div>
-            </div>
-        </div>
+        <p><a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">gérer les rendez-vous</a></p>
     {% endif %}
-    {% if app.user is defined and not is_granted('ROLE_CLIENT') or not is_granted('ROLE_CLIENT')  %}
+    {% if app.user is defined and not is_granted('ROLE_CLIENT') or not is_granted('ROLE_ADMIN')  %}
         <div class="container-fluid">
             <p>Afin d'accéder aux reservations veuillez vous connecter</p>
             <p><a href="/login">Se connecter</a></p>

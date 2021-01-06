@@ -144,7 +144,7 @@ class RdvController extends AbstractController
             $this->getDoctrine()->getManager()->persist($rdv);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('reservations');
+            return $this->redirectToRoute('admin_show_agenda');
         }
     }
 
@@ -161,7 +161,7 @@ class RdvController extends AbstractController
         $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
         $entityManager->remove($rdv);
         $entityManager->flush();
-        return $this->redirectToRoute('reservations');
+        return $this->redirectToRoute('admin_show_agenda');
 
     }
     /**
@@ -178,7 +178,7 @@ class RdvController extends AbstractController
         $rdv->setValider(True);
         $entityManager->persist($rdv);
         $entityManager->flush();
-        return $this->redirectToRoute('reservations');
+        return $this->redirectToRoute('admin_show_agenda');
 
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Agenda;
+use App\Entity\RDV;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
@@ -18,7 +19,8 @@ class AgendaController2 extends AbstractController
     public function showAgenda(Request $request)
     {
         $agendas= $this->getDoctrine()->getRepository(Agenda::class)->findBy([],['date'=>'ASC']);
-        return $this->render('/admin/agenda/showAgenda.html.twig',['agendas'=>$agendas]);
+        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findAll();
+        return $this->render('/admin/agenda/showAgenda.html.twig',['agendas'=>$agendas,'rdvs'=>$rdvs]);
     }
 
     /**
