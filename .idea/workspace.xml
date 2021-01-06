@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="rectification agenda et produit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/AgendaController2.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/AgendaController2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reservations/reservations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservations/reservations.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="ajout vue gerer rdv à la vue agenda" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -192,7 +185,7 @@
       <workItem from="1609690990833" duration="3939000" />
       <workItem from="1609886824139" duration="1644000" />
       <workItem from="1609923809966" duration="1024000" />
-      <workItem from="1609937023931" duration="14211000" />
+      <workItem from="1609937023931" duration="14352000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -257,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609944701213</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ajout vue gerer rdv à la vue agenda">
+      <created>1609956282815</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1609956282815</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +285,8 @@
     <MESSAGE value="Agenda CRUD" />
     <MESSAGE value="    ajout Marque et ajout des besoins sur showProduit.html.twig" />
     <MESSAGE value="rectification agenda et produit" />
-    <option name="LAST_COMMIT_MESSAGE" value="rectification agenda et produit" />
+    <MESSAGE value="ajout vue gerer rdv à la vue agenda" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout vue gerer rdv à la vue agenda" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
@@ -316,10 +317,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1609887548072" />
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1609944706330">
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1609956285934">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1609944706330" />
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1609956285934" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609688245543" />
     <state x="367" y="98" key="VcsDiffUtil.ChangesDialog" timestamp="1609887410509">
       <screen x="0" y="0" width="1366" height="728" />
