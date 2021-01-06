@@ -19,15 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="Agenda CRUD">
-      <change afterPath="$PROJECT_DIR$/templates/admin/produit/addMarque.html.twig" afterDir="false" />
+    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="    ajout Marque et ajout des besoins sur showProduit.html.twig">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/ProduitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Produit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/produit/addProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/addProduit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/produit/editProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/editProduit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/produit/showBesoin.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/produit/showProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/showProduit.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -195,7 +190,7 @@
       <workItem from="1609690990833" duration="3939000" />
       <workItem from="1609886824139" duration="1644000" />
       <workItem from="1609923809966" duration="1024000" />
-      <workItem from="1609937023931" duration="4130000" />
+      <workItem from="1609937023931" duration="6953000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -239,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609888216709</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="    ajout Marque et ajout des besoins sur showProduit.html.twig">
+      <created>1609941354628</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1609941354628</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +267,8 @@
     <MESSAGE value="validation rdv" />
     <MESSAGE value="prix : int to decimal" />
     <MESSAGE value="Agenda CRUD" />
-    <option name="LAST_COMMIT_MESSAGE" value="Agenda CRUD" />
+    <MESSAGE value="    ajout Marque et ajout des besoins sur showProduit.html.twig" />
+    <option name="LAST_COMMIT_MESSAGE" value="    ajout Marque et ajout des besoins sur showProduit.html.twig" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
@@ -296,10 +299,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1609887548072" />
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1609888222133">
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1609941361042">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1609888222133" />
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1609941361042" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609688245543" />
     <state x="367" y="98" key="VcsDiffUtil.ChangesDialog" timestamp="1609887410509">
       <screen x="0" y="0" width="1366" height="728" />

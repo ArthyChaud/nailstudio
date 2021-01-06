@@ -17,11 +17,20 @@ class ProduitController extends AbstractController
     /**
      * @Route("/admin/show/produit", name="admin_show_produit")
      */
-    public function showProduit(){
+    public function showAllProduit(){
         $produits = $this->getDoctrine()->getRepository(Produit::class)->findBy([],['typeProduit'=>'ASC','besoin'=>'ASC','libelle'=>'ASC']);
         return $this->render('admin/produit/showProduit.html.twig',['produits'=>$produits]);
     }
 
+    /**
+     * @Route("/admin/show/un/produit", name="admin_show_un_produit", methods={"POST"})
+     */
+    public function showProduit(Request $request){
+        $libelle= $request->request->get('libelle');
+
+        $produits = $this->getDoctrine()->getRepository(Produit::class)->findBy(['libelle'=>$libelle],[]);
+        return $this->render('admin/produit/showProduit.html.twig',['produits'=>$produits]);
+    }
     /**
      * @Route("/admin/add/besoin", name="admin_add_besoin")
      */
@@ -77,10 +86,10 @@ class ProduitController extends AbstractController
             return $this->redirectToRoute('admin_show_produit');
         }
 
-        // A modifier : Utiliser la méthode findBy du Repository : TypeProduitRepository (trier les types de produits par libelle)
         $typeProduits = $this->getDoctrine()->getRepository(TypeProduit::class)->findBy([], ['libelle' => 'ASC']);
-        // fin A modifier
-        return $this->render('admin/produit/addProduit.html.twig', ['donnees' => $donnees, 'erreurs' => $erreurs, 'typeProduits' => $typeProduits]);
+        $marques = $this->getDoctrine()->getRepository(Marque::class)->findBy([], ['libelle' => 'ASC']);
+
+        return $this->render('admin/produit/addProduit.html.twig', ['donnees' => $donnees, 'erreurs' => $erreurs, 'typeProduits' => $typeProduits,'marques' => $marques]);
     }
     /**
      * @Route("/admin/edit/{id}/produit", name="admin_edit_produit", methods={"GET"})
@@ -130,7 +139,7 @@ class ProduitController extends AbstractController
         }
         $produit = $entityManager->getRepository(Produit::class)->find($id);
         $typeProduits = $this->getDoctrine()->getRepository(TypeProduit::class)->findBy([], ['libelle' => 'ASC']);
-        $marques = $this->getDoctrine()->getRepository(TypeProduit::class)->findBy([], ['libelle' => 'ASC']);
+        $marques = $this->getDoctrine()->getRepository(Marque::class)->findBy([], ['libelle' => 'ASC']);
         return $this->render('/admin/produit/editProduit.html.twig', ['typeProduits' => $typeProduits,'marques'=>$marques, 'donnees' => $produit, 'erreurs'=>$erreurs]);
 
     }
@@ -291,7 +300,7 @@ class ProduitController extends AbstractController
         if($donnees['prix']==NULL OR !is_numeric($donnees['prix']))
             $erreurs['prix'] = 'Veuillez entrer un prix';
 
-        if($donnees['stock']==NULL)
+        if($donnees['stock']==NULL OR !is_numeric($donnees['stock']))
             $erreurs['stock'] = 'Veuillez entrer un stock';
 
         return $erreurs;

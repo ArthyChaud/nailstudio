@@ -3,8 +3,13 @@
     <a href="{{ path('admin_add_produit') }}" class="btn btn-primary">ajouter un produit</a>
     <a href="{{ path('admin_add_typeProduit') }}" class="btn btn-primary">ajouter un type de produit</a>
     <a href="{{ path('admin_add_marque') }}" class="btn btn-primary">ajouter une marque</a>
-    <a href="{{ path('admin_show_produit') }}" class="btn btn-primary">gérer les produits</a>
+    <a href="{{ path('admin_show_produit') }}" class="btn btn-primary">voir tous les produits</a>
     <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">agenda</a>
+
+    <form  action="{{ path('admin_show_un_produit')}}" method="post">
+        <input type="text" name="libelle" value="">
+        <button type="submit" class="btn btn-outline-primary">cherher un produit spécifique</button>
+    </form>
 
     <br>
     <table class="table">
