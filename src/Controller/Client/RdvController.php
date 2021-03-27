@@ -168,13 +168,10 @@ class RdvController extends AbstractController
         $calendar->setDescription($user->getUsername());
         $calendar->setStart($dateStart);
         $calendar->setEnd($dateEnd);
-        if($type_service->getLibelle()=='Manucure'){
-            $calendar->setBackgroundColor('#2045CB');
-        }else if($type_service->getLibelle()=='épilation') {
-            $calendar->setBackgroundColor('#20CB25');
-        }else{
-            $calendar->setBackgroundColor('#FF8800');
-        }
+        $calendar->setBackgroundColor($type_service->getColor());
+        $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
+
+        $calendar->setRdv($rdv);
         $this->getDoctrine()->getManager()->persist($calendar);
 
 
@@ -182,13 +179,6 @@ class RdvController extends AbstractController
         return $this->redirectToRoute('admin_show_agenda');
 
     }
-    /**
-     * @Route("/admin/test", name="admin_rdv_test")
-     */
-    public function rdvTest(Request $request)
-    {
-        dd('test');
 
-    }
 
 }

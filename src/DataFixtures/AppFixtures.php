@@ -70,8 +70,8 @@ class AppFixtures extends Fixture
     private function loadTypeService(ObjectManager $manager)
     {
         $typeServices = [
-            ['id' => 1,'libelle' => 'Manucure','color'=>'#000000'],
-            ['id' => 2,'libelle' => 'épilation','color'=>'#111111']
+            ['id' => 1,'libelle' => 'Manucure','color'=>'#2045CB'],
+            ['id' => 2,'libelle' => 'épilation','color'=>'#20CB25']
         ];
         foreach ($typeServices as $type)
         {
@@ -131,8 +131,8 @@ class AppFixtures extends Fixture
     }
     private function loadCalender(ObjectManager $manager){
         $calendars = [
-            ['id' => 2,'titre'=>'Manucure','start' => '2021-03-26T09:00','end' => '2021-03-26T09:30','description'=>'test','color'=>'#2045CB'],
-            ['id' => 4,'titre'=>'épilation','start' => '2021-03-24T11:00','end' => '2021-03-24T11:30','description'=>'test','color'=>'#20CB25'],
+            ['id' => 2,'titre'=>'Manucure','start' => '2021-03-26T09:00','end' => '2021-03-26T09:30','description'=>'test','color'=>'#2045CB','rdv'=>147],
+            ['id' => 4,'titre'=>'épilation','start' => '2021-03-24T11:00','end' => '2021-03-24T11:30','description'=>'test','color'=>'#20CB25','rdv'=>149],
         ];
         foreach ($calendars as $calendar){
             $dateStart = new \DateTime($calendar['start']);
@@ -143,6 +143,8 @@ class AppFixtures extends Fixture
             $calendar_new->setStart($dateStart);
             $calendar_new->setEnd($dateEnd);
             $calendar_new->setBackgroundColor($calendar['color']);
+            $rdv = $manager->getRepository(RDV::class)->find($calendar['rdv']);
+            $calendar_new->setRdv($rdv);
             $manager->persist($calendar_new);
             $manager->flush();
         }

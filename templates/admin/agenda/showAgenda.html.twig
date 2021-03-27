@@ -59,7 +59,18 @@
             start:'dayGridMonth,timeGridWeek',
             end:'prev,next'
         },
-        events:{{ data|raw }}
+        events:{{ data|raw }},
+        eventClick:function(e){
+            if(confirm('Voulez-vous supprimer l\'événement ?')){
+                console.log(e.event.id)
+                var donnees = e.event.id
+                let url = '{{ path('admin_delete_calendar') }}'
+                let xhr = new XMLHttpRequest()
+                xhr.open("DELETE",url)
+                xhr.send(JSON.stringify(donnees))
+                e.el.remove()
+            }
+        }
     });
     calendar.render();
 

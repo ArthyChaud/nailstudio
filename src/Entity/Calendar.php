@@ -23,7 +23,7 @@ class Calendar
     private $titre;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
 
@@ -41,6 +41,11 @@ class Calendar
      * @ORM\Column(type="string", length=7)
      */
     private $backgroundColor;
+
+    /**
+     * @ORM\OneToOne(targetEntity=RDV::class, cascade={"persist", "remove"})
+     */
+    private $rdv;
 
     public function getId(): ?int
     {
@@ -103,6 +108,18 @@ class Calendar
     public function setBackgroundColor(string $backgroundColor): self
     {
         $this->backgroundColor = $backgroundColor;
+
+        return $this;
+    }
+
+    public function getRdv(): ?RDV
+    {
+        return $this->rdv;
+    }
+
+    public function setRdv(?RDV $rdv): self
+    {
+        $this->rdv = $rdv;
 
         return $this;
     }

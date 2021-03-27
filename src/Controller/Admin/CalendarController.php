@@ -25,19 +25,19 @@ class CalendarController extends AbstractController
         }
 
         $donnees['titre']=$_POST['titre'];
-        $donnees['description']=$request->request->get('description');
+        //$donnees['description']=$request->request->get('description');
         $donnees['start']=$request->request->get('start');
         $donnees['end']=$request->request->get('end');
         $donnees['color']=$request->request->get('color');
 
-       // $erreurs=$this->validatorCalendar($donnees);
+        $erreurs=$this->validatorCalendar($donnees);
         if( empty($erreurs))
         {
             $dateStart = new \DateTime($donnees['start']);
             $dateEnd = new \DateTime($donnees['end']);
             $calendar = new Calendar();
             $calendar->setTitre($donnees['titre']);
-            $calendar->setDescription($donnees['description']);
+            //$calendar->setDescription($donnees['description']);
             $calendar->setStart($dateStart);
             $calendar->setEnd($dateEnd);
             $calendar->setBackgroundColor($donnees['color']);
@@ -46,6 +46,51 @@ class CalendarController extends AbstractController
             return $this->redirectToRoute('admin_show_agenda');
         }
 
-        return $this->render('/admin/agenda/addAgenda.html.twig', ['donnees'=>$donnees,'erreurs'=>$erreurs]);
+        return $this->render('/admin/agenda/addCalendar.html.twig', ['donnees'=>$donnees,'erreurs'=>$erreurs]);
+    }
+    /**
+     * @Route("/admin/delete/calendar", name="admin_delete_calendar", methods={"DELETE"})
+     */
+    public function deleteCalendar(Request $request)
+    {
+        $id = json_decode($request->getContent());
+        $em = $this->getDoctrine()->getManager();
+        $calendar = $em->getRepository(Calendar::class)->find($id);
+        if($calendar != null) {
+            if ($calendar->getRdv() != null) {
+                $rdv = $em->getRepository(RDV::class)->find($calendar->getRdv());
+                $em->remove($calendar);
+                $em->remove($rdv);
+            } else {
+                $em->remove($calendar);
+            }
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('admin_show_agenda');
+
+    }
+
+    private function validatorCalendar($donnees)
+    {
+        $erreurs = array();
+
+        if(strcmp($donnees['titre'],'')==0)
+            $erreurs['titre'] = 'Veuillez entrer un titre';
+        if ($donnees['start'] == NULL)
+            $erreurs['start'] = 'Veuillez entrer une date de début';
+        if ($donnees['end'] == NULL)
+            $erreurs['end'] = 'Veuillez entrer une date de fin';
+        $dateStart = new \DateTime($donnees['start']);
+        $dateEnd = new \DateTime($donnees['end']);
+        if($dateStart>$dateEnd)
+            $erreurs['end'] = 'Veuillez entrer une date valide';
+        if($dateStart==$dateEnd) {
+            $erreurs['end'] = 'Veuillez entrer des dates valident';
+            $erreurs['start'] = 'Veuillez entrer des dates valident';
+        }
+
+
+        return $erreurs;
     }
 }
