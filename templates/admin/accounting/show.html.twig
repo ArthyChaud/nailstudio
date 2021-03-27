@@ -2,10 +2,16 @@
 
 {% block body %}
 <div class="container-fluid">
+    <div class="container-fluid">
+        <a href="{{ path('admin_accounting') }}" class="btn btn-primary">Editeur</a>
+        <a href="{{ path('admin_accounting_show') }}" class="btn btn-primary">Livre des recettes</a>
+        <a href="{{ path('admin_accounting_stats') }}" class="btn btn-primary">Statistiques</a>
+    </div>
+    <br>
 <table class="table dataTable my-0" id="dataTable">
     <thead id="blueBar">
     <tr>
-        <th><h3><span id="txtBlueBar">Comptabilité</span></h3></th>
+        <th><h3><span id="txtBlueBar">Livre des recettes </span></h3></th>
     </tr>
     </thead>
 </table>

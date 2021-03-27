@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        {% endblock %}
+    </head>
+    <body>
+    <!-- Menu -->
+    <div class="container-fluid" >
+        <div class="text"id="menuBar">
+            <div class="row">
+                {% if is_granted("ROLE_ADMIN") %}
+                    <div class="col">
+                        <div class="text-center" id="realisations">
+                            <a href="/admin/show/agenda" id="txtRealisations"><strong class="
+                                {% if app.request.pathInfo =="/admin/show/agenda" %}actif
+                                {% else %}inactif
+                                {% endif %}">Agenda</strong></a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-center" id="realisations">
+                            <a href="/admin/accounting" id="txtRealisations"><strong class="
+                                {% if app.request.pathInfo =="/admin/accounting" %}actif
+                                {% else %}inactif
+                                {% endif %}">Comptabilité</strong></a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-center" id="realisations">
+                            <a href="/admin/show/produit" id="txtRealisations"><strong class="
+                                {% if app.request.pathInfo =="/admin/show/produit" %}actif
+                                {% else %}inactif
+                                {% endif %}">Produits</strong></a>
+                        </div>
+                    </div>
+                {% endif %}
+        </div>
+    </div>
+</div>
+<br>
+    {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    {% endblock %}
+    </body>
+</html>

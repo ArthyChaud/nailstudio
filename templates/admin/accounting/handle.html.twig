@@ -1,7 +1,13 @@
 {% extends "base/base.html.twig" %}
-
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 {% block body %}
     <div class="container-fluid">
+        <div class="container-fluid">
+            <a href="{{ path('admin_accounting') }}" class="btn btn-primary">Editeur</a>
+            <a href="{{ path('admin_accounting_show') }}" class="btn btn-primary">Livre des recettes</a>
+            <a href="{{ path('admin_accounting_stats') }}" class="btn btn-primary">Statistiques</a>
+        </div>
+        <br>
         <div class="row">
             <div class="col">
                 <h1 class="heading-stylized">{% if view == "edit" %}Éditer{% else %}Ajouter{% endif %}</h1>

@@ -18,13 +18,15 @@
                     <div class="container-fluid">
                         {% for carousel in carousels %}
                             {% if "Onglerie" in carousel.type %}
+                                {% if is_granted('ROLE_ADMIN') %}
                                 <h1 class="heading-stylized text-center">{{ carousel.name }}</h1>
-                                <div class="text-center mt-2 mb-2">
-                                    <a class="btn btn-primary" href="{{ path('admin_carousel_edit', {'id' : carousel.id, page:'services'}) }}">
-                                        Éditer le carousel</a>
-                                    <a class="btn btn-primary" href="{{ path('medias_add', {'id' : carousel.id, page:'services'}) }}">Ajouter un
-                                        média</a>
-                                </div>
+                                    <div class="text-center mt-2 mb-2">
+                                        <a class="btn btn-primary" href="{{ path('admin_carousel_edit', {'id' : carousel.id, page:'services'}) }}">
+                                            Éditer le carousel</a>
+                                        <a class="btn btn-primary" href="{{ path('medias_add', {'id' : carousel.id, page:'services'}) }}">Ajouter un
+                                            média</a>
+                                    </div>
+                                {% endif %}
                                 {% if carousel.medias | length > 1 %}
                                     <div id="carousel-{{ carousel.id }}" class="carousel slide" data-ride="carousel">
                                         <ol class="carousel-indicators">
@@ -48,7 +50,7 @@
                                                             <source src="{{ asset('uploads/services/' ~ media.path) }}">
                                                         </video>
                                                     {% endif %}
-                                                    {% if is_granted('ROLE_ADMIN') %}
+                                                    {% if is_granted('ROLE_ADMIN')%}
                                                         <div class="carousel-caption d-none d-md-block text-center">
                                                             <div class="mt-2 mb-2">
                                                                 <a class="btn btn-primary"
@@ -84,10 +86,12 @@
                                             <source src="{{ asset('uploads/services/' ~ media.path) }}">
                                         </video>
                                     {% endif %}
+                                    {% if is_granted('ROLE_ADMIN') %}
                                     <div class="text-center mt-2 mb-2">
                                         <a class="btn btn-primary"
                                            href="{{ path('medias_delete', {'id': media.id, page:'services'}) }}">Supprimer ce média</a>
                                     </div>
+                                        {% endif %}
                                 {% endif %}
                                 <pre class="w-50 mx-auto text-justify bigger"
                                      style="font-size: 17px">{{ carousel.description }}</pre>
@@ -122,6 +126,7 @@
                     <div class="container-fluid">
                         {% for carousel in carousels %}
                             {% if "Extension de cils" in carousel.type %}
+                            {% if is_granted('ROLE_ADMIN') %}
                                 <h1 class="heading-stylized text-center">{{ carousel.name }}</h1>
                                 <div class="text-center mt-2 mb-2">
                                     <a class="btn btn-primary" href="{{ path('admin_carousel_edit', {'id' : carousel.id, page:'services'}) }}">
@@ -129,6 +134,7 @@
                                     <a class="btn btn-primary" href="{{ path('medias_add', {'id' : carousel.id, page:'services'}) }}">Ajouter un
                                         média</a>
                                 </div>
+                                {%  endif %}
                                 {% if carousel.medias | length > 1 %}
                                     <div id="carousel-{{ carousel.id }}" class="carousel slide" data-ride="carousel">
                                         <ol class="carousel-indicators">
@@ -188,10 +194,12 @@
                                             <source src="{{ asset('uploads/services/' ~ media.path) }}">
                                         </video>
                                     {% endif %}
+                                    {% if is_granted('ROLE_ADMIN') %}
                                     <div class="text-center mt-2 mb-2">
                                         <a class="btn btn-primary"
                                            href="{{ path('medias_delete', {'id': media.id, page:'services'}) }}">Supprimer ce média</a>
                                     </div>
+                                        {% endif %}
                                 {% endif %}
                                 <pre class="w-50 mx-auto text-justify bigger"
                                      style="font-size: 17px">{{ carousel.description }}</pre>
@@ -227,6 +235,7 @@
                     <div class="container-fluid">
                         {% for carousel in carousels %}
                             {% if "Epilation sourcils et lèvre" in carousel.type %}
+                            {% if is_granted('ROLE_ADMIN') %}
                                 <h1 class="heading-stylized text-center">{{ carousel.name }}</h1>
                                 <div class="text-center mt-2 mb-2">
                                     <a class="btn btn-primary" href="{{ path('admin_carousel_edit', {'id' : carousel.id, page:'services'}) }}">
@@ -234,6 +243,7 @@
                                     <a class="btn btn-primary" href="{{ path('medias_add', {'id' : carousel.id, page:'services'}) }}">Ajouter un
                                         média</a>
                                 </div>
+                                {% endif %}
                                 {% if carousel.medias | length > 1 %}
                                     <div id="carousel-{{ carousel.id }}" class="carousel slide" data-ride="carousel">
                                         <ol class="carousel-indicators">
@@ -333,6 +343,7 @@
                     <div class="container-fluid">
                         {% for carousel in carousels %}
                             {% if "Soins visage" in carousel.type %}
+                            {% if is_granted('ROLE_ADMIN') %}
                                 <h1 class="heading-stylized text-center">{{ carousel.name }}</h1>
                                 <div class="text-center mt-2 mb-2">
                                     <a class="btn btn-primary" href="{{ path('admin_carousel_edit', {'id' : carousel.id, page:'services'}) }}">
@@ -340,6 +351,7 @@
                                     <a class="btn btn-primary" href="{{ path('medias_add', {'id' : carousel.id, page:'services'}) }}">Ajouter un
                                         média</a>
                                 </div>
+                                {% endif %}
                                 {% if carousel.medias | length > 1 %}
                                     <div id="carousel-{{ carousel.id }}" class="carousel slide" data-ride="carousel">
                                         <ol class="carousel-indicators">

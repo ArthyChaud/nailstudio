@@ -2,12 +2,24 @@
 
 {% block body %}
     {% include "base/includes.html.twig" %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Statistiques</h1>
-            </div>
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <a href="{{ path('admin_accounting') }}" class="btn btn-primary">Editeur</a>
+            <a href="{{ path('admin_accounting_show') }}" class="btn btn-primary">Livre des recettes</a>
+            <a href="{{ path('admin_accounting_stats') }}" class="btn btn-primary">Statistiques</a>
         </div>
+        <br>
+        <div class="container-fluid">
+        <div class="row">
+            <table class="table dataTable my-0" id="dataTable">
+                <thead id="blueBar">
+                <tr>
+                    <th><h3><span id="txtBlueBar">Statistiques</span></h3></th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+            <br>
         <div class="row">
             <div class="col">
                 <canvas id="myChart2"></canvas>
@@ -110,7 +122,7 @@
                 options: {}
             });
         </script>
-
+    </div>
         <script type="text/javascript">
             let ctx2 = document.getElementById('myChart2').getContext('2d');
             let chart2 = new Chart(ctx2, {
@@ -154,5 +166,6 @@
                 options: {}
             });
         </script>
+
 {% endblock %}
 {% endblock body %}

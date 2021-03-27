@@ -5,7 +5,7 @@
         <form method="post" action="{{ path('user_registration') }}">
             <legend>Créer un nouveau compte</legend>
             <div class="form-group">
-                <label>username :</label>
+                <label>utilisateur :</label>
                 <input name="username"  type="text"  size="18" value="{{donnees.username|default('')}}" class="form-control">
                 {% if erreurs.username is defined %}
                     <div style="color: red">{{ erreurs.username }}</div>
@@ -13,7 +13,7 @@
             </div>
 
             <div class="form-group">
-                <label>password :</label>
+                <label>mot de passe :</label>
                 <input name="password"  type="password"  size="18"  value="" class="form-control">
                 {% if erreurs.password is defined %}
                     <div style="color: red">{{erreurs.password}}</div>

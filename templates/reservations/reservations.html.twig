@@ -3,7 +3,8 @@
 {% block title %} NailStudio | réservation {% endblock %}
 
 {% block body %}
-    {% if app.user is defined and is_granted('ROLE_CLIENT') %}
+    <div class="container-fluid">
+    {% if is_granted('ROLE_CLIENT') %}
         <p style="color: gray">Si vous avez pris rendez-vous mais que celui-ci ne s'affiche pas, il a surement été refusé.</p>
         <div class="container-fluid">
             <p class="text-center">
@@ -30,19 +31,17 @@
             </table>
                 {% endif %}
                 <p><a href="/PrendreRendezVous" class="btn btn-primary">Prendre un rendez vous</a></p>
-                <div class="container-fluid">
-                    <p><a href="{{ path('app_logout') }}" class="btn btn-primary">Se déconnecter</a></p>
-                </div>
             </div>
         </div>
     {% endif %}
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
         <p><a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">gérer les rendez-vous</a></p>
     {% endif %}
-    {% if app.user is defined and not is_granted('ROLE_CLIENT') or not is_granted('ROLE_ADMIN')  %}
+    {% if not is_granted("ROLE_CLIENT") and not is_granted("ROLE_ADMIN") %}
         <div class="container-fluid">
             <p>Afin d'accéder aux reservations veuillez vous connecter</p>
             <p><a href="/login">Se connecter</a></p>
         </div>
     {% endif %}
+    </div>
 {% endblock %}

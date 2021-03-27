@@ -1,9 +1,10 @@
 {% extends 'base/base.html.twig'%}
 {% block body %}
-    <a href="{{ path('admin_add_agenda') }}" class="btn btn-primary">ajouter un élément à l'agenda</a>
-    <a href="{{ path('admin_show_produit') }}" class="btn btn-primary">voir tous les produits</a>
-    <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">agenda</a>
-
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">Agenda</a>
+            <a href="{{ path('admin_add_agenda') }}" class="btn btn-primary">ajouter un élément à l'agenda</a>
+        </div>
     <br>
     <p>agenda</p>
     <table class="table">
@@ -49,7 +50,7 @@
                 {% if rdv.valider%}
                     <td>déjà valider</td>
                 {% else %}<td>
-                    <form action=" {{ path('admin_rdv_validation') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
+                    <form action=" {{ path('admin_rdv_validation') }} " onclick="return confirm('Voulez-vous valider ce rendez-vous')" method="POST" style="display:inline">
                         <input type="hidden" name="token" value="{{ csrf_token('rdv_validation') }}">
                         <input type="hidden" name="id" value="{{ rdv.id }}">
                         <button type="submit" class="btn btn-primary">Valider</button>
@@ -65,4 +66,5 @@
                 {% endfor %}
             </table>
     {% endif %}
+    </div>
 {% endblock %}

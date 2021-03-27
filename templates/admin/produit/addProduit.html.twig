@@ -1,6 +1,10 @@
 {% extends 'base/base.html.twig'%}
 {% block body %}
-<div class="container">
+<div class="container-fluid">
+    <a href="{{ path('admin_add_typeProduit') }}" class="btn btn-primary">ajouter un type de produit</a>
+    <a href="{{ path('admin_add_marque') }}" class="btn btn-primary">ajouter une marque</a>
+    <a href="{{ path('admin_add_produit') }}" class="btn btn-primary">ajouter un produit</a>
+    <a href="{{ path('admin_show_produit') }}" class="btn btn-primary">voir tous les produits</a>
     <form method="post" action="{{ path('admin_add_produit') }}">
         <legend>Ajouter un produit</legend>
 

@@ -301,7 +301,7 @@ class ProduitController extends AbstractController
         if($donnees['marqueId']==NULL)
             $erreurs['marqueId'] = 'Veuillez entrer une marque';
 
-        if($donnees['prix']==NULL OR !is_numeric($donnees['prix'] OR $donnees['prix']>10000))
+        if($donnees['prix']==NULL OR !is_numeric($donnees['prix']) OR $donnees['prix']>10000)
             $erreurs['prix'] = 'Veuillez entrer un prix';
 
         if($donnees['stock']==NULL OR !is_numeric($donnees['stock']))

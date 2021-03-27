@@ -2,48 +2,56 @@
 
 {% block body %}
     <div class="container-fluid">
-        <table class="table dataTable my-0" id="dataTable">
-            <thead id="blueBar">
-            <tr>
-                <th><h3><span id="txtBlueBar">Comptabilité</span></h3></th>
-            </tr>
-            </thead>
-        </table>
-        <br>
-        <div class="form-group">
-            <button class="btn" id="" type="submit"><a href="{{ path('admin_accounting_add') }}">Ajouter une ligne</a></button>
-        </div>
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <a href="{{ path('admin_accounting') }}" class="btn btn-primary">Editeur</a>
+                <a href="{{ path('admin_accounting_show') }}" class="btn btn-primary">Livre des recettes</a>
+                <a href="{{ path('admin_accounting_stats') }}" class="btn btn-primary">Statistiques</a>
+            </div>
+            <br>
+            <table class="table dataTable my-0" id="dataTable">
+                <thead id="blueBar">
+                <tr>
+                    <th><h3><span id="txtBlueBar">Editeur</span></h3></th>
+                </tr>
+                </thead>
+            </table>
+            <br>
+            <div class="form-group">
+                <button class="btn" id="" type="submit"><a href="{{ path('admin_accounting_add') }}">Ajouter une ligne</a></button>
+            </div>
 
-        <table class="table dataTable my-0" id="dataTable">
-            <thead id="darkBar">
-            <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Libelle</th>
-                <th>Catégorie</th>
-                <th>Prix</th>
-                <th>Options</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% if accounting is defined and accounting is not null %}
-                {% for accounting in accounting %}
-                    <tr>
-                        <td>{{ accounting.id }}</td>
-                        <td>{{ accounting.date|date("d/m/Y") }}</td>
-                        <td>{{ accounting.libelle }}</td>
-                        <td>{{ accounting.categoryAccounting.categorie }}</td>
-                        <td>{{ accounting.prix }} €</td>
-                        <td>
-                            <div class="form-group">
-                                <a type="button" class="btn" id="" href="{{ path('admin_accounting_edit', { 'id' : accounting.id }) }}"><i class="fas fa-edit"></i> </a>
-                                <a type="button" class="btn" id="" href="{{ path('admin_accounting_delete', { 'id' : accounting.id }) }}"><i class="fas fa-trash-alt"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% endif %}
-            </tbody>
-        </table>
+            <table class="table dataTable my-0" id="dataTable">
+                <thead id="darkBar">
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Libelle</th>
+                    <th>Catégorie</th>
+                    <th>Prix</th>
+                    <th>Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if accounting is defined and accounting is not null %}
+                    {% for accounting in accounting %}
+                        <tr>
+                            <td>{{ accounting.id }}</td>
+                            <td>{{ accounting.date|date("d/m/Y") }}</td>
+                            <td>{{ accounting.libelle }}</td>
+                            <td>{{ accounting.categoryAccounting.categorie }}</td>
+                            <td>{{ accounting.prix }} €</td>
+                            <td>
+                                <div class="form-group">
+                                    <a type="button" class="btn" id="" href="{{ path('admin_accounting_edit', { 'id' : accounting.id }) }}"><i class="fas fa-edit"></i> </a>
+                                    <a type="button" class="btn" id="" href="{{ path('admin_accounting_delete', { 'id' : accounting.id }) }}"><i class="fas fa-trash-alt"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock body %}

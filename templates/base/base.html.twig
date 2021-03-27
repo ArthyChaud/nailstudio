@@ -6,7 +6,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
             <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -66,14 +65,6 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="text-center" id="realisations">
-                            <a href="/realisations" id="txtRealisations"><strong class="
-                                    {% if app.request.pathInfo =="/realisations" %}actif
-                                    {% else %}inactif
-                                    {% endif %}">Réalisations</strong></a>
-                        </div>
-                    </div>
-                    <div class="col">
                         <div class="text-center" id="reservations">
                             <a href="/reservations" id="txtReservations"><strong class="
                                     {% if app.request.pathInfo =="/reservations" %}actif
@@ -89,6 +80,25 @@
                                     {% endif %}">Contact</strong></a>
                         </div>
                     </div>
+                    {% if not is_granted("ROLE_CLIENT") and not is_granted("ROLE_ADMIN") %}
+                    <div class="col">
+                        <div class="text-center" id="Contact">
+                            <a href="/login" id="txtContact"><strong class="
+                                    {% if app.request.pathInfo =="/login" %}actif
+                                    {% else %}inactif
+                                    {% endif %}">Connexion</strong></a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col">
+                        <div class="text-center" id="Contact">
+                            <a href="/logout" id="txtContact"><strong class="
+                                    {% if app.request.pathInfo =="/logout" %}actif
+                                    {% else %}inactif
+                                    {% endif %}">Déconnexion</strong></a>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -102,6 +112,9 @@
                 </div>
             </div>
             <br>
+            {% if is_granted("ROLE_ADMIN") %}
+                {% include "base/baseAdmin.html.twig" %}
+            {% endif %}
             <!-- Contenu de la page -->
             {% block body %}
 
@@ -187,7 +200,7 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="text-center" id="copyright"><strong>Copyright@2021 Nailstudio - Tout droit réservés - <a href="mentionLegales">Mention légales</a> </strong></div>
+                <div class="text-center" id="copyright"><strong>Copyright@2021 Nailstudio - Tout droit réservés - <a href="/mentionLegales">Mention légales</a> </strong></div>
             </div>
             <br>
         {% block javascripts %}
@@ -197,6 +210,7 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
             <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
             <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-        {% endblock %}
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+       {% endblock %}
     </body>
 </html>
