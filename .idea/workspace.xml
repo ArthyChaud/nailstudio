@@ -19,58 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="ajout vue gerer rdv à la vue agenda">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Nailstudio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Nailstudio.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="nouvelle version (erreur fichier bootstrap.css)">
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/CalendarController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/agenda/addCalendar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210103165043.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20210103165043.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210103211930.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20210103211930.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210103212104.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20210103212104.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-grid.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/.preload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/AccountingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/AccountingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/CarouselLikeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/CarouselLikeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/ProduitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/ProduitController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/AgendaController2.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/AgendaController2.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Accounting.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Accounting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/CategoryAccounting.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CategoryAccounting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AccountingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AccountingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CategoryAccountingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CategoryAccountingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Client/Rdv/RdvAddForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Client/Rdv/RdvAddForm.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Security/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Security/registration.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Security/registration.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accueil/accueil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accueil/accueil.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/accounting/accounting.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/accounting/accounting.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/accounting/handle.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/accounting/handle.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/accounting/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/accounting/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/accounting/stats.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/accounting/stats.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/agenda/addAgenda.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agenda/addAgenda.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/agenda/editAgenda.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agenda/editAgenda.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Agenda.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Agenda.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TypeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TypeService.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/produit/addMarque.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/addMarque.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/produit/addProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/addProduit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/produit/addTypeProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/addTypeProduit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/produit/editProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/editProduit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/produit/showProduit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/produit/showProduit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base/includes.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/includes.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mentionLegales/mentionLegales.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mentionLegales/mentionLegales.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/reservations/reservations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservations/reservations.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/services/services.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/services/services.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,7 +211,7 @@
       <workItem from="1616664582811" duration="20791000" />
       <workItem from="1616751572119" duration="418000" />
       <workItem from="1616834606678" duration="5590000" />
-      <workItem from="1616841104676" duration="657000" />
+      <workItem from="1616841104676" duration="16573000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -322,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609956282815</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="nouvelle version (erreur fichier bootstrap.css)">
+      <created>1616842175238</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1616842175238</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +319,9 @@
     <MESSAGE value="    ajout Marque et ajout des besoins sur showProduit.html.twig" />
     <MESSAGE value="rectification agenda et produit" />
     <MESSAGE value="ajout vue gerer rdv à la vue agenda" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout vue gerer rdv à la vue agenda" />
+    <MESSAGE value="nouvelle version" />
+    <MESSAGE value="nouvelle version (erreur fichier bootstrap.css)" />
+    <option name="LAST_COMMIT_MESSAGE" value="nouvelle version (erreur fichier bootstrap.css)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
@@ -374,10 +344,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="380" y="55" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1609864989928" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616781617216">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616855758476">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1616781617216" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1616855758476" />
     <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1609689701865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -390,10 +360,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1616839613884" />
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1609956285934">
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1616842204996">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1609956285934" />
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616842204996" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609688245543" />
     <state x="367" y="98" key="VcsDiffUtil.ChangesDialog" timestamp="1609887410509">
       <screen x="0" y="0" width="1366" height="728" />
@@ -404,6 +374,10 @@
     </state>
     <state x="521" y="288" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1609868318415" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1609686028943" />
+    <state x="400" y="135" key="refactoring.ChangeSignatureDialog" timestamp="1616848200334">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="400" y="135" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1616848200334" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1616777734953">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

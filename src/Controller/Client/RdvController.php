@@ -1,8 +1,10 @@
 <?php
 namespace App\Controller\Client;
 
+use App\Entity\Calendar;
 use App\Entity\RDV;
 use App\Entity\TypeService;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormRegistryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -76,8 +78,8 @@ class RdvController extends AbstractController
             $rdv->setTypeService($typeService);
             $rdv->setUser($this->getUser());
             $rdv->setValider(false);
-
             $this->getDoctrine()->getManager()->persist($rdv);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('reservations');
@@ -131,6 +133,51 @@ class RdvController extends AbstractController
         $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
         $rdv->setValider(True);
         $entityManager->persist($rdv);
+
+        /*création d'une enité calendar*/
+
+        /*création date Start*/
+        $StringDateStart = $rdv->getDateRdv()->format('Y-m-d')."T".$rdv->getHeure();
+        $dateStart = new \DateTime($StringDateStart);
+
+        /*création date End*/
+        $heure = $rdv->getHeure();
+        if($heure[0]=='1' and $heure[1]=='7' and $heure[3]=='3'){
+            $heure[1]='8';
+            $heure[3]='0';
+        }else if($heure[0]=='0' and $heure[1]=='9' and $heure[3]=='3'){
+            $heure[0]='1';
+            $heure[1]='0';
+            $heure[3]='0';
+        }else if($heure[3]=='0'){
+            $heure[3]='3';
+
+        }else if($heure[3]=='3'){
+            $heure[1]=strval(intval($heure[1])+1);
+            $heure[3]='0';
+        }
+        $StringDateEnd = $rdv->getDateRdv()->format('Y-m-d')."T".$heure;
+        $dateEnd = new \DateTime($StringDateEnd);
+
+
+        $calendar = new Calendar();
+        $type_service=$this->getDoctrine()->getRepository(TypeService::class)->find($rdv->getTypeService());
+        $calendar->setTitre($type_service->getLibelle());
+        $user=$this->getDoctrine()->getRepository(User::class)->find($rdv->getUser());
+
+        $calendar->setDescription($user->getUsername());
+        $calendar->setStart($dateStart);
+        $calendar->setEnd($dateEnd);
+        if($type_service->getLibelle()=='Manucure'){
+            $calendar->setBackgroundColor('#2045CB');
+        }else if($type_service->getLibelle()=='épilation') {
+            $calendar->setBackgroundColor('#20CB25');
+        }else{
+            $calendar->setBackgroundColor('#FF8800');
+        }
+        $this->getDoctrine()->getManager()->persist($calendar);
+
+
         $entityManager->flush();
         return $this->redirectToRoute('admin_show_agenda');
 

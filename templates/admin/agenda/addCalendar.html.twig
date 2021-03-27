@@ -1,0 +1,53 @@
+{% extends 'base/base.html.twig'%}
+{% block body %}
+    <div class="container">
+        <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">show calendar</a>
+        <form method="post" action="{{ path('admin_add_calendar') }}">
+            <legend>Ajouter un élément dans calendar</legend>
+
+            <div class="form-group">
+                <label>Titre :</label>
+                <input name="titre"  type="text"  size="18" value="{{donnees.titre|default('')}}" class="form-control">
+                {% if erreurs.titre is defined %}
+                    <div style="color: red">{{ erreurs.titre }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label>Description :</label>
+                <input name="description"  type="text"  size="18" value="{{donnees.description|default('')}}" class="form-control">
+                {% if erreurs.description is defined %}
+                    <div style="color: red">{{ erreurs.description }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label>Début :</label>
+                <input name="start"  type="datetime-local"  size="18"
+                       value="{{ (start is defined) and (start is not null) ? start|date("d/m/Y") : donnees.start | default('') }}"
+                       class="form-control {% if erreurs.start is defined %}is-invalid{% endif %}">
+                {% if erreurs.start is defined %}
+                    <div class="invalid-feedback">{{erreurs.start}}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label>Fin :</label>
+                <input name="end"  type="datetime-local"  size="18" value="{{donnees.end|default('')}}" class="form-control">
+                {% if erreurs.end is defined %}
+                    <div style="color: red">{{ erreurs.end }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label>Couleur :</label>
+                <input name="color"  type="color"  size="18" value="{{donnees.color|default('#111111')}}" class="form-control">
+                {% if color.end is defined %}
+                    <div style="color: red">{{ color.end }}</div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">{{ button|default('Valider') }}</button>
+
+        </form>
+    </div>
+{% endblock %}

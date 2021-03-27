@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Accounting;
+use App\Entity\Calendar;
 use App\Entity\CarouselLike;
 use App\Entity\CategoryAccounting;
 use App\Entity\RDV;
@@ -31,6 +32,8 @@ class AppFixtures extends Fixture
         $this->loadCategoryAccounting($manager);
         $this->loadAccounting($manager);
         $this->loadCarousel($manager);
+        $this->loadCalender($manager);
+
     }
 
 
@@ -67,15 +70,16 @@ class AppFixtures extends Fixture
     private function loadTypeService(ObjectManager $manager)
     {
         $typeServices = [
-            ['id' => 1,'libelle' => 'type1'],
-            ['id' => 2,'libelle' => 'type2'],
-
+            ['id' => 1,'libelle' => 'Manucure','color'=>'#000000'],
+            ['id' => 2,'libelle' => 'épilation','color'=>'#111111']
         ];
         foreach ($typeServices as $type)
         {
             $type_new = new TypeService();
             $type_new->setLibelle($type['libelle']);
             echo $type['libelle']."\n";
+            $type_new->setColor($type['color']);
+            echo $type['color']."\n";
             $manager->persist($type_new);
             $manager->flush();
         }
@@ -83,10 +87,10 @@ class AppFixtures extends Fixture
     private function loadRdv(ObjectManager $manager)
     {
         $rdvs = [
-            ['id' => 1,'dateRdv' => '2020-12-29','heure' => '08:00','typeService' => 'type1','user'=>'client','valider'=>false],
-            ['id' => 2,'dateRdv' => '2020-12-30','heure' => '09:00','typeService' => 'type1','user'=>'client','valider'=>true],
-            ['id' => 3,'dateRdv' => '2020-12-31','heure' => '10:00','typeService' => 'type2','user'=>'client2','valider'=>false],
-            ['id' => 4,'dateRdv' => '2021-01-01','heure' => '11:00','typeService' => 'type2','user'=>'client2','valider'=>true],
+            ['id' => 1,'dateRdv' => '2021-03-27','heure' => '08:00','typeService' => 'Manucure','user'=>'client','valider'=>false],
+            ['id' => 2,'dateRdv' => '2021-03-26','heure' => '09:00','typeService' => 'Manucure','user'=>'client','valider'=>true],
+            ['id' => 3,'dateRdv' => '2021-03-25','heure' => '10:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
+            ['id' => 4,'dateRdv' => '2021-03-24','heure' => '11:00','typeService' => 'épilation','user'=>'client2','valider'=>true],
         ];
         foreach ($rdvs as $rdv)
         {
@@ -122,6 +126,24 @@ class AppFixtures extends Fixture
             $new_cat = new CategoryAccounting();
             $new_cat->setCategorie($cat['categorie']);
             $manager->persist($new_cat);
+            $manager->flush();
+        }
+    }
+    private function loadCalender(ObjectManager $manager){
+        $calendars = [
+            ['id' => 2,'titre'=>'Manucure','start' => '2021-03-26T09:00','end' => '2021-03-26T09:30','description'=>'test','color'=>'#2045CB'],
+            ['id' => 4,'titre'=>'épilation','start' => '2021-03-24T11:00','end' => '2021-03-24T11:30','description'=>'test','color'=>'#20CB25'],
+        ];
+        foreach ($calendars as $calendar){
+            $dateStart = new \DateTime($calendar['start']);
+            $dateEnd = new \DateTime($calendar['end']);
+            $calendar_new = new Calendar();
+            $calendar_new->setTitre($calendar['titre']);
+            $calendar_new->setDescription($calendar['description']);
+            $calendar_new->setStart($dateStart);
+            $calendar_new->setEnd($dateEnd);
+            $calendar_new->setBackgroundColor($calendar['color']);
+            $manager->persist($calendar_new);
             $manager->flush();
         }
     }

@@ -1,39 +1,14 @@
 {% extends 'base/base.html.twig'%}
 {% block body %}
     <div class="container-fluid">
+        <div id="calendar"></div>
+    </div>
+    <div class="container-fluid">
         <div class="container-fluid">
             <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">Agenda</a>
-            <a href="{{ path('admin_add_agenda') }}" class="btn btn-primary">ajouter un élément à l'agenda</a>
+            <a href="{{ path('admin_add_calendar') }}" class="btn btn-primary">ajouter un élément à l'agenda</a>
         </div>
     <br>
-    <p>agenda</p>
-    <table class="table">
-        <thead class="thead-dark">
-        <tr><th>id</th><th>libelle</th><th>description</th><th>date</th><th>horaire</th><th>option</th></tr>
-        </thead>
-        {% if agendas is not empty %}
-            {% for agenda in agendas  %}
-                <tr>
-                    <td>{{agenda.id}}</td>
-                    <td>{{agenda.libelle}}</td>
-                    <td>{{agenda.description}}</td>
-                    <td>{{ agenda.date|date('d/m/Y')}} </td>
-                    <td>{{agenda.horaire}}</td>
-                    <td>
-                        <a href="{{ path('admin_edit_agenda', {id: agenda.id}) }}" class="btn btn-primary">modifier</a>
-                        <form action="{{ path('admin_delete_agenda') }}" method="POST" style="display:inline">
-                            <input type="hidden" name="token" value="{{ csrf_token('agenda_delete') }}">
-                            <input type="hidden" name="id" value="{{ agenda.id }}">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-warning">Supprimer</button>
-                        </form>
-                    </td>
-                </tr>
-            {% endfor %}
-        {% else %}
-            <tr class="table-warning"><td>Pas de date</td></tr>
-        {% endif %}
-    </table>
     <p>liste des rendez vous</p>
     {% if rdvs is not defined %}
     <p>aucun rendez vous</p>
@@ -67,4 +42,26 @@
             </table>
     {% endif %}
     </div>
+{% endblock %}
+{% block javascripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js" integrity="sha256-rPPF6R+AH/Gilj2aC00ZAuB2EKmnEjXlEWx5MkAp7bw=" crossorigin="anonymous"></script>
+
+<script>
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'timeGridWeek',
+        locale: 'fr',
+        timeZone:'Europe/Paris',
+        slotMinTime:'08:00:00',
+        slotMaxTime: '18:00:00',
+        headerToolbar:{
+            start:'dayGridMonth,timeGridWeek',
+            end:'prev,next'
+        },
+        events:{{ data|raw }}
+    });
+    calendar.render();
+
+</script>
 {% endblock %}

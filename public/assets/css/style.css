@@ -221,4 +221,7 @@ div#divNousTrouver.col{
     font-size: 30px;
     color:black;
 }
-
+#calendar{
+    width: 80%;
+    margin: auto;
+}

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Agenda;
+use App\Entity\Calendar;
 use App\Entity\RDV;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,8 +20,23 @@ class AgendaController2 extends AbstractController
     public function showAgenda(Request $request)
     {
         $agendas= $this->getDoctrine()->getRepository(Agenda::class)->findBy([],['date'=>'ASC']);
-        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findAll();
-        return $this->render('/admin/agenda/showAgenda.html.twig',['agendas'=>$agendas,'rdvs'=>$rdvs]);
+        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['valider'=>false],[]);
+
+        $events = $this->getDoctrine()->getRepository(Calendar::class)->findAll();
+        $tabRdvs = [];
+        foreach ($events as $event){
+            $tabRdvs[] = [
+                'id'=> $event->getId(),
+                'title'=> $event->getTitre(),
+                'start'=> $event->getStart()->format('Y-m-d H:i:s'),
+                'end'=> $event->getEnd()->format('Y-m-d H:i:s'),
+                'description' => $event->getDescription(),
+                'backgroundColor' => $event->getBackgroundColor(),
+            ];
+        }
+        $data = json_encode($tabRdvs);
+
+        return $this->render('/admin/agenda/showAgenda.html.twig',['data'=>$data,'agendas'=>$agendas,'rdvs'=>$rdvs]);
     }
 
     /**
