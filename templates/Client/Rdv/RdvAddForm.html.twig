@@ -1,14 +1,6 @@
 {% extends 'base/base.html.twig'%}
 {% block body %}
     <div class="container-fluid">
-{#
-    <div class="container">
-        <form method="post"  action="{{ path('rdv_date') }}" >
-
-            <button name="dateValide" type="submit" class="btn btn-primary">{{ button|default('Valider le jour') }}</button>
-        </form>
-    </div>
-#}
     <div class="container">
         <form method="post" action="{{ path('rdv_date_valide') }}">
             <legend>Prendre rendez-vous</legend>
@@ -18,19 +10,7 @@
                     <input id="date" type="date" name="date" value="{{ date }}">
                 </div>
             <label>Choisir l'heure</label>
-      {#
-            <select id="heure" name="heure">
-                {% for heure in heures %}
-                    {% if heure.select == false %}
-                        <option value="{{ heure.libelle }}">
-                        {{ heure.libelle }}
-                        </option>
-                    {% endif %}
-                {% endfor %}
-            </select>
 
-            <br>
-      #}
             {% for heure in heures %}
                 <input type="radio" id="heure" name="horaireRadioBouton" value="{{ heure }}" >
                 <label name="horaireRadioLabel" >{{ heure }}</label>
@@ -40,17 +20,7 @@
             {% endif %}
 
             <br>
-{#
-            <select name="typeService">
-                {% for typeService in typeServices %}
-                    <option value="{{ typeService.id }}">
-                        {{ typeService.libelle }}
-                    </option>
-                {% endfor %}
-            </select>
 
-            <br>
-#}
             <label>Choisir la préstation</label>
             {% for typeService in typeServices %}
                 <input type="radio" name="typeService" value="{{ typeService.id }}"><label for="service">{{ typeService.libelle }}</label>

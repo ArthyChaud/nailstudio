@@ -37,22 +37,7 @@ class RdvController extends AbstractController
      */
     public function rdvAdd(Request $request)
     {
-        /*
-                if ($request->request->get('date_autre') != null) {
-                    $literalTime = \DateTime::createFromFormat("Y-m-d", $request->request->get('date_autre'));
-                } else {
-                    $literalTime = new\DateTime('now');
-                }
-
-                $date = new \DateTime($expire_date);
-                $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['dateRdv' => $date]);
-                if ($rdvs != null) {
-                    foreach ($rdvs as $rdv) {
-                        $heures[$rdv->getHeure()]["select"] = True;
-                    }
-                }
-        */
-        $heures = array("08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30",
+      $heures = array("08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30",
             "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
         );
         $typeServices = $this->getDoctrine()->getRepository(TypeService::class)->findBy([], ['libelle' => 'ASC']);
@@ -118,7 +103,7 @@ class RdvController extends AbstractController
         $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
         $entityManager->remove($rdv);
         $entityManager->flush();
-        return $this->redirectToRoute('admin_show_agenda');
+        return $this->redirectToRoute('admin_show_calendrier');
 
     }
 
@@ -169,11 +154,10 @@ class RdvController extends AbstractController
         $this->getDoctrine()->getManager()->persist($calendar);
 
         $entityManager->flush();
-        return $this->redirectToRoute('admin_show_agenda');
-
     }
+
     /**
-     * @Route("/admin/show/agenda/rdvValiderRefuser", name="admin_show_agenda_rdvValiderRefuser" , methods={"POST"})
+     * @Route("/admin/rdvValiderRefuser", name="admin_rdvValiderRefuser" , methods={"POST"})
      */
     public function rdvValiderRefuser(Request $request)
     {
@@ -194,7 +178,7 @@ class RdvController extends AbstractController
             }
         }
         $em->flush();
-        return $this->redirectToRoute('admin_show_agenda');
+        return $this->redirectToRoute('admin_show_calendrier');
     }
 
 }

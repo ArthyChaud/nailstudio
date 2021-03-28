@@ -20,8 +20,8 @@
                 {% if is_granted("ROLE_ADMIN") %}
                     <div class="col">
                         <div class="text-center" id="realisations">
-                            <a href="/admin/show/agenda" id="txtRealisations"><strong class="
-                                {% if app.request.pathInfo =="/admin/show/agenda" %}actif
+                            <a href="/admin/show/calendrier" id="txtRealisations"><strong class="
+                                {% if app.request.pathInfo =="/admin/show/calendrier" %}actif
                                 {% else %}inactif
                                 {% endif %}">Agenda</strong></a>
                         </div>
@@ -40,6 +40,14 @@
                                 {% if app.request.pathInfo =="/admin/show/produit" %}actif
                                 {% else %}inactif
                                 {% endif %}">Produits</strong></a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-center" id="realisations">
+                            <a href="/admin/show/service" id="txtRealisations"><strong class="
+                                {% if app.request.pathInfo =="/admin/show/service" %}actif
+                                {% else %}inactif
+                                {% endif %}">Services</strong></a>
                         </div>
                     </div>
                 {% endif %}

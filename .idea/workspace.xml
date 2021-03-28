@@ -19,12 +19,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="delete event du calendrier + delete rdvs associés aux events">
+    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="admin validation/refus multiple">
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/ServiceController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/service/addService.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin/service/showService.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/AgendaController2.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/AgendaController2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/CalendarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/CalendarController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Agenda.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AgendaRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CalendarRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CalendarRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Client/Rdv/RdvAddForm.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Client/Rdv/RdvAddForm.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agenda/addAgenda.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agenda/addCalendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/calendrier/addCalendar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agenda/editAgenda.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agenda/showAgenda.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/calendrier/showCalendar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base/baseAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/baseAdmin.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/reservations/reservations.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/reservations/reservations.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,13 +190,13 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\public\assets" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Controller" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -205,7 +218,7 @@
       <workItem from="1616751572119" duration="418000" />
       <workItem from="1616834606678" duration="5590000" />
       <workItem from="1616841104676" duration="25679000" />
-      <workItem from="1616920849778" duration="6247000" />
+      <workItem from="1616920849778" duration="20111000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -298,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616869793500</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="admin validation/refus multiple">
+      <created>1616927486948</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1616927486948</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +351,8 @@
     <MESSAGE value="nouvelle version (erreur fichier bootstrap.css)" />
     <MESSAGE value="Calendrier admin" />
     <MESSAGE value="delete event du calendrier + delete rdvs associés aux events" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete event du calendrier + delete rdvs associés aux events" />
+    <MESSAGE value="admin validation/refus multiple" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin validation/refus multiple" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
@@ -354,10 +375,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="380" y="55" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1609864989928" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616855758476">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616938120641">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1616855758476" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1616938120641" />
     <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1609689701865">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -370,10 +391,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1616839613884" />
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1616869810895">
+    <state x="405" y="87" key="NewPhpClassDialog" timestamp="1616927766210">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616869810895" />
+    <state x="405" y="87" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1616927766210" />
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1616927497601">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616927497601" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609688245543" />
     <state x="367" y="98" key="VcsDiffUtil.ChangesDialog" timestamp="1609887410509">
       <screen x="0" y="0" width="1366" height="728" />
@@ -392,5 +417,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1616777734953" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1616931726763">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1616931726763" />
   </component>
 </project>

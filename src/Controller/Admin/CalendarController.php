@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Agenda;
 use App\Entity\Calendar;
 use App\Entity\RDV;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,12 +15,35 @@ use function MongoDB\BSON\fromJSON;
 class CalendarController extends AbstractController
 {
     /**
+     * @Route("/admin/show/calendrier", name="admin_show_calendrier")
+     */
+    public function showCalendar(Request $request)
+    {
+        $rdvs = $this->getDoctrine()->getRepository(RDV::class)->findBy(['valider'=>false],[]);
+
+        $events = $this->getDoctrine()->getRepository(Calendar::class)->findAll();
+        $tabRdvs = [];
+        foreach ($events as $event){
+            $tabRdvs[] = [
+                'id'=> $event->getId(),
+                'title'=> $event->getTitre(),
+                'start'=> $event->getStart()->format('Y-m-d H:i:s'),
+                'end'=> $event->getEnd()->format('Y-m-d H:i:s'),
+                'description' => $event->getDescription(),
+                'backgroundColor' => $event->getBackgroundColor(),
+            ];
+        }
+        $data = json_encode($tabRdvs);
+
+        return $this->render('/admin/calendrier/showCalendar.html.twig',['data'=>$data,'rdvs'=>$rdvs]);
+    }
+    /**
     * @Route("/admin/add/calendar", name="admin_add_calendar", methods={"GET","POST"})
     */
     public function addCalendar(Request $request)
     {
         if($request->getMethod() == 'GET'){
-            return $this->render('/admin/agenda/addCalendar.html.twig');
+            return $this->render('/admin/calendrier/addCalendar.html.twig');
         }
 
         $donnees['titre']=$_POST['titre'];
@@ -43,10 +65,10 @@ class CalendarController extends AbstractController
             $calendar->setBackgroundColor($donnees['color']);
             $this->getDoctrine()->getManager()->persist($calendar);
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('admin_show_agenda');
+            return $this->redirectToRoute('admin_show_calendrier');
         }
 
-        return $this->render('/admin/agenda/addCalendar.html.twig', ['donnees'=>$donnees,'erreurs'=>$erreurs]);
+        return $this->render('/admin/calendrier/addCalendar.html.twig', ['donnees'=>$donnees,'erreurs'=>$erreurs]);
     }
     /**
      * @Route("/admin/delete/calendar", name="admin_delete_calendar", methods={"DELETE"})
@@ -67,7 +89,7 @@ class CalendarController extends AbstractController
             $em->flush();
         }
 
-        return $this->redirectToRoute('admin_show_agenda');
+        return $this->redirectToRoute('admin_show_calendrier');
 
     }
 

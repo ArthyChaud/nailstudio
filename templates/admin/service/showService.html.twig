@@ -1,0 +1,81 @@
+{% extends 'base/base.html.twig'%}
+{% block body %}
+    <div class="container-fluid">
+        <table class="table dataTable my-0" id="dataTable">
+            <thead id="blueBar">
+            <tr>
+                <th><h3><span id="txtBlueBar">Gestion services</span></h3></th>
+            </tr>
+            </thead>
+        </table>
+        <a href="{{ path('admin_add_service') }}" class="btn btn-primary">Ajouter un sevice</a>
+        <br>
+        <div class="container-fluid">
+            <br>
+            <table class="table">
+                <caption>Recapitulatifs des services</caption>
+                <thead class="thead-dark">
+                <tr><th>id</th><th>libelle</th><th>couleur</th><th>option</th></tr>
+                </thead>
+                {% if services is not empty %}
+                    {% for service in services  %}
+                        <tr>
+                            <td><input type="hidden" name="idService" value="{{service.id}}">{{service.id}}</td>
+                            <td><input type="text" name="libelleService" value="{{service.libelle}}"></td>
+                            <td >
+                                <input type="color" name="colorService" value="{{ service.color }}">
+                            </td>
+                            <td>
+                                <form onclick="return confirm('Si vous supprimez ce service TOUT les rendez associés seront supprimés\n')"
+                                      action="{{ path('admin_delete_service') }}" method="POST" style="display:inline">
+                                    <input type="hidden" name="token" value="{{ csrf_token('service_delete') }}">
+                                    <input type="hidden" name="id" value="{{ service.id }}">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-warning">Supprimer</button>
+                                </form>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr class="table-warning"><td>Pas de Service</td></tr>
+                {% endif %}
+            </table>
+            <button type="submit" id="BoutonValider" class="btn btn-primary">valider</button>
+
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        document.getElementById('BoutonValider').addEventListener("click", creationTab)
+
+
+        function creationTab(){
+            //récupération des inputs
+            const tabInputId = document.getElementsByName('idService');
+            const tabInputLibelle = document.getElementsByName('libelleService');
+            const tabInputColor = document.getElementsByName('colorService');
+
+            //initialisation des tableaux à envoyer
+            var tabId = []
+            var tabLibelle = []
+            var tabColor = []
+
+            //récupération des données des inputs
+            for(var i=0 ; i < tabInputLibelle.length ; i++){
+                tabId.push(tabInputId[i].value)
+                tabLibelle.push(tabInputLibelle[i].value)
+                tabColor.push(tabInputColor[i].value)
+            }
+            //initialisation de donnees
+            let donnees = [tabId,tabLibelle,tabColor]
+            //url vers le controller
+            let url = '{{ path('admin_add_service_edit') }}'
+            let xhr = new XMLHttpRequest()
+            xhr.open("POST",url)
+            //appelle de la fonction dans le controller et envoie des données
+            xhr.send(JSON.stringify(donnees))
+        }
+    </script>
+{% endblock %}

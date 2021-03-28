@@ -88,9 +88,9 @@ class AppFixtures extends Fixture
     {
         $rdvs = [
             ['id' => 1,'dateRdv' => '2021-03-29','heure' => '08:00','typeService' => 'Manucure','user'=>'client1','valider'=>false],
-            ['id' => 2,'dateRdv' => '2021-03-30','heure' => '09:00','typeService' => 'Manucure','user'=>'client1','valider'=>true],
+            ['id' => 2,'dateRdv' => '2021-03-30','heure' => '09:00','typeService' => 'Manucure','user'=>'client1','valider'=>false],
             ['id' => 3,'dateRdv' => '2021-03-31','heure' => '10:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
-            ['id' => 4,'dateRdv' => '2021-04-02','heure' => '11:00','typeService' => 'épilation','user'=>'client2','valider'=>true],
+            ['id' => 4,'dateRdv' => '2021-04-02','heure' => '11:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
             ['id' => 5,'dateRdv' => '2021-03-28','heure' => '10:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
             ['id' => 6,'dateRdv' => '2021-03-28','heure' => '12:30','typeService' => 'Manucure','user'=>'client1','valider'=>false],
             ['id' => 7,'dateRdv' => '2021-03-28','heure' => '15:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
@@ -133,7 +133,7 @@ class AppFixtures extends Fixture
             $manager->flush();
         }
     }
-    private function loadCalender(ObjectManager $manager){
+    private function loadCalender(ObjectManager $manager){/*
         $calendars = [
             ['id' => 1,'titre'=>'Manucure','start' => '2021-03-30T09:00','end' => '2021-03-30T09:30','description'=>'test','color'=>'#2045CB','rdv'=>2],
             ['id' => 2,'titre'=>'épilation','start' => '2021-04-02T11:00','end' => '2021-04-02T11:30','description'=>'test','color'=>'#20CB25','rdv'=>4],
@@ -151,7 +151,7 @@ class AppFixtures extends Fixture
             $calendar_new->setRdv($rdv);
             $manager->persist($calendar_new);
             $manager->flush();
-        }
+        }*/
     }
 
     private function loadAccounting(ObjectManager $manager)

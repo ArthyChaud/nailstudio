@@ -1,13 +1,13 @@
 {% extends 'base/base.html.twig'%}
 {% block body %}
     <div class="container">
-        <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">show calendar</a>
         <form method="post" action="{{ path('admin_add_calendar') }}">
             <legend>Ajouter un élément dans calendar</legend>
 
             <div class="form-group">
                 <label>Titre :</label>
-                <input name="titre"  type="text"  size="18" value="{{donnees.titre|default('')}}" class="form-control">
+                <input name="titre"  type="text"  size="18" value="{{donnees.titre|default('')}}"
+                       class="form-control {% if erreurs.titre is defined %}is-invalid{% endif %}">
                 {% if erreurs.titre is defined %}
                     <div style="color: red">{{ erreurs.titre }}</div>
                 {% endif %}
@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <label>Couleur :</label>
-                <input name="color"  type="color"  size="18" value="{{donnees.color|default('#111111')}}" class="form-control">
+                <input name="color" class="form-control form-control-color" type="color"  size="18" value="{{donnees.color|default('#111111')}}" class="form-control">
                 {% if color.end is defined %}
                     <div style="color: red">{{ color.end }}</div>
                 {% endif %}

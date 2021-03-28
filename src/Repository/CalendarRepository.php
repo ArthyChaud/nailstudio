@@ -47,4 +47,17 @@ class CalendarRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getCalendarWithTypeServices(Int $id)
+    {
+        $qb=$this->createQueryBuilder('c'); // il lui faut une lettre, i : item en base de données donc schéma
+        $qb->select('c.id as id')
+            ->join( 'App:RDV', 'r')
+            ->where('c.rdv=r.id')
+            ->andWhere('r.typeService=?1')
+            ->setParameter(1,$id);
+
+        //    ->addOrderBy('p.nom', 'ASC');     // ?????????
+        return $qb->getQuery()->getResult();
+    }
 }

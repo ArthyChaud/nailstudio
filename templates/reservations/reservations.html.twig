@@ -35,7 +35,7 @@
         </div>
     {% endif %}
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-        <p><a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">gérer les rendez-vous</a></p>
+        <p><a href="{{ path('admin_show_calendrier') }}" class="btn btn-primary">gérer les rendez-vous</a></p>
     {% endif %}
     {% if not is_granted("ROLE_CLIENT") and not is_granted("ROLE_ADMIN") %}
         <div class="container-fluid">
