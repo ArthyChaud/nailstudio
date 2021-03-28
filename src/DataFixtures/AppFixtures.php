@@ -52,7 +52,7 @@ class AppFixtures extends Fixture
         $client = new User();
         $password = $this->passwordEncoder->encodePassword($client, 'client');
         $client->setPassword($password);
-        $client->setRoles(['ROLE_CLIENT'])->setUsername('client')
+        $client->setRoles(['ROLE_CLIENT'])->setUsername('client1')
             ->setEmail('client@example.com')->setIsActive('1');
         $manager->persist($client);
         echo $client."\n";
@@ -87,10 +87,14 @@ class AppFixtures extends Fixture
     private function loadRdv(ObjectManager $manager)
     {
         $rdvs = [
-            ['id' => 1,'dateRdv' => '2021-03-27','heure' => '08:00','typeService' => 'Manucure','user'=>'client','valider'=>false],
-            ['id' => 2,'dateRdv' => '2021-03-26','heure' => '09:00','typeService' => 'Manucure','user'=>'client','valider'=>true],
-            ['id' => 3,'dateRdv' => '2021-03-25','heure' => '10:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
-            ['id' => 4,'dateRdv' => '2021-03-24','heure' => '11:00','typeService' => 'épilation','user'=>'client2','valider'=>true],
+            ['id' => 1,'dateRdv' => '2021-03-29','heure' => '08:00','typeService' => 'Manucure','user'=>'client1','valider'=>false],
+            ['id' => 2,'dateRdv' => '2021-03-30','heure' => '09:00','typeService' => 'Manucure','user'=>'client1','valider'=>true],
+            ['id' => 3,'dateRdv' => '2021-03-31','heure' => '10:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
+            ['id' => 4,'dateRdv' => '2021-04-02','heure' => '11:00','typeService' => 'épilation','user'=>'client2','valider'=>true],
+            ['id' => 5,'dateRdv' => '2021-03-28','heure' => '10:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
+            ['id' => 6,'dateRdv' => '2021-03-28','heure' => '12:30','typeService' => 'Manucure','user'=>'client1','valider'=>false],
+            ['id' => 7,'dateRdv' => '2021-03-28','heure' => '15:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
+
         ];
         foreach ($rdvs as $rdv)
         {
@@ -131,8 +135,8 @@ class AppFixtures extends Fixture
     }
     private function loadCalender(ObjectManager $manager){
         $calendars = [
-            ['id' => 2,'titre'=>'Manucure','start' => '2021-03-26T09:00','end' => '2021-03-26T09:30','description'=>'test','color'=>'#2045CB','rdv'=>147],
-            ['id' => 4,'titre'=>'épilation','start' => '2021-03-24T11:00','end' => '2021-03-24T11:30','description'=>'test','color'=>'#20CB25','rdv'=>149],
+            ['id' => 1,'titre'=>'Manucure','start' => '2021-03-30T09:00','end' => '2021-03-30T09:30','description'=>'test','color'=>'#2045CB','rdv'=>2],
+            ['id' => 2,'titre'=>'épilation','start' => '2021-04-02T11:00','end' => '2021-04-02T11:30','description'=>'test','color'=>'#20CB25','rdv'=>4],
         ];
         foreach ($calendars as $calendar){
             $dateStart = new \DateTime($calendar['start']);
