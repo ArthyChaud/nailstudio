@@ -4,42 +4,29 @@
         <div id="calendar"></div>
     </div>
     <div class="container-fluid">
-        <div class="container-fluid">
-            <a href="{{ path('admin_show_agenda') }}" class="btn btn-primary">Agenda</a>
-            <a href="{{ path('admin_add_calendar') }}" class="btn btn-primary">ajouter un élément à l'agenda</a>
-        </div>
-    <br>
-    <p>liste des rendez vous</p>
     {% if rdvs is not defined %}
     <p>aucun rendez vous</p>
     {% elseif rdvs is null %}
     <p>aucun rendez vous</p>
     {% elseif rdvs is not empty %}
-    <table class="table">
+        <p>liste des rendez vous</p>
+        <table class="table">
         <thead class="thead-dark">
-        <tr><th>utilisateur</th><th>date</th><th>heure</th><th>valider</th></tr>
+        <tr><th>utilisateur</th><th>date</th><th>heure</th><th>valider</th><th>Refuser</th></tr>
         </thead>
         {% for rdv in rdvs %}
             <tr>
                 <td>{{ rdv.user.username }}</td><td>{{ rdv.dateRdv|date('d/m/Y')}}</td><td>{{ rdv.heure }}</td>
-                {% if rdv.valider%}
-                    <td>déjà valider</td>
-                {% else %}<td>
-                    <form action=" {{ path('admin_rdv_validation') }} " onclick="return confirm('Voulez-vous valider ce rendez-vous')" method="POST" style="display:inline">
-                        <input type="hidden" name="token" value="{{ csrf_token('rdv_validation') }}">
-                        <input type="hidden" name="id" value="{{ rdv.id }}">
-                        <button type="submit" class="btn btn-primary">Valider</button>
-                    </form>
-                    <form action=" {{ path('rdv_delete') }} " onclick="return confirm('Voulez-vous supprimer ce rendez-vous')" method="POST" style="display:inline">
-                        <input type="hidden" name="token" value="{{ csrf_token('rdv_delete') }}">
-                        <input type="hidden" name="id" value="{{ rdv.id }}">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-primary">Refuser</button>
-                    </form></td>
-                {% endif %}
+                <td>
+                   <input type="radio" class="ajout" id="ajout" name="{{ rdv.id }}" value="{{ rdv.id }}">
+                </td>
+                <td>
+                    <input type="radio" class="delete" id="delete" name="{{ rdv.id }}" value="{{ rdv.id }}">
+                </td>
             </tr>
                 {% endfor %}
             </table>
+        <button type="submit" id="BoutonValiderRefuser" class="btn btn-primary">valider</button>
     {% endif %}
     </div>
 {% endblock %}
@@ -48,31 +35,92 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js" integrity="sha256-rPPF6R+AH/Gilj2aC00ZAuB2EKmnEjXlEWx5MkAp7bw=" crossorigin="anonymous"></script>
 
 <script>
+    /*----------------------------
+        script pour calendrier
+     ----------------------------*/
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
+        //initialise la vue sur une semaine
         initialView: 'timeGridWeek',
         locale: 'fr',
         timeZone:'Europe/Paris',
         slotMinTime:'08:00:00',
         slotMaxTime: '18:00:00',
+        customButtons:{
+            myCustomButton:{
+                text:'Ajouter un élément au calendrier',
+                click:function(){
+                    window.location.href = '{{ path('admin_add_calendar') }}';
+                }
+            }
+        },
         headerToolbar:{
             start:'dayGridMonth,timeGridWeek',
+            center:'myCustomButton',
             end:'prev,next'
         },
+
+        //events prend la valeur de data
+        //data est un return du controleur
         events:{{ data|raw }},
         eventClick:function(e){
             if(confirm('Voulez-vous supprimer l\'événement ?')){
-                console.log(e.event.id)
                 var donnees = e.event.id
                 let url = '{{ path('admin_delete_calendar') }}'
                 let xhr = new XMLHttpRequest()
+                //appelle de la fonction dans le controleur
                 xhr.open("DELETE",url)
+                //envoye de l'id du calendar clicked
                 xhr.send(JSON.stringify(donnees))
+                //on supprime du calendrier l'event
                 e.el.remove()
             }
         }
     });
+    //affiche le calendrier
     calendar.render();
+
+    /*----------------------------
+        Boutons valider/refuser
+    ----------------------------*/
+    if(document.getElementById('BoutonValiderRefuser')!=null) {
+        document.getElementById('BoutonValiderRefuser').addEventListener("click", creationTab)
+    }
+    function creationTab() {
+        const tabBoutonValide = document.getElementsByClassName("ajout")
+        const tabBoutonDelete = document.getElementsByClassName("delete")
+        var tabIdValide = []
+        var tabIdDelete = []
+        //création des tableaux contenant les Ids
+        for (i = 0; i < tabBoutonValide.length; i++) {
+            if (tabBoutonValide[i].checked) {
+                tabIdValide.push(tabBoutonValide[i].value)
+            }
+            if (tabBoutonDelete[i].checked) {
+                tabIdDelete.push(tabBoutonDelete[i].value)
+            }
+        }
+
+        let donnees = [tabIdValide,tabIdDelete]
+        let url = '{{ path('admin_show_agenda_rdvValiderRefuser') }}'
+        let xhr = new XMLHttpRequest()
+        //appelle de la fonction dans le controleur
+        xhr.open("POST",url)
+        //envoie de donnees
+        xhr.send(JSON.stringify(donnees))
+        //reload la fenetre
+        console.log("test1")
+        sleep(1000)
+        console.log("test2")
+        window.location.reload()
+    }
+    function sleep(ms){
+        const date = Date.now();
+        let currentDate = null;
+        do{
+            currentDate = Date.now()
+        }while (currentDate - date < ms);
+    }
 
 </script>
 {% endblock %}

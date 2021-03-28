@@ -5,6 +5,7 @@ use App\Entity\Calendar;
 use App\Entity\RDV;
 use App\Entity\TypeService;
 use App\Entity\User;
+use http\Client\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormRegistryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -120,22 +121,15 @@ class RdvController extends AbstractController
         return $this->redirectToRoute('admin_show_agenda');
 
     }
-    /**
-     * @Route("/admin/validerRdv", name="admin_rdv_validation")
-     */
-    public function rdvValidation(Request $request)
+
+    public function rdvIntoCalendar($id)
     {
-        if(!$this->isCsrfTokenValid('rdv_validation', $request->get('token'))) {
-            throw new  InvalidCsrfTokenException('Invalid CSRF token formulaire rdv validation');
-        }
-        $id= $request->request->get('id');
         $entityManager = $this->getDoctrine()->getManager();
         $rdv=$this->getDoctrine()->getRepository(RDV::class)->find($id);
-        $rdv->setValider(True);
-        $entityManager->persist($rdv);
 
-        /*création d'une enité calendar*/
-
+        /*-----------------------------
+         création d'une enité calendar
+        -----------------------------*/
         /*création date Start*/
         $StringDateStart = $rdv->getDateRdv()->format('Y-m-d')."T".$rdv->getHeure();
         $dateStart = new \DateTime($StringDateStart);
@@ -174,11 +168,33 @@ class RdvController extends AbstractController
         $calendar->setRdv($rdv);
         $this->getDoctrine()->getManager()->persist($calendar);
 
-
         $entityManager->flush();
         return $this->redirectToRoute('admin_show_agenda');
 
     }
+    /**
+     * @Route("/admin/show/agenda/rdvValiderRefuser", name="admin_show_agenda_rdvValiderRefuser" , methods={"POST"})
+     */
+    public function rdvValiderRefuser(Request $request)
+    {
+        $donnees = json_decode($request->getContent());
+        $em = $this->getDoctrine()->getManager();
 
+        if(isset($donnees[0])  && !empty($donnees[0])){
+            foreach ($donnees[0] as $id){
+                $rdv = $this->getDoctrine()->getRepository(RDV::class)->find($id);
+                $rdv->setValider(True);
+                $this->rdvIntoCalendar($rdv->getId());
+            }
+        }
+        if(isset($donnees[1])  && !empty($donnees[1])){
+            foreach ($donnees[1] as $id){
+                $rdv = $this->getDoctrine()->getRepository(RDV::class)->find($id);
+                $em->remove($rdv);
+            }
+        }
+        $em->flush();
+        return $this->redirectToRoute('admin_show_agenda');
+    }
 
 }
