@@ -6,7 +6,10 @@ use App\Entity\Accounting;
 use App\Entity\Calendar;
 use App\Entity\CarouselLike;
 use App\Entity\CategoryAccounting;
+use App\Entity\Marque;
+use App\Entity\Produit;
 use App\Entity\RDV;
+use App\Entity\TypeProduit;
 use App\Entity\TypeService;
 use App\Entity\User;
 use DateTime;
@@ -29,6 +32,9 @@ class AppFixtures extends Fixture
         $this->loadUsers($manager);
         $this->loadTypeService($manager);
         $this->loadRdv($manager);
+        $this->loadTypeProduit($manager);
+        $this->loadMarque($manager);
+        $this->loadProduit($manager);
         $this->loadCategoryAccounting($manager);
         $this->loadAccounting($manager);
         $this->loadCarousel($manager);
@@ -70,8 +76,10 @@ class AppFixtures extends Fixture
     private function loadTypeService(ObjectManager $manager)
     {
         $typeServices = [
-            ['id' => 1,'libelle' => 'Manucure','color'=>'#2045CB'],
-            ['id' => 2,'libelle' => 'épilation','color'=>'#20CB25']
+            ['id' => 1,'libelle' => 'Onglerie','color'=>'#2045CB'],
+            ['id' => 2,'libelle' => 'Extension des cils','color'=>'#20CB25'],
+            ['id' => 3,'libelle' => 'Épilation','color'=>'#E7A533'],
+            ['id' => 4,'libelle' => 'Soins visage','color'=>'#33E7D7'],
         ];
         foreach ($typeServices as $type)
         {
@@ -87,13 +95,16 @@ class AppFixtures extends Fixture
     private function loadRdv(ObjectManager $manager)
     {
         $rdvs = [
-            ['id' => 1,'dateRdv' => '2021-03-29','heure' => '08:00','typeService' => 'Manucure','user'=>'client1','valider'=>false],
-            ['id' => 2,'dateRdv' => '2021-03-30','heure' => '09:00','typeService' => 'Manucure','user'=>'client1','valider'=>false],
-            ['id' => 3,'dateRdv' => '2021-03-31','heure' => '10:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
-            ['id' => 4,'dateRdv' => '2021-04-02','heure' => '11:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
-            ['id' => 5,'dateRdv' => '2021-03-28','heure' => '10:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
-            ['id' => 6,'dateRdv' => '2021-03-28','heure' => '12:30','typeService' => 'Manucure','user'=>'client1','valider'=>false],
-            ['id' => 7,'dateRdv' => '2021-03-28','heure' => '15:00','typeService' => 'épilation','user'=>'client2','valider'=>false],
+            ['id' => 1,'dateRdv' => '2021-03-29','heure' => '08:00','typeService' => 'Onglerie','user'=>'client1','valider'=>false],
+            ['id' => 2,'dateRdv' => '2021-03-30','heure' => '09:00','typeService' => 'Extension des cils','user'=>'client1','valider'=>false],
+            ['id' => 3,'dateRdv' => '2021-03-31','heure' => '10:00','typeService' => 'Onglerie','user'=>'client2','valider'=>false],
+            ['id' => 4,'dateRdv' => '2021-03-31','heure' => '11:00','typeService' => 'Épilation','user'=>'client2','valider'=>false],
+            ['id' => 5,'dateRdv' => '2021-03-31','heure' => '10:30','typeService' => 'Onglerie','user'=>'client2','valider'=>false],
+            ['id' => 6,'dateRdv' => '2021-03-31','heure' => '14:30','typeService' => 'Extension des cils','user'=>'client1','valider'=>false],
+            ['id' => 7,'dateRdv' => '2021-04-01','heure' => '10:00','typeService' => 'Soins visage','user'=>'client2','valider'=>false],
+            ['id' => 8,'dateRdv' => '2021-04-01','heure' => '15:00','typeService' => 'Épilation','user'=>'client2','valider'=>false],
+            ['id' => 9,'dateRdv' => '2021-04-02','heure' => '12:30','typeService' => 'Onglerie','user'=>'client1','valider'=>false],
+            ['id' => 10,'dateRdv' => '2021-04-02','heure' => '15:00','typeService' => 'Extension des cils','user'=>'client2','valider'=>false],
 
         ];
         foreach ($rdvs as $rdv)
@@ -115,7 +126,64 @@ class AppFixtures extends Fixture
             $manager->flush();
         }
     }
+    private function loadTypeProduit(ObjectManager $manager)
+    {
+        $typeProduits = [
+            ['id'=>1,'libelle' => "crème"],
+            ['id'=>2,'libelle' => "vernis"],
+            ['id'=>3,'libelle' => "shampoing"],
 
+        ];
+        foreach ($typeProduits as $typeProduit) {
+            $new_type = new TypeProduit();
+            $new_type->setLibelle($typeProduit['libelle']);
+            $manager->persist($new_type);
+            $manager->flush();
+        }
+    }
+    private function loadMarque(ObjectManager $manager)
+    {
+        $marques = [
+            ['id' => 1,'libelle' => 'sephora'],
+            ['id' => 2,'libelle' => 'chanel'],
+            ['id' => 3,'libelle' => 'oréal'],
+            ['id' => 4,'libelle' => 'mixa']
+        ];
+        foreach ($marques as $marque)
+        {
+            $marque_new = new Marque();
+            $marque_new->setLibelle($marque['libelle']);
+            $manager->persist($marque_new);
+            $manager->flush();
+        }
+    }
+    private function loadProduit(ObjectManager $manager)
+    {
+        $produits = [
+            ['id'=>1,'libelle' => "lait de toilette", 'typeProduit'=> 'crème', 'stocks'=>2, 'besoin'=>3,'prix'=>2.3,'marque'=>'mixa'],
+            ['id'=>2,'libelle' => "anti-cernes", 'typeProduit'=> 'crème', 'stocks'=>4, 'besoin'=>0,'prix'=>5.4,'marque'=>'oréal'],
+            ['id'=>3,'libelle' => "bleu", 'typeProduit'=> 'vernis', 'stocks'=>1, 'besoin'=>5,'prix'=>1.5,'marque'=>'chanel'],
+            ['id'=>4,'libelle' => "rouge", 'typeProduit'=> 'vernis', 'stocks'=>6, 'besoin'=>0,'prix'=>1.5,'marque'=>'chanel'],
+            ['id'=>5,'libelle' => "démêlant", 'typeProduit'=> 'shampoing', 'stocks'=>7, 'besoin'=>2,'prix'=>5.0,'marque'=>'sephora'],
+            ['id'=>6,'libelle' => "couleur rouge", 'typeProduit'=> 'shampoing', 'stocks'=>3, 'besoin'=>3,'prix'=>2.2,'marque'=>'sephora']
+        ];
+        foreach ($produits as $produit) {
+
+            $new_prod = new Produit();
+            $new_prod->setLibelle($produit['libelle']);
+            $typeProduit = $manager->getRepository(TypeProduit::class)->findOneby(["libelle"  =>  $produit['typeProduit']]);
+            $new_prod->setTypeProduit($typeProduit);
+            $new_prod->setStock($produit['stocks']);
+            $new_prod->setBesoin($produit['besoin']);
+            $new_prod->setPrix($produit['prix']);
+
+            $marque = $manager->getRepository(Marque::class)->findOneby(["libelle"  =>  $produit['marque']]);
+            $new_prod->setMarque($marque);
+
+            $manager->persist($new_prod);
+            $manager->flush();
+        }
+    }
     private function loadCategoryAccounting(ObjectManager $manager)
     {
         $categoryAccounting = [
