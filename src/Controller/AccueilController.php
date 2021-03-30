@@ -50,7 +50,7 @@ class AccueilController extends AbstractController
 
             $mail = new Email();
             $mail->from(new Address($emailAddress, $name . ' ' . $surname))
-                ->to(new Address('alexis25.py@gmail.com'))
+                ->to(new Address('maxime.noel2000@gmail.com'))
                 ->subject($subject)
                 ->text($text."\n\n"."Me contacter par mail : ".$emailAddress."\n"."Me contacter par téléphone : ".$tel);
             try {

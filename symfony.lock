@@ -29,6 +29,9 @@
     "doctrine/dbal": {
         "version": "2.10.4"
     },
+    "doctrine/deprecations": {
+        "version": "v0.5.3"
+    },
     "doctrine/doctrine-bundle": {
         "version": "2.0",
         "recipe": {
@@ -98,6 +101,9 @@
     },
     "egulias/email-validator": {
         "version": "2.1.22"
+    },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.3"
     },
     "laminas/laminas-code": {
         "version": "4.0.0"
