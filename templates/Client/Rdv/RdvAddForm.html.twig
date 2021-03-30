@@ -2,15 +2,15 @@
 {% block body %}
     <div class="container-fluid">
     <div class="container">
-        <form method="post" action="{{ path('rdv_date_valide') }}">
+        <p method="post" action="{{ path('rdv_date_valide') }}">
             <legend>Prendre rendez-vous</legend>
-
-                <label>Choisir la date</label>
+            <label>Choisir la date : </label>
                 <div class="form-group">
                     <input id="date" type="date" name="date" value="{{ date }}">
                 </div>
-            <label>Choisir l'heure</label>
-
+                <hr>
+            <label>Choisir l'heure : </label>
+            <br>
             {% for heure in heures %}
                 <input type="radio" id="heure" name="horaireRadioBouton" value="{{ heure }}" >
                 <label name="horaireRadioLabel" >{{ heure }}</label>
@@ -18,18 +18,22 @@
             {% if erreurs.heure is defined %}
                 <div style="color: red">{{erreurs.heure}}</div>
             {% endif %}
-
             <br>
-
-            <label>Choisir la préstation</label>
+<hr>
+            <label>Choisir la prestation : </label>
+            <br>
             {% for typeService in typeServices %}
-                <input type="radio" name="typeService" value="{{ typeService.id }}"><label for="service">{{ typeService.libelle }}</label>
+                <input type="radio" name="typeService" value="{{ typeService.id }}"><label for="service">{{ typeService.libelle }} </label>
             {% endfor %}
             {% if erreurs.typeService is defined %}
                 <div style="color: red">{{erreurs.typeService}}</div>
             {% endif %}
+            <br>
             <button name="heureValide" type="submit" class="btn btn-primary">{{ button|default('Valider le rendez-vous') }}</button>
         </form>
+        <br>
+        </div>
+    </div>
 {% endblock %}
 {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
