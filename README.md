@@ -9,6 +9,8 @@ Website for the NailStudio shop
 + PHP 7.4 or above
 + Symfony 4 or above
 + Composer 2.0 or above
++ MySQL or MariaDB
++ a web server
 
 ### PHP extensions
 
