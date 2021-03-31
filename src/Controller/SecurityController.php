@@ -241,7 +241,7 @@ class SecurityController extends AbstractController
                 $this->getDoctrine()->getManager()->flush();
                 return $this->redirectToRoute('app_login');
             } else {
-                $erreurs = "Les mots de passes ne marchent pas";
+                $erreurs = "Les mots de passes ne matchent pas";
                 return $this->render('security/resetPassword.html.twig', [
                     'erreurs' => $erreurs,
                     'id' => $id

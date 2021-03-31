@@ -26,14 +26,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="modif recherche produit">
-      <change afterPath="$PROJECT_DIR$/templates/Security/mailPassword.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Security/resetPassword.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Security/login.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="modif recherche produit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,6 +45,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -235,7 +229,7 @@
       <workItem from="1617141185532" duration="415000" />
       <workItem from="1617141840202" duration="2908000" />
       <workItem from="1617180801873" duration="405000" />
-      <workItem from="1617194861471" duration="17719000" />
+      <workItem from="1617194861471" duration="18217000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -391,7 +385,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617205978165</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Forgotten password mail">
+      <created>1617217872710</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1617217872711</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +445,8 @@
     <MESSAGE value="Connexion token added" />
     <MESSAGE value="Revert &quot;modif vue rdv client&quot;&#10;&#10;This reverts commit 8513b772" />
     <MESSAGE value="Thomas obrecht push" />
-    <option name="LAST_COMMIT_MESSAGE" value="Thomas obrecht push" />
+    <MESSAGE value="Forgotten password mail" />
+    <option name="LAST_COMMIT_MESSAGE" value="Forgotten password mail" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
@@ -502,11 +504,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1617023258987" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1617205981829">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1617217921509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1617043880363" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1617205981829" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1617217921509" />
     <state x="367" y="98" key="VcsDiffUtil.ChangesDialog" timestamp="1609887410509">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
