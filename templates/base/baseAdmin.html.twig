@@ -20,7 +20,7 @@
                 {% if is_granted("ROLE_ADMIN") %}
                     <div class="col">
                         <div class="text-center" id="realisations">
-                            <a href="/admin/show/calendrier" id="txtRealisations"><strong class="
+                            <a href="/admin/show/calendrier#menuBar" id="txtRealisations"><strong class="
                                 {% if app.request.pathInfo =="/admin/show/calendrier" %}actif
                                 {% else %}inactif
                                 {% endif %}">Agenda</strong></a>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col">
                         <div class="text-center" id="realisations">
-                            <a href="/admin/accounting" id="txtRealisations"><strong class="
+                            <a href="/admin/accounting#menuBar" id="txtRealisations"><strong class="
                                 {% if app.request.pathInfo =="/admin/accounting" %}actif
                                 {% else %}inactif
                                 {% endif %}">Comptabilité</strong></a>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col">
                         <div class="text-center" id="realisations">
-                            <a href="/admin/show/produit" id="txtRealisations"><strong class="
+                            <a href="/admin/show/produit#menuBar" id="txtRealisations"><strong class="
                                 {% if app.request.pathInfo =="/admin/show/produit" %}actif
                                 {% else %}inactif
                                 {% endif %}">Produits</strong></a>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="col">
                         <div class="text-center" id="realisations">
-                            <a href="/admin/show/service" id="txtRealisations"><strong class="
+                            <a href="/admin/show/service#menuBar" id="txtRealisations"><strong class="
                                 {% if app.request.pathInfo =="/admin/show/service" %}actif
                                 {% else %}inactif
                                 {% endif %}">Services</strong></a>

@@ -3,7 +3,7 @@
 {% block title %} NailStudio | réservation {% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container-fluid" id="Reservations">
     {% if is_granted('ROLE_CLIENT') %}
         <p style="color: gray">Si vous avez pris rendez-vous mais que celui-ci ne s'affiche pas, il a surement été refusé.</p>
         <div class="container-fluid">
@@ -35,7 +35,7 @@
         </div>
     {% endif %}
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
-        <p><a href="{{ path('admin_show_calendrier') }}" class="btn btn-primary">gérer les rendez-vous</a></p>
+        <p><a href="/admin/show/calendrier#menuBar" class="btn btn-primary">gérer les rendez-vous</a></p>
     {% endif %}
     {% if not is_granted("ROLE_CLIENT") and not is_granted("ROLE_ADMIN") %}
         <div class="container-fluid">

@@ -26,10 +26,10 @@
                             <strong><a>nailstudio22icloud.com</a></strong>
                     </span>
                 <span id="spanReseau">
-                        <a href="https://facebook.com/" target="_blank" id="facebook">
+                        <a href="https://www.facebook.com/NailStudio-2331657630205418" target="_blank" id="facebook">
                             <img src="{{ asset('assets/img/reseau/logo_facebook.png') }}" id="logo_reseau">
                         </a>
-                        <a href="https://instagram.com/" target="_blank" id="instagram">
+                        <a href="https://www.instagram.com/nailstudio_____/" target="_blank" id="instagram">
                             <img src="{{ asset('assets/img/reseau/logo_instagram.png') }}" id="logo_reseau">
                         </a>
                     </span>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col">
                         <div class="text-center" id="services">
-                            <a href="/services" id="txtServices"><strong class="
+                            <a href="/services#menuBar" id="txtServices"><strong class="
                                     {% if app.request.pathInfo =="/services" %}actif
                                     {% else %}inactif
                                     {% endif %}">Services</strong></a>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="col">
                         <div class="text-center" id="reservations">
-                            <a href="/reservations" id="txtReservations"><strong class="
+                            <a href="/reservations#menuBar" id="txtReservations"><strong class="
                                     {% if app.request.pathInfo =="/reservations" %}actif
                                     {% else %}inactif
                                     {% endif %}">Réservations</strong></a>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="col">
                         <div class="text-center" id="Contact">
-                            <a href="/contact" id="txtContact"><strong class="
+                            <a href="/contact#menuBar" id="txtContact"><strong class="
                                     {% if app.request.pathInfo =="/contact" %}actif
                                     {% else %}inactif
                                     {% endif %}">Contact</strong></a>
@@ -84,7 +84,7 @@
                     {% if not is_granted("ROLE_CLIENT") and not is_granted("ROLE_ADMIN") %}
                     <div class="col">
                         <div class="text-center" id="Contact">
-                            <a href="/login" id="txtContact"><strong class="
+                            <a href="/login#menuBar" id="txtContact"><strong class="
                                     {% if app.request.pathInfo =="/login" %}actif
                                     {% else %}inactif
                                     {% endif %}">Connexion</strong></a>
@@ -93,7 +93,7 @@
                     {% else %}
                     <div class="col">
                         <div class="text-center" id="Contact">
-                            <a href="/logout" id="txtContact"><strong class="
+                            <a href="/logout#menuBar" id="txtContact"><strong class="
                                     {% if app.request.pathInfo =="/logout" %}actif
                                     {% else %}inactif
                                     {% endif %}">Déconnexion</strong></a>
@@ -165,7 +165,7 @@
                                             </span>
                                         </div>
                                         <div class="text-left" id="facebookReseauBottomBar">
-                                            <a href="https://facebook.com/" target="_blank" id="facebook">
+                                            <a href="https://www.facebook.com/NailStudio-2331657630205418" target="_blank" id="facebook">
                                                 <img src="{{ asset('assets/img/reseau/logo_facebook.png') }}" id="logo_reseau_bottom">
                                             </a>
                                             <span id="spanFacebook">
@@ -173,7 +173,7 @@
                                             </span>
                                         </div>
                                         <div class="text-left" id="instagramReseauBottomBar">
-                                            <a href="https://instagram.com/" target="_blank" id="instagram">
+                                            <a href="https://www.instagram.com/nailstudio_____/" target="_blank" id="instagram">
                                                 <img src="{{ asset('assets/img/reseau/logo_instagram.png') }}" id="logo_reseau_bottom">
                                             </a>
                                             <span id="spanInstagram">
@@ -201,7 +201,7 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="text-center" id="copyright"><strong>Copyright@2021 Nailstudio - Tout droit réservés - <a href="/mentionLegales">Mention légales</a> </strong></div>
+                <div class="text-center" id="copyright"><strong>Copyright@2021 Nailstudio - Tout droit réservés - <a href="/mentionLegales#menuBar">Mention légales</a> </strong></div>
             </div>
             <br>
         {% block javascripts %}
