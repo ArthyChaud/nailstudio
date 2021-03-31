@@ -16,11 +16,12 @@
             {% elseif rdvs is not empty %}
             <table class="table">
                 <thead class="thead-dark">
-                <tr><th>date</th><th>heure</th><th>valider</th></tr>
+                <tr><th>date</th><th>heure</th><th>préstation</th><th>valider</th></tr>
                 </thead>
                     {% for rdv in rdvs %}
                         <tr>
                         <td>{{ rdv.dateRdv|date('d/m/Y')}}</td><td>{{ rdv.heure }} </td>
+                            <td>{{ rdv.typeService.libelle }}</td>
                         {% if rdv.valider %}
                            <td style="color: green"> valider</td>
                         {% else %}
