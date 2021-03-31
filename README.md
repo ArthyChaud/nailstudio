@@ -41,6 +41,12 @@ To update schemas, you can run `Schema.bat` or `Schema.sh` depends on your syste
 
 To make migrations, you can run `Migrations.bat` or `Migrations.sh` depends on your system.
 
+## Run the project
+
+```shell
+symfony serve
+```
+
 ## Authors
 
 + Maxime NOEL
