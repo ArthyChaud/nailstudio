@@ -54,5 +54,15 @@ class ProduitRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+    public function getCalendarWithTypeServices(String $libelle)
+    {
+        $qb=$this->createQueryBuilder('p'); // il lui faut une lettre, i : item en base de données donc schéma
+        $qb->select('p')
+            ->where('p.libelle LIKE ?1')
+            ->setParameter(1,$libelle);
+
+        //    ->addOrderBy('p.nom', 'ASC');     // ?????????
+        return $qb->getQuery()->getResult();
+    }
 
 }

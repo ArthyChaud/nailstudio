@@ -5,10 +5,11 @@ use App\Entity\Calendar;
 use App\Entity\RDV;
 use App\Entity\TypeService;
 use App\Entity\User;
-use http\Client\Response;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormRegistryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -20,6 +21,8 @@ class RdvController extends AbstractController
 {
     /**
      * @Route("/PrendreRendezVous/getRendezVous", name="rdv_get")
+     * @param Request $request
+     * @return JsonResponse
      */
     public function rdvJson(Request $request)
     {
@@ -42,13 +45,15 @@ class RdvController extends AbstractController
         );
         $typeServices = $this->getDoctrine()->getRepository(TypeService::class)->findBy([], ['libelle' => 'ASC']);
 
-        $literalTime = new\DateTime('now');
+        $literalTime = new DateTime('now');
         $expire_date = $literalTime->format("Y-m-d");
         return $this->render('Client/Rdv/RdvAddForm.html.twig',['date'=>$expire_date,'heures'=>$heures,'typeServices'=>$typeServices]);
     }
 
     /**
      * @Route("/PrendreRendezVous/validation", name="rdv_date_valide")
+     * @param Request $request
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function rdvAddValide(Request $request)
     {

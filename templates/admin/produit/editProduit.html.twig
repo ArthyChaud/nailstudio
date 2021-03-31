@@ -61,6 +61,14 @@
             </div>
 
             <div class="form-group">
+            <label>besoin :</label>
+            <input name="besoin"  type="text"  size="18" value="{{donnees.besoin|default('')}}" class="form-control">
+            {% if erreurs.besoin is defined %}
+                <div style="color: red">{{ erreurs.besoin }}</div>
+            {% endif %}
+            </div>
+
+            <div class="form-group">
                 <label>prix :</label>
                 <input name="prix"  type="text"  size="18" value="{{donnees.prix|default('')}}" class="form-control">
                 {% if erreurs.prix is defined %}

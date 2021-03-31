@@ -27,8 +27,9 @@ class ProduitController extends AbstractController
      */
     public function showProduit(Request $request){
         $libelle= $request->request->get('libelle');
-
-        $produits = $this->getDoctrine()->getRepository(Produit::class)->findBy(['libelle'=>$libelle],[]);
+        $libelle.='%';
+        $produits = $this->getDoctrine()->getRepository(Produit::class)->getCalendarWithTypeServices($libelle);
+        //$produits = $this->getDoctrine()->getRepository(Produit::class)->findBy(['libelle'=>$libelle],[]);
         return $this->render('admin/produit/showProduit.html.twig',['produits'=>$produits]);
     }
     /**
@@ -115,6 +116,8 @@ class ProduitController extends AbstractController
 
         $donnees['libelle'] = $_POST['libelle'];
         $donnees['stock'] = $request->request->get('stock');
+        $donnees['besoin'] = $request->request->get('besoin');
+
         $donnees['prix'] = $request->request->get('prix');
         $donnees['typeProduitId'] = $request->request->get('typeProduitId');
         $donnees['marqueId'] = $request->request->get('marqueId');
@@ -130,6 +133,8 @@ class ProduitController extends AbstractController
             $marque = $this->getDoctrine()->getRepository(Marque::class)->find($donnees['marqueId']);
             $produit->setMarque($marque);
             $produit->setPrix($donnees['prix']);
+            $produit->setBesoin($donnees['besoin']);
+
             $produit->setStock($donnees['stock']);
             $produit->setBesoin(0);
 
@@ -303,6 +308,9 @@ class ProduitController extends AbstractController
 
         if($donnees['prix']==NULL OR !is_numeric($donnees['prix']) OR $donnees['prix']>10000)
             $erreurs['prix'] = 'Veuillez entrer un prix';
+
+        if($donnees['besoin']==NULL OR !is_numeric($donnees['besoin']) OR $donnees['besoin']>10000)
+            $erreurs['besoin'] = 'Veuillez entrer un besoin';
 
         if($donnees['stock']==NULL OR !is_numeric($donnees['stock']))
             $erreurs['stock'] = 'Veuillez entrer un stock';

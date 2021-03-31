@@ -19,10 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="crud typeService + delete d'agenda">
+    <list default="true" id="cd7edebc-4da5-4ab5-98e6-739f07c102f4" name="Default Changelist" comment="modif recherche produit">
+      <change beforePath="$PROJECT_DIR$/.idea/Nailstudio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Nailstudio.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/service/addService.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/service/addService.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Client/RdvController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +35,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -150,10 +156,12 @@
       <path value="$PROJECT_DIR$/vendor/symfony/uid" />
       <path value="$PROJECT_DIR$/vendor/easycorp/easyadmin-bundle" />
       <path value="$PROJECT_DIR$/vendor/webimpress/safe-writer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
     </include_path>
   </component>
   <component name="ProjectId" id="1mYvWYCxjYR263FPxyfpCTQgms4" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
   </component>
   <component name="ProjectViewState">
@@ -175,14 +183,21 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\S4\Nailstudio" />
+      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\public\assets" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\src\Controller" />
       <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio\templates" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\alexi\Desktop\Mes cours\DUT Info\DUT 2eme annee\Nailstudio" />
-    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -203,7 +218,10 @@
       <workItem from="1616751572119" duration="418000" />
       <workItem from="1616834606678" duration="5590000" />
       <workItem from="1616841104676" duration="25679000" />
-      <workItem from="1616920849778" duration="23123000" />
+      <workItem from="1616920849778" duration="26201000" />
+      <workItem from="1617095785249" duration="2741000" />
+      <workItem from="1617141185532" duration="415000" />
+      <workItem from="1617141840202" duration="1699000" />
     </task>
     <task id="LOCAL-00001" summary="Import front end with back end">
       <created>1609688120987</created>
@@ -310,7 +328,21 @@
       <option name="project" value="LOCAL" />
       <updated>1616942283261</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="ajout de fixtures">
+      <created>1617023895133</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1617023895133</updated>
+    </task>
+    <task id="LOCAL-00017" summary="modif recherche produit">
+      <created>1617043875742</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1617043875742</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +377,9 @@
     <MESSAGE value="delete event du calendrier + delete rdvs associés aux events" />
     <MESSAGE value="admin validation/refus multiple" />
     <MESSAGE value="crud typeService + delete d'agenda" />
-    <option name="LAST_COMMIT_MESSAGE" value="crud typeService + delete d'agenda" />
+    <MESSAGE value="ajout de fixtures" />
+    <MESSAGE value="modif recherche produit" />
+    <option name="LAST_COMMIT_MESSAGE" value="modif recherche produit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="53" key="#Plugins" timestamp="1609683457279">
@@ -372,10 +406,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1616938120641" />
-    <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1609689701865">
+    <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1617141198514">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1609689701865" />
+    <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1617141198514" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1609887548072">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -384,18 +418,19 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1616839613884" />
-    <state x="405" y="87" key="NewPhpClassDialog" timestamp="1616927766210">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="455" y="98" key="NewPhpClassDialog" timestamp="1617142813156">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="405" y="87" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1616927766210" />
+    <state x="455" y="98" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1617142813156" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1617023258987">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1617023258987" />
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1616942293950">
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2" timestamp="1617043880363">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1616942293950" />
+    <state x="321" y="128" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1617043880363" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1609688245543" />
     <state x="367" y="98" key="VcsDiffUtil.ChangesDialog" timestamp="1609887410509">
       <screen x="0" y="0" width="1366" height="728" />

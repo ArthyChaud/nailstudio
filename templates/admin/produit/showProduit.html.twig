@@ -45,9 +45,9 @@
                 <td>{{ produit.besoin }}</td>
                 <td>
                     <form  action="{{ path('admin_increment_besoin')}}" method="post">
-                        <button type="submit" name="submitAction"  value="moins"  class="btn btn-primary">-</button>
                         <input type="hidden" name="id" value="{{ produit.id }}">
                         <input type="text" name="besoin" value="">
+                        <button type="submit" name="submitAction"  value="moins"  class="btn btn-primary">-</button>
                         <button type="submit" name="submitAction"  value="plus" class="btn btn-primary">+</button>
                         <button type="submit" name="submitAction"  value="égale" class="btn btn-primary">=</button>
 
