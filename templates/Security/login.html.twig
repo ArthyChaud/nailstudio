@@ -2,12 +2,18 @@
 {% block title %}Log in!{% endblock %}
 {% block body %}
     <div class="container-fluid">
-    <form method="post">
-        {% if error %}
+        {% for message in app.flashes('success_account') %}
+            <div class="alert alert-info">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+        <form method="post">
+
+        {% if error is defined and error is not null %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
-        {% if app.user %}
+        {% if app.user is defined and app.user is not null %}
             <div class="mb-3">
                 You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
             </div>
@@ -15,7 +21,7 @@
 
         <h1 class="h3 mb-3 font-weight-normal"><p class="text-center"> Connexion :</p></h1>
         <label for="inputUsername">Utilisateur</label>
-        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+        <input type="text" value="{% if last_username is defined and last_username is not null %}{{ last_username }}{% endif %}" name="username" id="inputUsername" class="form-control" required autofocus>
         <label for="inputPassword">Mot de passe</label>
         <input type="password" name="password" id="inputPassword" class="form-control" required>
         <br/>
