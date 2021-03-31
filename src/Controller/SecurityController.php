@@ -137,4 +137,117 @@ class SecurityController extends AbstractController
         }
         return $this->redirectToRoute('app_login');
     }
+
+    /**
+     * @Route("/forgottenpassword", name="forgotten_password", methods={"GET","POST"})
+     * @param UserRepository $userRepository
+     * @param MailerInterface $mailer
+     * @param Request $request
+     * @return Response
+     * @throws TransportExceptionInterface
+     */
+    public function forgottenPassword(UserRepository $userRepository, MailerInterface $mailer, Request $request): Response
+    {
+        if($request->getMethod() == 'GET'){
+            return $this->render('security/mailPassword.html.twig');
+        }
+
+        if(!$this->isCsrfTokenValid('form_forgotten_password', $request->get('token'))) {
+            throw new  InvalidCsrfTokenException('Invalid CSRF token formulaire forgotten password');
+        }
+
+        // Vérification du mail
+        $email = $_POST['email'];
+        if(strcmp($email,'')==0) {
+            $erreurs['email'] = 'Veuillez entrer une email';
+        } else {
+            $erreurs = NULL;
+        }
+        if ($erreurs != NULL) {
+            return $this->render('security/mailPassword.html.twig',[
+                'erreurs' => $erreurs
+            ]);
+        }
+        $id = $userRepository->findByMail($email)[0]['id'];
+        $client = $this->getDoctrine()->getRepository(User::class)->find($id);
+
+        if ($client) {
+            $client->setTokenMail($this->token->generateToken());
+            $this->getDoctrine()->getManager()->persist($client);
+            $this->getDoctrine()->getManager()->flush();
+
+            $link = 'http://127.0.0.1:8000/resetpassword/'.$client->getTokenMail();
+
+            $email = new Email();
+            $email->from(new Address('maxime.noel2000@gmail.com', 'Support mot de passe'))
+                ->to(new Address($client->getEmail()))
+                ->subject("Mot de passe oublié")
+                ->text("Hello ".$client->getUsername().",\n".
+                    "\n".
+                    "click here to validate and activate your account : ".$link);
+            try {
+                $mailer->send($email);
+            } catch (TransportExceptionInterface $e) {
+                throw $e;
+            }
+
+            $this->addFlash('forgotten_password','Mail envoyé avec succès !');
+            return $this->redirectToRoute('index_index');
+        }
+
+        $erreurs = "Votre email n'existe pas.";
+
+        return $this->render('security/mailPassword.html.twig',[
+            'erreurs' => $erreurs
+        ]);
+    }
+
+    /**
+     * @Route("/resetpassword/{token}", name="reset_password_token")
+     * @param UserRepository $userRepository
+     * @param String|null $token
+     * @param Request $request
+     * @return Response
+     */
+    public function resetPasswordToken(UserRepository $userRepository, String $token, Request $request): Response
+    {
+        if($userRepository->findToken($token) != null) {
+            $user = $userRepository->find($userRepository->findToken($token)[0]);
+            if($user->getTokenMail() == $token && $user->getIsActive()==1) {
+                if ($request->getMethod() == 'GET') {
+                    return $this->render('security/resetPassword.html.twig',[
+                        'id' => $user->getTokenMail()
+                    ]);
+                }
+            }
+        }
+        return $this->redirectToRoute('app_login');
+    }
+
+    /**
+     * @Route("/changepassword/{id}", name="change_password")
+     * @param String $id
+     * @param UserRepository $userRepository
+     * @return Response
+     */
+    public function resetPassword(String $id, UserRepository $userRepository) {
+        if ($userRepository->findToken($id) != null) {
+            $user = $userRepository->find($userRepository->findToken($id)[0]);
+            if ($_POST['mdp1'] == $_POST['mdp2']) {
+                $password = $this->passwordEncoder->encodePassword($user, $_POST['mdp1']);
+                $user->setPassword($password)
+                    ->setTokenMail($this->token->generateToken());
+                $this->getDoctrine()->getManager()->persist($user);
+                $this->getDoctrine()->getManager()->flush();
+                return $this->redirectToRoute('app_login');
+            } else {
+                $erreurs = "Les mots de passes ne marchent pas";
+                return $this->render('security/resetPassword.html.twig', [
+                    'erreurs' => $erreurs,
+                    'id' => $id
+                ]);
+            }
+        }
+        return $this->render('security/login.html.twig');
+    }
 }

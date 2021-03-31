@@ -37,6 +37,15 @@ class UserRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function findByMail(String $mail)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb->select('u.id')
+            ->where('u.email = ?1')
+            ->setParameter(1,$mail);
+        return $qb->getQuery()->getResult();
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */
