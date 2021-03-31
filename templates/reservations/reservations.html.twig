@@ -8,30 +8,31 @@
         <p style="color: gray">Si vous avez pris rendez-vous mais que celui-ci ne s'affiche pas, il a surement été refusé.</p>
         <div class="container-fluid">
             <p class="text-center">
-                <p>liste des rendez vous</p>
+            <p>liste des rendez vous</p>
             {% if rdvs is not defined %}
                 <p>aucun rendez vous</p>
             {% elseif rdvs is null %}
                 <p>aucun rendez vous</p>
             {% elseif rdvs is not empty %}
-            <table class="table">
-                <thead class="thead-dark">
-                <tr><th>date</th><th>heure</th><th>valider</th></tr>
-                </thead>
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr><th>date</th><th>heure</th><th>préstation</th><th>valider</th></tr>
+                    </thead>
                     {% for rdv in rdvs %}
                         <tr>
-                        <td>{{ rdv.dateRdv|date('d/m/Y')}}</td><td>{{ rdv.heure }} </td>
-                        {% if rdv.valider %}
-                           <td style="color: green"> valider</td>
-                        {% else %}
-                            <td style="color: gray"> en cours de validation</td>
-                        {% endif %}
+                            <td>{{ rdv.dateRdv|date('d/m/Y')}}</td><td>{{ rdv.heure }} </td>
+                            <td>{{ rdv.typeService.libelle }}</td>
+                            {% if rdv.valider %}
+                                <td style="color: green"> valider</td>
+                            {% else %}
+                                <td style="color: gray"> en cours de validation</td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
-            </table>
-                {% endif %}
-                <p><a href="/PrendreRendezVous" class="btn btn-primary">Prendre un rendez vous</a></p>
-            </div>
+                </table>
+            {% endif %}
+            <p><a href="/PrendreRendezVous" class="btn btn-primary">Prendre un rendez vous</a></p>
+        </div>
         </div>
     {% endif %}
     {% if app.user is defined and is_granted('ROLE_ADMIN') %}
